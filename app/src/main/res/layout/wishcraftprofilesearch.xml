@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="652dp" />
+
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="277dp" />
+
+    <EditText
+        android:id="@+id/editText13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="209dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="172dp" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="472dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="547dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Search"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="39dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="397dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="322dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="247dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="172dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="81dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="97dp"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <EditText
+        android:id="@+id/ProfileNameBAr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="247dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="472dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="547dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="622dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <EditText
+        android:id="@+id/profileNameBAr4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Profile Name"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="322dp" />
+
+    <EditText
+        android:id="@+id/editText10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="435dp" />
+
+    <EditText
+        android:id="@+id/editText14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="577dp" />
+
+    <EditText
+        android:id="@+id/editText16"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="126dp" />
+
+    <EditText
+        android:id="@+id/editText15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bio"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="509dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Search"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="5dp"
+        tools:text="Profile Search" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="79dp"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="622dp"
+        tools:srcCompat="drawable/20171008_19470" />
+
+    <ScrollView
+        android:layout_width="446dp"
+        android:layout_height="652dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="87dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="266dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="641dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="416dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="566dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="491dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="191dp" />
+
+</android.support.constraint.ConstraintLayout>
