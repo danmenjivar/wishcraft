@@ -7,16 +7,6 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editText17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Bio"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="652dp" />
-
-    <EditText
         android:id="@+id/editText12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,16 +153,6 @@
         tools:layout_editor_absoluteY="547dp" />
 
     <EditText
-        android:id="@+id/profileNameBAr7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Profile Name"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="622dp" />
-
-    <EditText
         android:id="@+id/profileNameBAr3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -251,9 +231,9 @@
 
     <ScrollView
         android:layout_width="446dp"
-        android:layout_height="652dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="87dp">
+        android:layout_height="663dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="86dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -261,84 +241,68 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="266dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="332dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="115dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton10"
+    <Button
+        android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="641dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="183dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
+    <Button
+        android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="416dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="412dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton7"
+    <Button
+        android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="566dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="480dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton8"
+    <Button
+        android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="341dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="554dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton6"
+    <Button
+        android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="491dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="183dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+    <Button
+        android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="?android:attr/colorButtonNormal"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="191dp" />
+        android:text="add"
+        tools:layout_editor_absoluteX="311dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="109dp" />
 
 </android.support.constraint.ConstraintLayout>
