@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".feed">
 
+    <ImageView
+        android:id="@+id/feed_logo"
+        android:layout_width="125dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/wishcraft_logo"
+        android:src="@drawable/wc_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/_dynamicfeedlist"
+        android:layout_width="392dp"
+        android:layout_height="446dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_logo" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/_dynamicfeedlist"
+        style="?android:attr/buttonBarStyle">
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="610dp" />
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_height="wrap_content"
+            android:text="@string/search"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="609dp" />
+
+        <Button
+            android:id="@+id/personal_profile_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_list"
+            tools:layout_editor_absoluteX="278dp"
+            tools:layout_editor_absoluteY="609dp" />
+    </LinearLayout>
+
+
+
 </android.support.constraint.ConstraintLayout>

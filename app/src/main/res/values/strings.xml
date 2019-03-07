@@ -6,4 +6,8 @@
     <string name="password">Password</string>
     <string name="create_an_account">Create an Account</string>
     <string name="login">Login</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="my_list">My List</string>
+    <string name="wishcraft_logo">WishCraft Logo</string>
 </resources>
