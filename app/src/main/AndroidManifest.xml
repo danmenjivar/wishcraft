@@ -11,10 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".logindependent"></activity>
         <activity android:name=".feed" />
-        <activity
-            android:name=".LogIn"
-            android:label="@string/title_activity_log_in"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view_friend_profile" />
         <activity android:name=".MainActivity">
             <intent-filter>
