@@ -12,15 +12,12 @@
         android:layout_width="278dp"
         android:layout_height="221dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/HangInThere" />
+        app:srcCompat="@drawable/wc_logo" />
 
     <EditText
         android:id="@+id/editText"
