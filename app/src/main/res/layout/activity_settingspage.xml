@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#313131"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/questionmark"
+        android:layout_width="67dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#DF4373"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <ImageButton
+        android:id="@+id/leftArrowButton"
+        android:layout_width="63dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="22dp"
+        android:background="#DF4373"
+        android:padding="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <EditText
+        android:id="@+id/UsernameEntry"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="19dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter"
+        android:textColor="#DF4373"
+        app:layout_constraintBottom_toTopOf="@+id/PasswordEntry"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/PasswordEntry"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter"
+        android:textColor="#DF4373"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="202dp" />
+
+    <TextView
+        android:id="@+id/ChangeUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Change Username"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="144dp" />
+
+    <TextView
+        android:id="@+id/ChangePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="76dp"
+        android:text="Change Password"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/SaveChanges"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Settings"
+        android:layout_width="164dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:text="Settings"
+        android:textColor="#DF4373"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/questionmark"
+        app:layout_constraintStart_toEndOf="@+id/leftArrowButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/SaveChanges"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginRight="145dp"
+        android:layout_marginBottom="200dp"
+        android:background="#DF4373"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toTopOf="@+id/LogOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="124dp"
+        android:background="#DF4373"
+        android:text="Log Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
