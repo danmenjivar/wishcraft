@@ -39,18 +39,20 @@
 
         <Button
             android:id="@+id/settings_button"
-            android:layout_width="wrap_content"
             style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="settingButton"
             android:text="@string/settings"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="610dp" />
 
         <Button
             android:id="@+id/search_button"
-            android:layout_width="wrap_content"
             style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="searchButton"
             android:text="@string/search"
             tools:layout_editor_absoluteX="161dp"
             tools:layout_editor_absoluteY="609dp" />
@@ -60,6 +62,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="myProfileButton"
             android:text="@string/my_list"
             tools:layout_editor_absoluteX="278dp"
             tools:layout_editor_absoluteY="609dp" />
