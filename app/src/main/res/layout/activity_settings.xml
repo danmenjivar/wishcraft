@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings">
+    tools:context=".Settings">
 
     <EditText
         android:id="@+id/UsernameEntry"
@@ -73,11 +73,12 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
-        android:textColor="@color/white"
+        android:onClick="saveChangesButton"
         android:text="@string/save_changes"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +95,7 @@
         android:background="@color/colorAccent"
         android:textColor="@color/white"
         android:text="@string/log_out"
+        android:onClick="backToLogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"

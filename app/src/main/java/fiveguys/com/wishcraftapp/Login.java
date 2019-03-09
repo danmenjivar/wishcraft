@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-public class logindependent extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logindependent);
+        setContentView(R.layout.activity_login);
     }
 
     public void createAnAccountButton(View view) {
@@ -22,7 +21,7 @@ public class logindependent extends AppCompatActivity {
     }
 
     public void loginButton(View view) {
-        Intent loginIntent = new Intent(this, feed.class);
+        Intent loginIntent = new Intent(this, Feed.class);
         startActivity(loginIntent);
     }
 }
