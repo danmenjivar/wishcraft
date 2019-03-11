@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class ProfileSearch extends AppCompatActivity {
-    Button addFriendButton =(Button) findViewById(R.id.button);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +16,7 @@ public class ProfileSearch extends AppCompatActivity {
     public void addfriendButton(View view){
 
         Intent addItem = new Intent(this,view_friend_profile.class);
-        startActivity(view_friend_profile.class);
+        startActivity(addItem);
     }
 
 

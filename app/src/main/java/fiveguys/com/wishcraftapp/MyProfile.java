@@ -18,6 +18,6 @@ public class MyProfile extends AppCompatActivity {
     public void addItemButton(View view){
 
         Intent addItem = new Intent(this,ItemSearch.class);
-        startActivity(ItemSearch.class);
+        startActivity(addItem);
     }
 }
