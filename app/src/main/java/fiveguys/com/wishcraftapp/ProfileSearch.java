@@ -15,8 +15,8 @@ public class ProfileSearch extends AppCompatActivity {
 
     public void addfriendButton(View view){
 
-        Intent addItem = new Intent(this,view_friend_profile.class);
-        startActivity(addItem);
+        //Intent addItem = new Intent(this,view_friend_profile.class);
+        //startActivity(addItem);
     }
 
 
