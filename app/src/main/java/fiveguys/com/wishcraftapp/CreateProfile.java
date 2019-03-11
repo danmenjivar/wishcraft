@@ -16,13 +16,11 @@ public class CreateProfile extends AppCompatActivity {
     }
 
     public void finalizeAccountCreateButton(View view){
-        Toast.makeText(this,"Link this to feed page",Toast.LENGTH_SHORT).show();
-        //Intent createAccount = new Intent(this,Feed.class);
-        //startActivity(createAccount);
+        Intent createAccount = new Intent(this, Feed.class);
+        startActivity(createAccount);
     }
     public void cancelButton(View view){
-        Toast.makeText(this,"Link this to login page",Toast.LENGTH_SHORT).show();
-        //Intent cancel = new Intent(this,);
-        //startActivity();
+        Intent cancel = new Intent(this, Login.class);
+        startActivity(cancel);
     }
 }

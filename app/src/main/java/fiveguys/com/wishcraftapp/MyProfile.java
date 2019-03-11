@@ -15,8 +15,9 @@ public class MyProfile extends AppCompatActivity {
         setContentView(R.layout.wishcraftmyprofile);
     }
 
-    public void addItemButton(){
-        Intent addItem = new Intent(this,addedItem.class);
-        startActivity(addItem);
+    public void addItemButton(View view){
+
+        Intent addItem = new Intent(this,ItemSearch.class);
+        startActivity(ItemSearch.class);
     }
 }
