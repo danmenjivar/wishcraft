@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".ViewFriendProfile">
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="644dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="444dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="581dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="509dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="315dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="382dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <LinearLayout
+        android:layout_width="98dp"
+        android:layout_height="286dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="191dp">
+
+        <Button
+            android:id="@+id/button11"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claim"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="444dp" />
+
+        <Button
+            android:id="@+id/button10"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claim"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="509dp" />
+
+        <Button
+            android:id="@+id/button9"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claim"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="382dp" />
+
+        <Button
+            android:id="@+id/button8"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="382dp" />
+
+        <Button
+            android:id="@+id/button12"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claim"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="581dp" />
+
+        <Button
+            android:id="@+id/button13"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claim"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="644dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Riad's Mom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="35dp"
+        tools:srcCompat="@tools:sample/avatars[11]" />
+
+    <ListView
+        android:layout_width="207dp"
+        android:layout_height="520dp"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
+        android:id="@+id/editText4"
+        android:layout_width="212dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Hi I love being Riad's Momand airdropping him memes"
+        android:textColor="#DF4373"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="195dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="71dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="252dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+</android.support.constraint.ConstraintLayout>
