@@ -234,6 +234,7 @@
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="39dp"
+        android:onClick="toMyProfile"
         android:layout_height="42dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
