@@ -10,13 +10,13 @@ public class ProfileSearch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.wishcraftmyprofile);
+        setContentView(R.layout.wishcraftprofilesearch);
     }
 
     public void addfriendButton(View view){
 
-        //Intent addItem = new Intent(this,view_friend_profile.class);
-        //startActivity(addItem);
+        Intent addItem = new Intent(this,ViewFriendProfile.class);
+        startActivity(addItem);
     }
 
 

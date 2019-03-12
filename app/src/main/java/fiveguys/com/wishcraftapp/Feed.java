@@ -49,10 +49,7 @@ public class Feed extends Activity {
                 return view;
             }
         };
-
         listView.setAdapter(arrayAdapter);
-
-
     }
 
     public void settingButton(View view) {
@@ -61,16 +58,15 @@ public class Feed extends Activity {
     }
 
     public void searchButton(View view) {
-        //TODO connect me
+        //TODO Done
         Toast.makeText(this, "Link me to Search View", Toast.LENGTH_SHORT).show();
-//        Intent loginIntent = new Intent(this, Feed.class);
-//        startActivity(loginIntent);
+      Intent searchPerson = new Intent(this, ProfileSearch.class);
+      startActivity(searchPerson);
     }
 
     public void myProfileButton(View view) {
-        //TODO connect me
-        Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        //        Intent loginIntent = new Intent(this, Feed.class);
-//        startActivity(loginIntent);
+        //TODO Done
+        Intent loginIntent = new Intent(this, MyProfile.class);
+        startActivity(loginIntent);
     }
 }
