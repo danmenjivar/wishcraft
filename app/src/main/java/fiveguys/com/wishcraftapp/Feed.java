@@ -62,15 +62,15 @@ public class Feed extends Activity {
 
     public void searchButton(View view) {
         //TODO connect me
-        Toast.makeText(this, "Link me to Search View", Toast.LENGTH_SHORT).show();
-//        Intent loginIntent = new Intent(this, Feed.class);
-//        startActivity(loginIntent);
+//        Toast.makeText(this, "Link me to Search View", Toast.LENGTH_SHORT).show();
+        Intent searchIntent = new Intent(this, ProfileSearch.class);
+        startActivity(searchIntent);
     }
 
     public void myProfileButton(View view) {
         //TODO connect me
-        Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        //        Intent loginIntent = new Intent(this, Feed.class);
-//        startActivity(loginIntent);
+        //Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
+        Intent profileIntent = new Intent(this, MyProfile2.class);
+        startActivity(profileIntent);
     }
 }
