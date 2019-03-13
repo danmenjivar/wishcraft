@@ -18,6 +18,8 @@ import java.util.Arrays;
 
 public class MyProfile extends AppCompatActivity {
 
+    private  MediaPlayer mp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,17 @@ public class MyProfile extends AppCompatActivity {
 
         listView.setAdapter(arrayAdapter);
 
+        this.mp = MediaPlayer.create(this, R.raw.rings);
+
     }
 
     public void playSong(View view){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.rings);
-        mp.start();
+        if(!this.mp.isPlaying()){
+            this.mp.start();
+        } else {
+            this.mp.pause();
+        }
+
     }
 
 

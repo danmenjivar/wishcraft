@@ -16,6 +16,8 @@ import java.util.Arrays;
 
 public class ViewFriendProfile extends Activity {
 
+    private MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class ViewFriendProfile extends Activity {
         };
 
         listView.setAdapter(arrayAdapter);
+
+        this.mp = MediaPlayer.create(this, R.raw.my_jam);
     }
 
     public void user1click(View view) {
@@ -61,7 +65,10 @@ public class ViewFriendProfile extends Activity {
 
 
     public void playSong(View view){
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.my_jam);
-        mp.start();
+        if(!this.mp.isPlaying()){
+            this.mp.start();
+        } else {
+            this.mp.pause();
+        }
     }
 }
