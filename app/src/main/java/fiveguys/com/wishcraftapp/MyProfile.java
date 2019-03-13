@@ -1,8 +1,10 @@
 package fiveguys.com.wishcraftapp;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.*;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,22 +15,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Feed extends Activity {
+public class MyProfile extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+        setContentView(R.layout.activity_my_profile);
 
+        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
 
-        final ListView listView = (ListView) findViewById(R.id._dynamicfeedlist);
-
-        String demo[] = {"Riad has added \"Super Smash Bros. Ultimate\"",
-                "Cody has claimed \"Spider-Man: Into the Spider-Verse DVD\"",
-                "Connor has added \"King of The Hill DVD\"",
-                "Daniel has claimed surfboard",
-                "Jason has claimed \"Airdrop\" by Friendos"
-        };
+        String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
+                "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
 
         ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
 
@@ -51,25 +49,27 @@ public class Feed extends Activity {
 
         listView.setAdapter(arrayAdapter);
 
-
     }
 
-    public void settingButton(View view) {
-        Intent settingsIntent = new Intent(this, Settings.class);
-        startActivity(settingsIntent);
+    public void playSong(View view){
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.rings);
+        mp.start();
     }
 
-    public void searchButton(View view) {
-        //TODO connect me
-//        Toast.makeText(this, "Link me to Search View", Toast.LENGTH_SHORT).show();
-        Intent searchIntent = new Intent(this, ProfileSearch.class);
-        startActivity(searchIntent);
-    }
 
-    public void myProfileButton(View view) {
-        //TODO connect me
-        //Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        Intent profileIntent = new Intent(this, MyProfile.class);
-        startActivity(profileIntent);
+    public void addItemDialogue(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Item");
+        builder.setMessage("Item to add: ");
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //code to run when ok is pressed
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 }

@@ -15,9 +15,10 @@ public class Login extends AppCompatActivity {
     }
 
     public void createAnAccountButton(View view) {
-        Toast.makeText(this, "Link me to Create Account", Toast.LENGTH_SHORT).show();
-//        Intent createAccountIntent = new Intent(this, );
-//        startActivity();
+        //TODO connect me
+        //Toast.makeText(this, "Link me to Create Account", Toast.LENGTH_SHORT).show();
+        Intent createAccountIntent = new Intent(this, CreateProfile.class);
+        startActivity(createAccountIntent);
     }
 
     public void loginButton(View view) {
