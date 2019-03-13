@@ -15,6 +15,7 @@
         <activity android:name=".CreateProfile" />
         <activity android:name=".ProfileSearch" />
         <activity android:name=".Settings" />
+        <activity android:name=".ItemSearch"></activity>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

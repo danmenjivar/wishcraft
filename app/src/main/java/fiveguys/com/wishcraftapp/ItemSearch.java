@@ -11,7 +11,7 @@ public class ItemSearch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.itemsearch_main);
+        setContentView(R.layout.itemsearch);
     }
 
     public void user1click(View view) {

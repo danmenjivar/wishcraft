@@ -1,6 +1,7 @@
 package fiveguys.com.wishcraftapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.*;
 import android.support.v7.app.AlertDialog;
@@ -58,18 +59,21 @@ public class MyProfile extends AppCompatActivity {
 
 
     public void addItemDialogue(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Item");
-        builder.setMessage("Item to add: ");
-        builder.setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //code to run when ok is pressed
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Add Item");
+//        builder.setMessage("Item to add: ");
+//        builder.setPositiveButton("OK",
+//                new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        //code to run when ok is pressed
+//                    }
+//                });
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+
+        Intent itemSearchIntent = new Intent(this, ItemSearch.class);
+        startActivity(itemSearchIntent);
 
     }
 }
