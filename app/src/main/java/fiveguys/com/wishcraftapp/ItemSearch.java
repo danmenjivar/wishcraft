@@ -20,11 +20,5 @@ public class ItemSearch extends AppCompatActivity {
        // startActivity(intent);
     }
 
-    public void toMyProfile(View view) {
-        Intent intent = new Intent(this, MyProfile.class);
-
-        startActivity(intent);
-    }
-
 
 }
