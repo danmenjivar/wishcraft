@@ -1,6 +1,9 @@
 package fiveguys.com.wishcraftapp;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.*;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +15,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class MyProfile extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
-        final ListView listView = (ListView) findViewById(R.id._dynamic_profile_list);
+        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
 
         String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
-        "Gold watch Qt: 1", "Gold chain Qt: 1"};
+                "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
 
         ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
 
@@ -48,4 +51,25 @@ public class MyProfile extends AppCompatActivity {
 
     }
 
+    public void playSong(View view){
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.rings);
+        mp.start();
+    }
+
+
+    public void addItemDialogue(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Item");
+        builder.setMessage("Item to add: ");
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //code to run when ok is pressed
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
 }

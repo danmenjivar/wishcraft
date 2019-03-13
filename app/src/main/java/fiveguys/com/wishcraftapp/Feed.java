@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,7 +69,7 @@ public class Feed extends Activity {
     public void myProfileButton(View view) {
         //TODO connect me
         //Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        Intent profileIntent = new Intent(this, MyProfile2.class);
+        Intent profileIntent = new Intent(this, MyProfile.class);
         startActivity(profileIntent);
     }
 }
