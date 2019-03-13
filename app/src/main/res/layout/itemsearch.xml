@@ -15,43 +15,21 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="Search Item"
         android:inputType="textPersonName"
-        android:text="Search Item"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorAccent"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="395dp"
-        android:layout_height="617dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="216dp"
         android:layout_marginEnd="8dp"
         android:background="@color/grey"
         android:onClick="user1click"
@@ -61,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="@+id/scrollView2"
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.619" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -72,7 +51,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/ariana" />
 
     <TextView
         android:id="@+id/textView"
@@ -96,7 +75,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="216dp"
         android:layout_marginEnd="8dp"
         android:background="@color/grey"
         android:onClick="user1click"
@@ -107,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.595" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -118,7 +97,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/nick" />
 
     <TextView
         android:id="@+id/textView2"
@@ -133,7 +112,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:layout_constraintVertical_bias="1.0" />
@@ -142,7 +121,7 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="216dp"
         android:layout_marginEnd="8dp"
         android:background="@color/grey"
         android:onClick="user1click"
@@ -153,7 +132,7 @@
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.214" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -164,7 +143,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/hang_in_there" />
 
     <TextView
         android:id="@+id/textView3"
@@ -179,10 +158,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -193,7 +172,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/wc_logo" />
 
     <TextView
         android:id="@+id/textView4"
@@ -208,16 +187,16 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="216dp"
         android:layout_marginEnd="8dp"
         android:background="@color/grey"
         android:onClick="user1click"
@@ -228,7 +207,7 @@
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <ImageButton
         android:id="@+id/imageButton"

@@ -4,171 +4,244 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#313131"
 
 
     tools:context=".ViewFriendProfile">
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="644dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView17"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="444dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView13"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="581dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView14"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="509dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView15"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="315dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView16"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="382dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <LinearLayout
-        android:layout_width="98dp"
-        android:layout_height="286dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:orientation="vertical"
+    <Button
+        android:id="@+id/button14"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="claim"
+        android:onClick="user1click"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="191dp">
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toBottomOf="@+id/button12" />
 
-        <Button
-            android:id="@+id/button11"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Claim"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="444dp" />
+    <Button
+        android:id="@+id/button12"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="user1click"
+        android:layout_marginEnd="8dp"
+        android:text="claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
 
-        <Button
-            android:id="@+id/button10"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Claim"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="509dp" />
+    <Button
+        android:id="@+id/button13"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="user1click"
+        android:layout_marginEnd="8dp"
+        android:text="claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
-        <Button
-            android:id="@+id/button9"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Claim"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="382dp" />
+    <Button
+        android:id="@+id/button11"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="user1click"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
-        <Button
-            android:id="@+id/button8"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="382dp" />
+    <Button
+        android:id="@+id/button7"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="user1click"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
 
-        <Button
-            android:id="@+id/button12"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Claim"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="581dp" />
-
-        <Button
-            android:id="@+id/button13"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Claim"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="644dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/button8"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="user1click"
+        android:text="claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/friendlist"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Riad's Mom"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Nick Stern"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="35dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="35dp"
-        tools:srcCompat="@tools:sample/avatars[11]" />
+        android:textColor="#DF4373"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
 
     <ListView
-        android:layout_width="207dp"
-        android:layout_height="520dp"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="185dp" />
+        android:id="@+id/friendlist"
+        android:layout_width="173dp"
+        android:layout_height="389dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <TextView
         android:id="@+id/editText4"
         android:layout_width="212dp"
-        android:layout_height="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Hi I love being Riad's Momand airdropping him memes"
+        android:text="please baby no more parties in la"
         android:textColor="#DF4373"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="72dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.001" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="140dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="playSong"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nick"
+        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="195dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/imageView12"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hang_in_there"
+        app:layout_constraintEnd_toStartOf="@+id/friendlist"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="252dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 </android.support.constraint.ConstraintLayout>
