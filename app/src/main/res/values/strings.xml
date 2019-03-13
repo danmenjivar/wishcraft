@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">WishCraftApp</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="getting_the_right_gift_is_like_reading_minds">Getting the right gift is like reading minds</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="login">Login</string>
+    <string name="search">Search</string>
+    <string name="my_list">My List</string>
+    <string name="wishcraft_logo">WishCraft Logo</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="log_out">Log Out</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="settings">Settings</string>
 </resources>
