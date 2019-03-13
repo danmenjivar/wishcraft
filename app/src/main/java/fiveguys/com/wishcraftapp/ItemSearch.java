@@ -20,5 +20,10 @@ public class ItemSearch extends AppCompatActivity {
        // startActivity(intent);
     }
 
+    public void gotoProfile(View view) {
+        Intent intent = new Intent(this, MyProfile.class);
+        //Toast.makeText(this, "Added Item to list", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+    }
 
 }
