@@ -7,7 +7,7 @@
     tools:context=".CreateProfile">
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_password"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -24,10 +24,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_username" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_password_confirm"
         android:layout_width="268dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,10 +44,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText_username"
         android:layout_width="264dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_confirm"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_confirm"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView

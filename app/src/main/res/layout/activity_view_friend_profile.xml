@@ -195,10 +195,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_username" />
 
     <TextView
-        android:id="@+id/editText4"
+        android:id="@+id/editText_username"
         android:layout_width="212dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -224,7 +224,7 @@
         android:onClick="playSong"
         android:scaleType="fitCenter"
         android:src="@drawable/nick"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintEnd_toStartOf="@+id/editText_username"
         app:layout_constraintHorizontal_bias="0.342"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
