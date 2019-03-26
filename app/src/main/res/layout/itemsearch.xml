@@ -146,7 +146,7 @@
         app:srcCompat="@drawable/hang_in_there" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView_createProfile"
         android:layout_width="143dp"
         android:layout_height="87dp"
         android:layout_marginStart="8dp"

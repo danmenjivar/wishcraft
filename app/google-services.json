@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "843970849061",
+    "firebase_url": "https://wishcraftapp-883ac.firebaseio.com",
+    "project_id": "wishcraftapp-883ac",
+    "storage_bucket": "wishcraftapp-883ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843970849061:android:787ad4e9985b33b9",
+        "android_client_info": {
+          "package_name": "fiveguys.com.wishcraftapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843970849061-7tnco88p1pa5j41ch8igqr58ecif7l00.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fiveguys.com.wishcraftapp",
+            "certificate_hash": "ee9f29bb493c2ed9abd0841c8f43aba32a5c5b93"
+          }
+        },
+        {
+          "client_id": "843970849061-ob3rbt282aq0jqfgpbd24rpmufeulkm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANhvEvgrRKgVHJxawEB4zyK91DWFboKBs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843970849061-ob3rbt282aq0jqfgpbd24rpmufeulkm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

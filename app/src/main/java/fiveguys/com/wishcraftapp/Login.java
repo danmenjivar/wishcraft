@@ -17,6 +17,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_login);
 //        FirebaseApp.initializeApp(this); //onCreate method used to connect to Firebase
 //        mAuth = FirebaseAuth.getInstance();

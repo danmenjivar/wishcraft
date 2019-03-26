@@ -19,33 +19,50 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class CreateProfile extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth; //
 
-    private final String DEBUG_TAG = "ACCOUNT CREATED";
+    private final String DEBUG_TAG = "EmailPassword";
+
+    private EditText userNameEditText;
+    private EditText passwordEditText;
+    private EditText confirmPasswordEditText;
+    private EditText emailEditText;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_create_profile);
-        FirebaseApp.initializeApp(this);//on create method, connect to Firebase
+
+        //Views
+        this.userNameEditText = findViewById(R.id.editText_username);
+        this.passwordEditText = findViewById(R.id.editText_password);
+        this.confirmPasswordEditText = findViewById(R.id.editText_password_confirm);
+        this.emailEditText = findViewById(R.id.editText_email);
+
+        FirebaseApp.initializeApp(this);
+        this.mAuth = FirebaseAuth.getInstance();//on create method, connect to Firebase
     }
 
     public void finalizeAccountCreateButton(View view) {//when user clicks to create account
-        mAuth = FirebaseAuth.getInstance();
 
-        EditText usernameEdit = (EditText) findViewById(R.id.editText_username);
-        EditText passwordEdit = (EditText) findViewById(R.id.editText_password);
-        EditText confirmPasswordEdit = (EditText) findViewById(R.id.editText_password_confirm);
-        String username = usernameEdit.getText().toString();
-        String password = passwordEdit.getText().toString();
+        String email = emailEditText.getText().toString();
+        String username = userNameEditText.getText().toString();
+        Log.d("danny", "the username is " + username);
+        String password = passwordEditText.getText().toString();
+        String confirmPassword = confirmPasswordEditText.getText().toString();
 
 
-        if (!password.equals(confirmPasswordEdit.getText().toString())){//check if passwords match
-            Toast.makeText(this, "Passwords do not match",Toast.LENGTH_SHORT);
+        if (!password.equals(confirmPassword)){//check if passwords match
+            Toast.makeText(this, "Passwords do not match!",Toast.LENGTH_SHORT);
+            Log.d("Danny", "passwords do not match");
 
     } else {
 
-            mAuth.createUserWithEmailAndPassword(username, password)
+            this.mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -69,8 +86,6 @@ public class CreateProfile extends AppCompatActivity {
         }
 
 
-        Intent createAccount = new Intent(this, Feed.class);
-        startActivity(createAccount);
 
     }
 
