@@ -6,6 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".CreateProfile">
 
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="70dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_createProfile" />
+
+    <EditText
+        android:id="@+id/editText_username"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="70dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
 
     <EditText
         android:id="@+id/editText_password"
@@ -47,39 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
-    <EditText
-        android:id="@+id/editText_username"
-        android:layout_width="264dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="70dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
-
-    <EditText
-        android:id="@+id/editText_email"
-        android:layout_width="264dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="70dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_createProfile" />
 
     <Button
         android:id="@+id/createAccount_button"
@@ -95,29 +95,11 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintHorizontal_bias="0.249"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_password_confirm"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
-        android:onClick="cancelButton"
-        android:text="Cancel"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_password_confirm"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView_createProfile"
@@ -133,4 +115,24 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="cancelButton"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_confirm"
+        app:layout_constraintVertical_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>

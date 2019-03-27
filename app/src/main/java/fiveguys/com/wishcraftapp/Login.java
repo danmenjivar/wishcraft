@@ -49,36 +49,40 @@ public class Login extends AppCompatActivity {
     public void createAnAccountButton(View view) {
         //TODO connect me
         //Toast.makeText(this, "Link me to Create Account", Toast.LENGTH_SHORT).show();
-        Intent createAccountIntent = new Intent(this, CreateProfile.class);
+        Intent createAccountIntent = new Intent(Login.this, CreateProfile.class);
         startActivity(createAccountIntent);
     }
 
     public void loginButton(View view) {
         String email = loginEmailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //TODO send the user to their feed
-                            //updateUI(user);
-                            Intent loginIntent = new Intent(Login.this, Feed.class);
-                            startActivity(loginIntent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(Login.this, "Missing email/password", Toast.LENGTH_SHORT);
+        } else {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "signInWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                //TODO send the user to their feed
+                                //updateUI(user);
+                                Intent loginIntent = new Intent(Login.this, Feed.class);
+                                startActivity(loginIntent);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Toast.makeText(Login.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                //updateUI(null);
+                            }
                         }
-                    }
-                });
+                    });
 
 
-
+        }
     }
 }
