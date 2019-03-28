@@ -66,7 +66,6 @@ public class Login extends AppCompatActivity {
         }
     };
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -121,5 +120,4 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
-
 }
