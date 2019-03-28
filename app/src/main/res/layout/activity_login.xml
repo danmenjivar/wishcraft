@@ -76,6 +76,7 @@
         android:background="@color/disable_grey"
         android:onClick="loginButtonClick"
         android:text="@string/login"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +85,8 @@
 
     <Button
         android:id="@+id/create_account_button"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
