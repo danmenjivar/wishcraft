@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity {
         //TODO
         Intent loginIntent = new Intent(this, Feed.class);
         startActivity(loginIntent);
+        finish(); //prevents user from hitting back and logging out
     }
 
     public void createAnAccountButton(View view) {
