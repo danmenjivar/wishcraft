@@ -74,6 +74,9 @@ public class CreateProfile extends AppCompatActivity {
                     isValidPassword(passwordConfirmInput) && !usernameInput.isEmpty()){
                 confirmButton.setEnabled(true);
                 confirmButton.setBackgroundColor(getResources().getColor(R.color.wc_logo_pink));
+            } else {
+                confirmButton.setEnabled(false);
+                confirmButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
             }
 
 

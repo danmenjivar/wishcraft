@@ -57,6 +57,9 @@ public class Login extends AppCompatActivity {
             if (isValidEmail(emailInput) && isValidPassword(passwordInput)) {
                 loginButton.setEnabled(true);
                 loginButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            } else {
+                loginButton.setEnabled(false);
+                loginButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
             }
         }
 
