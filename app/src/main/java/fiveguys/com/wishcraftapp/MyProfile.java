@@ -1,30 +1,48 @@
 package fiveguys.com.wishcraftapp;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.*;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyProfile extends AppCompatActivity {
 
     private  MediaPlayer mp;
-
+    public static final int GET_FROM_GALLERY =20;
+    private ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
+        profilePicture = (ImageView) findViewById(R.id.profilePic);
 
         final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
 
@@ -56,6 +74,37 @@ public class MyProfile extends AppCompatActivity {
 
     }
 
+    public void onClickEditPic(View v) {
+        Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
+        File picDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String picDirPath =  picDirectory.getPath();
+        Uri picData = Uri.parse(picDirPath);
+        galleryImageGrab.setDataAndType(picData,"image/*");
+        startActivityForResult(galleryImageGrab, GET_FROM_GALLERY);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode == RESULT_OK){
+            if(requestCode == GET_FROM_GALLERY){
+                //successfully heard from image gallery if here
+                Uri imageUri = data.getData();
+                InputStream imgStream;
+                try {
+                    imgStream = getContentResolver().openInputStream(imageUri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(imgStream);
+                    profilePicture.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this,"Unable to Open Image",Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }
+
+    }
+
     public void playSong(View view){
         if(!this.mp.isPlaying()){
             this.mp.start();
@@ -84,4 +133,9 @@ public class MyProfile extends AppCompatActivity {
         startActivity(itemSearchIntent);
 
     }
+
+
+
+
+
 }

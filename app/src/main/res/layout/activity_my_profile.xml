@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MyProfile">
 
-
     <TextView
         android:id="@+id/profileName"
         android:layout_width="85dp"
@@ -22,7 +21,8 @@
         app:layout_constraintStart_toEndOf="@+id/profilePic"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+
+    <ImageView
         android:id="@+id/profilePic"
         android:layout_width="131dp"
         android:layout_height="141dp"
@@ -30,7 +30,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="playSong"
         android:scaleType="fitCenter"
         android:src="@drawable/ariana"
         app:layout_constraintBottom_toTopOf="@+id/_dynamic_myWishlist"
@@ -83,4 +82,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioText" />
+
+    <Button
+        android:id="@+id/EditPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:text="Edit Pic"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:onClick="onClickEditPic"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic_myWishlist"
+        app:layout_constraintEnd_toEndOf="@+id/bioText"
+        app:layout_constraintStart_toEndOf="@+id/profilePic" />
 </android.support.constraint.ConstraintLayout>
