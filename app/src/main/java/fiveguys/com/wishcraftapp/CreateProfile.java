@@ -1,5 +1,6 @@
 package fiveguys.com.wishcraftapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -121,6 +122,7 @@ public class CreateProfile extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();//create user in auth
                             addNewUserToFirebaseDatabase(username, email);
                             //TODO updateUI
+                            updateUI(user);
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -150,6 +152,15 @@ public class CreateProfile extends AppCompatActivity {
 
     private boolean isValidPassword(String password) {
         return !password.isEmpty() && password.length() >= 6;
+    }
+
+    public void updateUI(FirebaseUser user) {
+        //TODO
+
+        Intent loginIntent = new Intent(this, Settings.class);
+        loginIntent.putExtra("firebaseUser", user);
+        startActivity(loginIntent);
+        finish(); //prevents user from hitting back and logging out
     }
 
 }
