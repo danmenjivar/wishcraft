@@ -121,6 +121,7 @@ public class CreateProfile extends AppCompatActivity {
                             Log.d(DEBUG_TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();//create user in auth
                             addNewUserToFirebaseDatabase(username, email);
+                            instantiateEmptyWishlist(email);
                             //TODO updateUI
                             updateUI(user);
 
@@ -132,6 +133,14 @@ public class CreateProfile extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void instantiateEmptyWishlist(String email) {
+        DatabaseReference fb = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference table = fb.child("userWishlist");
+        DatabaseReference newList = table.push();
+        newList.child("email").setValue(email);
+        newList.child("wishlist").setValue(email.hashCode());
     }
 
     private void addNewUserToFirebaseDatabase(String username, String email) {
