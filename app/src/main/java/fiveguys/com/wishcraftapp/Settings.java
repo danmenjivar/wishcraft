@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +42,11 @@ public class Settings extends Activity {
 
     private DatabaseReference mDatabase;
 
+    private StorageReference mStorageRef;
+
     private FirebaseAuth mAuth;
+
+
 
     public static final int GET_FROM_GALLERY =20;
     private ImageView profilePicture;
@@ -55,6 +61,8 @@ public class Settings extends Activity {
         mUser = mAuth.getCurrentUser(); //grab current logged in user
 
         String email = mUser.getEmail(); //grab email to locate in database
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         Query currentUsernameData = mDatabase.orderByChild("email").equalTo(email);
@@ -148,12 +156,19 @@ public class Settings extends Activity {
         if(resultCode == RESULT_OK){
             if(requestCode == GET_FROM_GALLERY){
                 //successfully heard from image gallery if here
+                String userID = mUser.getUid();
                 Uri imageUri = data.getData();
                 InputStream imgStream;
+                StorageReference storageReference = mStorageRef.child("images/ProfilePics/"+ userID+".jpg");
+                //Log.d("danny", "username");
+
                 try {
                     imgStream = getContentResolver().openInputStream(imageUri);
                     Bitmap bitmap = BitmapFactory.decodeStream(imgStream);
-                    profilePicture.setImageBitmap(bitmap);
+                    if(bitmap != null) {
+                        profilePicture.setImageBitmap(bitmap);
+                    }
+                    storageReference.putFile(imageUri);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                     Toast.makeText(this,"Unable to Open Image",Toast.LENGTH_LONG).show();
