@@ -126,16 +126,6 @@ public class Settings extends Activity {
      */
     public void backToLogin(View view) {
         mAuth.getInstance().signOut();
-
-
-
-//                .signOut(this)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        // ...
-//
-//                    }
-//                });
         Intent createAccountIntent = new Intent(this, Login.class);
         startActivity(createAccountIntent);
         finish();

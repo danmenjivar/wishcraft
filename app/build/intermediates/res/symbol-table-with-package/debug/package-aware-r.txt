@@ -1076,7 +1076,6 @@ drawable wc_logo
 drawable wc_logo_cropped
 id ALT
 id CTRL
-id EditPic
 id FUNCTION
 id LogOut
 id META
@@ -1279,7 +1278,6 @@ id profileNameBAr3
 id profileNameBAr5
 id profileNameBAr6
 id profilePic
-id profilePicButton
 id progress_circular
 id progress_horizontal
 id radio
