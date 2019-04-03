@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/linearLayout_in_create_profile"
         android:layout_width="wrap_content"
-        android:layout_height="304dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="30sp"
         app:layout_constraintHorizontal_bias="0.503"
@@ -81,8 +81,22 @@
             android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/colorAccent" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/password_length_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
+        android:text="Password must be at least 6 characters in length"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/wc_logo_blue"
+        android:textSize="13sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_in_create_profile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -128,9 +142,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout_in_create_profile"
             app:layout_constraintVertical_bias="0.0" />
-
-
     </LinearLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>
