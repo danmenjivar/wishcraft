@@ -2,13 +2,19 @@ package fiveguys.com.wishcraftapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class Settings extends Activity {
 
     private EditText usernameChange;
@@ -32,10 +42,14 @@ public class Settings extends Activity {
 
     private FirebaseAuth mAuth;
 
+    public static final int GET_FROM_GALLERY =20;
+    private ImageView profilePicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        profilePicture = (ImageView) findViewById(R.id.profilePic);
 
         mAuth = FirebaseAuth.getInstance();//grab authentication
         mUser = mAuth.getCurrentUser(); //grab current logged in user
@@ -117,6 +131,37 @@ public class Settings extends Activity {
         Intent createAccountIntent = new Intent(this, Login.class);
         startActivity(createAccountIntent);
         finish();
+    }
+
+    public void onClickEditPic(View v) {
+        Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
+        File picDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String picDirPath =  picDirectory.getPath();
+        Uri picData = Uri.parse(picDirPath);
+        galleryImageGrab.setDataAndType(picData,"image/*");
+        startActivityForResult(galleryImageGrab, GET_FROM_GALLERY);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode == RESULT_OK){
+            if(requestCode == GET_FROM_GALLERY){
+                //successfully heard from image gallery if here
+                Uri imageUri = data.getData();
+                InputStream imgStream;
+                try {
+                    imgStream = getContentResolver().openInputStream(imageUri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(imgStream);
+                    profilePicture.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this,"Unable to Open Image",Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }
+
     }
 
 
