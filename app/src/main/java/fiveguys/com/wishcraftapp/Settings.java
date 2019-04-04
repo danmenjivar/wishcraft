@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,79 +34,56 @@ import java.io.InputStream;
 
 public class Settings extends Activity {
 
-    private EditText usernameChange;
-
+    private final String TAG = "Settings";
+    private EditText usernameText;
     private FirebaseUser mUser;
-
-    private DatabaseReference mDatabase;
-
+    private DatabaseReference mUsersDatabase;
     private StorageReference mStorageRef;
-
     private FirebaseAuth mAuth;
-
-
-
-    public static final int GET_FROM_GALLERY =20;
+    public static final int GET_FROM_GALLERY = 20;
     private ImageView profilePicture;
+    private EditText emailText;
+    private User loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         profilePicture = (ImageView) findViewById(R.id.profilePic);
-
         mAuth = FirebaseAuth.getInstance();//grab authentication
         mUser = mAuth.getCurrentUser(); //grab current logged in user
+        emailText = findViewById(R.id.email_edit_Entry);
+        usernameText = findViewById(R.id.username_change);
+        loggedInUser = new User("", "");
 
         String email = mUser.getEmail(); //grab email to locate in database
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("users");///connect to fb database
+        fetchUser(email);
+    }
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
-        Query currentUsernameData = mDatabase.orderByChild("email").equalTo(email);
-        currentUsernameData.addListenerForSingleValueEvent(new ValueEventListener() {
+    //Fetches user data
+    private void fetchUser(String email){
+        mUsersDatabase.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot user : dataSnapshot){
-//
-//                }
+               if (dataSnapshot.hasChildren()){
+                   User user = dataSnapshot.getChildren().iterator().next().getValue(User.class);
+                   Log.d(TAG, user.username + " " + user.email);
+                   emailText.setText(user.email);
+                   loggedInUser.setEmail(user.email);
+                   usernameText.setText(user.username);
+                   loggedInUser.setUsername(user.username);
+               }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                //couldn't read anything
             }
         });
-
-
-
-        Log.d("danny", currentUsernameData.toString());
-
-        usernameChange = findViewById(R.id.username_change);
-        //DatabaseReference currentUser = mDatabase.child("email").equals(username);
-        usernameChange.addTextChangedListener(changeAttributes);
-
-
-
     }
-
-    private TextWatcher changeAttributes = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            usernameChange.setText(mUser.getEmail());
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 
 
     /**
@@ -117,20 +92,29 @@ public class Settings extends Activity {
      */
     public void saveChangesButton(View view) {
 
-        Toast.makeText(this, "Changes saved.", Toast.LENGTH_SHORT).show();
+        boolean hasUserChangedUsernameField = !usernameText.getText().toString().equals(loggedInUser.username);
+        boolean hasUserChangedEmailField = !emailText.getText().toString().equals(loggedInUser.email);
+
+        if (hasUserChangedEmailField || hasUserChangedEmailField){
+
+            Toast.makeText(this, "Changes saved.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
     }
 
-    /**
-     * When user clicks log-out
-     * @param view
-     */
+   //Signs out user when they click the log out button system wide
     public void backToLogin(View view) {
-        mAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut(); //sign out user system-wide
         Intent createAccountIntent = new Intent(this, Login.class);
-        startActivity(createAccountIntent);
+        startActivity(createAccountIntent); //return user to login screen
         finish();
     }
 
+
+    ////Methods for changing profile pic
     public void onClickEditPic(View v) {
         Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
         File picDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);

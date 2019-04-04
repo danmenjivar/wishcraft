@@ -1117,8 +1117,6 @@ id async
 id auto
 id barrier
 id beginning
-id bioEditText
-id bioText
 id blocking
 id bottom
 id button
@@ -1182,6 +1180,8 @@ id editText_password
 id editText_password_confirm
 id editText_username
 id edit_query
+id emailText
+id email_edit_Entry
 id end
 id end_padder
 id enterAlways

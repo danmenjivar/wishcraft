@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bioText"
+        android:id="@+id/emailText"
         android:layout_width="200dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bioText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
 \
 </android.support.constraint.ConstraintLayout>

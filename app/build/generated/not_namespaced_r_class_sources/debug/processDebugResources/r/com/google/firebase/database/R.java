@@ -129,10 +129,10 @@ public final class R {
         public static final int adjust_width = 0x7f080023;
         public static final int async = 0x7f080027;
         public static final int auto = 0x7f080028;
-        public static final int blocking = 0x7f08002d;
-        public static final int cancel_action = 0x7f08003e;
-        public static final int chronometer = 0x7f080046;
-        public static final int dark = 0x7f080052;
+        public static final int blocking = 0x7f08002b;
+        public static final int cancel_action = 0x7f08003c;
+        public static final int chronometer = 0x7f080044;
+        public static final int dark = 0x7f080050;
         public static final int end_padder = 0x7f08006d;
         public static final int forever = 0x7f080079;
         public static final int icon = 0x7f080081;
