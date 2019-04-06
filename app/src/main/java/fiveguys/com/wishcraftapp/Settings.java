@@ -13,10 +13,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +47,7 @@ public class Settings extends Activity {
     private ImageView profilePicture;
     private EditText emailText;
     private User loggedInUser;
+    private Button saveChangesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,6 @@ public class Settings extends Activity {
         emailText = findViewById(R.id.email_edit_Entry);
         usernameText = findViewById(R.id.username_change);
         loggedInUser = new User("", "");
-
         String email = mUser.getEmail(); //grab email to locate in database
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -63,14 +66,14 @@ public class Settings extends Activity {
         fetchUser(email);
     }
 
-    //Fetches user data
+    //Fetches user data to display in settings
     private void fetchUser(String email){
         mUsersDatabase.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                if (dataSnapshot.hasChildren()){
                    User user = dataSnapshot.getChildren().iterator().next().getValue(User.class);
-                   Log.d(TAG, user.username + " " + user.email);
+                   //Log.d(TAG, user.username + " " + user.email);
                    emailText.setText(user.email);
                    loggedInUser.setEmail(user.email);
                    usernameText.setText(user.username);
@@ -85,6 +88,71 @@ public class Settings extends Activity {
         });
     }
 
+    //Method will straight up just delete that user from being authenticated
+    public void onDeleteButtonClick(View view){
+        //Todo: add a dialogue box to confirm
+
+        mUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Log.d(TAG, "delete succesful");
+                } else {
+                    Log.d(TAG, "user could not be deleted");
+                }
+            }
+        });
+
+    }
+
+    //Method executes when user types new Password
+    public void changePasswordOnClick(View view){
+
+        EditText newPassword = findViewById(R.id.PasswordEntry);
+        EditText newPasswordConfirm = findViewById(R.id.PasswordEntryConfirm);
+
+        if (arePasswordsEqualAndValid(newPassword, newPasswordConfirm)){
+            changePassword(newPassword.getText().toString());
+        }
+    }
+
+    //Method updates firebase auth with new password for currently signed in user
+    private void changePassword(String newPassword){
+        mUser.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Log.d(TAG, "password updated");
+                    Toast.makeText(Settings.this, "Changes saved.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d(TAG, "error, password not updated", task.getException());
+                }
+            }
+        });
+    }
+
+
+    private void changeUsername(String email, String newUsername){
+        mUsersDatabase.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot ds: dataSnapshot.getChildren()){
+                        String keyId = ds.getKey();
+                    }
+
+                    User user = dataSnapshot.getChildren().iterator().next().getValue(User.class);
+                    //Log.d(TAG, user.username + " " + user.email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //couldn't read anything
+            }
+        });
+
+    }
 
     /**
      * When user clicks to save changes to their bio or username
@@ -95,9 +163,14 @@ public class Settings extends Activity {
         boolean hasUserChangedUsernameField = !usernameText.getText().toString().equals(loggedInUser.username);
         boolean hasUserChangedEmailField = !emailText.getText().toString().equals(loggedInUser.email);
 
-        if (hasUserChangedEmailField || hasUserChangedEmailField){
+        if (hasUserChangedUsernameField){
 
-            Toast.makeText(this, "Changes saved.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        if (hasUserChangedEmailField || hasUserChangedUsernameField){//user has changed either password or email field
+
         }
 
 
@@ -151,6 +224,31 @@ public class Settings extends Activity {
 
         }
 
+    }
+
+    //Checks if user enters password that is valid, i.e. not empty and at least 6 characters long
+    private boolean isValidPassword(String password) {
+        return !password.isEmpty() && password.length() >= 6;
+    }
+
+    //Checks if both passwords match and the user entered are valid
+    private boolean arePasswordsEqualAndValid(EditText password1, EditText password2){
+        String newPassword = password1.getText().toString();
+        String newPasswordConfirm = password2.getText().toString();
+
+        boolean arePasswordsValid = isValidPassword(newPassword) && isValidPassword(newPasswordConfirm);
+
+        if (!arePasswordsValid){
+            Toast.makeText(this, "Too short", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!newPassword.equals(newPasswordConfirm)){
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
 

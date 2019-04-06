@@ -26,19 +26,17 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateProfile extends AppCompatActivity {
 
     private final String DEBUG_TAG = "EmailPassword";
-
     private FirebaseAuth mAuth; //initializing user authentication using firebase
     //Views
     private EditText userNameEditText;
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
     private EditText emailEditText;
-
     private Button confirmButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_create_profile);
 
         //Initializing Views
@@ -52,15 +50,15 @@ public class CreateProfile extends AppCompatActivity {
         emailEditText.addTextChangedListener(confirmButtonEnable);
         confirmButton = findViewById(R.id.createAccount_button);
 
-
         FirebaseApp.initializeApp(this);
         this.mAuth = FirebaseAuth.getInstance();//on create method, connect to Firebase
     }
 
+    //Method ensures button is enabled when good input is provided
     private TextWatcher confirmButtonEnable = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            //empty, must exist for compilation purposes
         }
 
         @Override
@@ -79,37 +77,31 @@ public class CreateProfile extends AppCompatActivity {
                 confirmButton.setEnabled(false);
                 confirmButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
             }
-
-
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-
+            //empty, must exist for compilation purposes
         }
     };
-
 
     public void OnCreateAccountButtonClick(View view) {//when user clicks to create account
 
         final String email = emailEditText.getText().toString();
         final String username = userNameEditText.getText().toString();
-        Log.d(DEBUG_TAG, "the username is " + username);
+        //Log.d(DEBUG_TAG, "the username is " + username);
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
 
-
         if (!password.equals(confirmPassword)) {//check if passwords match
             Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
-            Log.d("Danny", "passwords do not match");
-
+            //Log.d("Danny", "passwords do not match");
         } else {
             createUserInFirebase(email, password, username);
         }
-
-
     }
 
+    //Method makes new firebase auth instance
     private void createUserInFirebase(final String email, String password, final String username) {
         this.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -135,6 +127,7 @@ public class CreateProfile extends AppCompatActivity {
                 });
     }
 
+    //Makes a new entry in the wishlists table in the real time firebase database
     private void instantiateEmptyWishlist(String email) {
         DatabaseReference fb = FirebaseDatabase.getInstance().getReference();
         DatabaseReference table = fb.child("userWishlist");
@@ -143,29 +136,33 @@ public class CreateProfile extends AppCompatActivity {
         newList.child("wishlist").setValue(email.hashCode());
     }
 
+    //Makes new entry in the users table in the real time firebase database
     private void addNewUserToFirebaseDatabase(String username, String email) {
         DatabaseReference fb = FirebaseDatabase.getInstance().getReference();
         DatabaseReference table = fb.child("users");
         DatabaseReference newUser = table.push();
         newUser.child("username").setValue(username);
         newUser.child("email").setValue(email);
+        newUser.child("bio").setValue("bio");
     }
 
+    //Takes the user back to the login screen
     public void cancelButtonClick(View view) {
         super.finish();//go back, pop this activity from the stack
     }
 
+    //Returns true if user types an email looking string
     private boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
+    //Returns true if user types a non empty password that is at least 6 characters long
     private boolean isValidPassword(String password) {
         return !password.isEmpty() && password.length() >= 6;
     }
 
+    //Method used to move user to next screen after successful profile creation
     public void updateUI(FirebaseUser user) {
-        //TODO
-
         Intent loginIntent = new Intent(this, Settings.class);
         loginIntent.putExtra("firebaseUser", user);
         startActivity(loginIntent);

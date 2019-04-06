@@ -7,6 +7,26 @@
     tools:context=".Settings">
 
 
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="onDeleteButtonClick"
+        android:text="delete account"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintStart_toEndOf="@+id/LogOut"
+        app:layout_constraintTop_toBottomOf="@+id/changePasswordButton"
+        app:layout_constraintVertical_bias="0.336" />
+
     <TextView
         android:id="@+id/textView_settings"
         android:layout_width="wrap_content"
@@ -33,18 +53,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savechangesButton">
 
-
-        <EditText
-            android:id="@+id/UsernameEntry"
-            android:layout_width="264dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10sp"
-            android:ems="10"
-            android:hint="@string/old_password"
-            android:inputType="textPassword"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorAccent" />
 
         <EditText
             android:id="@+id/PasswordEntry"
@@ -76,7 +84,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
         android:onClick="saveChangesButton"
@@ -92,42 +100,41 @@
         android:id="@+id/LogOut"
         android:layout_width="82dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="160dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorAccent"
         android:onClick="backToLogin"
         android:text="@string/log_out"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changePasswordButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.361" />
 
 
     <ImageView
         android:id="@+id/profilePic"
-        android:layout_width="157dp"
-        android:layout_height="136dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/transparent"
+        android:onClick="onClickEditPic"
         android:scaleType="fitCenter"
         android:src="@drawable/nick"
-        android:onClick="onClickEditPic"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_settings" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_settings" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="316dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -185,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70sp"
                 android:ems="10"
-                android:hint="bio"
+                android:hint="email@mail.com"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/wc_logo_pink" />
@@ -202,9 +209,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:background="@color/wc_logo_pink"
+        android:onClick="changePasswordOnClick"
+        android:text="Change Password"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="Change Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

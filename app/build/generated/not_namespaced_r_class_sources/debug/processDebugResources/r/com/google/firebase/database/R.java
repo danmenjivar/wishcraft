@@ -119,20 +119,20 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int action0 = 0x7f08000d;
-        public static final int action_container = 0x7f080015;
-        public static final int action_divider = 0x7f080017;
-        public static final int action_image = 0x7f080018;
-        public static final int action_text = 0x7f08001e;
-        public static final int actions = 0x7f08001f;
-        public static final int adjust_height = 0x7f080022;
-        public static final int adjust_width = 0x7f080023;
-        public static final int async = 0x7f080027;
-        public static final int auto = 0x7f080028;
-        public static final int blocking = 0x7f08002b;
-        public static final int cancel_action = 0x7f08003c;
-        public static final int chronometer = 0x7f080044;
-        public static final int dark = 0x7f080050;
+        public static final int action0 = 0x7f08000c;
+        public static final int action_container = 0x7f080014;
+        public static final int action_divider = 0x7f080016;
+        public static final int action_image = 0x7f080017;
+        public static final int action_text = 0x7f08001d;
+        public static final int actions = 0x7f08001e;
+        public static final int adjust_height = 0x7f080021;
+        public static final int adjust_width = 0x7f080022;
+        public static final int async = 0x7f080026;
+        public static final int auto = 0x7f080027;
+        public static final int blocking = 0x7f08002a;
+        public static final int cancel_action = 0x7f08003b;
+        public static final int chronometer = 0x7f080043;
+        public static final int dark = 0x7f08004f;
         public static final int end_padder = 0x7f08006d;
         public static final int forever = 0x7f080079;
         public static final int icon = 0x7f080081;

@@ -22,12 +22,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
+    private final String TAG = "LoginScreen"; //for debugging
     private FirebaseAuth mAuth; //firebase user login authorization
-
     private EditText loginEmailEditText;
     private EditText passwordEditText;
-    private final String TAG = "LoginScreen";
-
     private Button loginButton;
 
     @Override
@@ -35,14 +33,15 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this); //must be called for other fb methods to work
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance(); //grab the shared instance
-        this.loginEmailEditText = (EditText) findViewById(R.id.login_email);
-        this.passwordEditText = (EditText) findViewById(R.id.login_password);
+        this.mAuth = FirebaseAuth.getInstance(); //grab the shared auth instance
+        this.loginEmailEditText = findViewById(R.id.login_email);
+        this.passwordEditText = findViewById(R.id.login_password);
         this.loginButton = findViewById(R.id.login_button);
-        loginEmailEditText.addTextChangedListener(loginTextWatcher);
-        passwordEditText.addTextChangedListener(loginTextWatcher);
+        this.loginEmailEditText.addTextChangedListener(loginTextWatcher);//to enable button
+        this.passwordEditText.addTextChangedListener(loginTextWatcher);//to enable button
     }
 
+    //Method used to check if user provides appropriate data and enable button
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -65,7 +64,7 @@ public class Login extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-
+            //this must be here to compile
         }
     };
 
@@ -75,36 +74,40 @@ public class Login extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //TODO: go to User's profile
-//        updateUI(currentUser);
+        //updateUI(currentUser);
     }
 
+    //Method to move user to appropriate spot in app
     public void updateUI(FirebaseUser user) {
-        //TODO
         Intent loginIntent = new Intent(this, Feed.class);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
     }
 
+    //Method takes user to CreateAccount Activity
     public void createAnAccountButton(View view) {
         Intent createAccountIntent = new Intent(this, CreateProfile.class);
         startActivity(createAccountIntent);
     }
 
+    //Method used when user clicks "log me in" button
     public void loginButtonClick(View view) {
         String email = loginEmailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-
-        logUserIn(email, password);
+        logUserIn(email, password); //use firebase to login user
     }
 
+    //check if user entered a valid looking email address
     private boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
+    //check to see if user entered a password that is not empty and at least 6 characters in length
     private boolean isValidPassword(String password) {
         return !password.isEmpty() && password.length() >= 6;
     }
 
+    //Method logs user in using firebase authentication
     private void logUserIn(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
