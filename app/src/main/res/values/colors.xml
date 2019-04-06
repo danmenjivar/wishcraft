@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/wc_logo_pink</color>
+    <color name="colorPrimaryDark">@color/wc_logo_pink</color>
+    <!--<color name="colorAccent">#FF458D</color>-->
+    <color name="colorAccent">#df4777</color>
+    <color name="darkBackground">#313131</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#505050</color>
+    <color name="transparent">#0000</color>
+    <color name="wc_logo_pink">#df4777</color>
+    <color name="wc_logo_blue">#55cdf9</color>
+    <color name="disable_grey">#D3D3D3</color>
 </resources>

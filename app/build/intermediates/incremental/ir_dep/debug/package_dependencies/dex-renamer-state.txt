@@ -1,0 +1,4 @@
+#Thu Apr 04 08:35:52 PDT 2019
+base.0=/Users/danielmenjivar/AndroidStudioProjects/WishCraftApp/app/build/intermediates/transforms/dexMerger/debug/10
+path.0=classes.dex
+renamed.0=classes.dex
