@@ -1,4 +1,4 @@
-#Mon Apr 08 03:07:06 PDT 2019
-base.0=G\:\\Users\\Conner\\AndroidStudioProjects\\wishcraft\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+#Mon Apr 08 11:40:05 PDT 2019
+base.0=C\:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex

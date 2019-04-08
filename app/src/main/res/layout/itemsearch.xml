@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/searchItem"
         android:layout_width="218dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addItem1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="216dp"
@@ -50,7 +50,7 @@
         android:layout_marginTop="76dp"
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/searchItem"
         app:srcCompat="@drawable/ariana" />
 
     <TextView

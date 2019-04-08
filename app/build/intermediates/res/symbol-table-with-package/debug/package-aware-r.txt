@@ -1114,6 +1114,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addItem1
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1306,6 +1307,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollable
+id searchItem
 id search_badge
 id search_bar
 id search_button

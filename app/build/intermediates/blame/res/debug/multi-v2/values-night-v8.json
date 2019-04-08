@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\Users\\Conner\\AndroidStudioProjects\\wishcraft\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Conner\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\c6351a16eb4b4a8d6bccbdb83798be7e\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
