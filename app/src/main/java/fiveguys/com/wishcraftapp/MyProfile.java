@@ -36,14 +36,16 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 //import com.bumptech.glide.annotation.GlideModule;
@@ -65,6 +67,7 @@ public class MyProfile extends AppCompatActivity {
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
+    private String userKey;
     private TextView usernameText;
 
     @Override
@@ -75,55 +78,48 @@ public class MyProfile extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         profilePicture = (ImageView) findViewById(R.id.profilePic);
         usernameText = findViewById(R.id.profileName);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String userID = mAuth.getUid();
+        getUsername();
+        StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
+        // Load profilePic from firebase on start of activity
+        ImageView iv = profilePicture;
+        Glide.with(this )
+                .using(new FirebaseImageLoader())
+                .load(storageReference)
+                .signature(new StringSignature(storageReference.getMetadata().toString()))
+                .into(iv);
+
+        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
+
+        String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
+                "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
+
+        ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
 
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Get the Item from ListView
+                View view = super.getView(position, convertView, parent);
 
-            mStorageRef = FirebaseStorage.getInstance().getReference();
+                // Initialize a TextView for ListView each Item
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
 
+                // Set the text color of TextView (ListView Item)
+                tv.setTextColor(Color.WHITE);
 
-            String userID = mAuth.getUid();
-            StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
-            // Load profilePic from firebase on start of activity
-            ImageView iv = profilePicture;
-            Glide.with(this)
-                    .using(new FirebaseImageLoader())
-                    .load(storageReference)
-                    .signature(new StringSignature(storageReference.getMetadata().toString()))
-                    .into(iv);
+                // Generate ListView Item using TextView
+                return view;
+            }
+        };
 
-            final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
+        listView.setAdapter(arrayAdapter);
 
-            String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
-                    "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
+        this.mp = MediaPlayer.create(this, R.raw.rings);
 
-            ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
-
-
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    // Get the Item from ListView
-                    View view = super.getView(position, convertView, parent);
-
-                    // Initialize a TextView for ListView each Item
-                    TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                    // Set the text color of TextView (ListView Item)
-                    tv.setTextColor(Color.WHITE);
-
-                    // Generate ListView Item using TextView
-                    return view;
-                }
-            };
-
-            listView.setAdapter(arrayAdapter);
-
-            this.mp = MediaPlayer.create(this, R.raw.rings);
-
-        }
-
-
-
-
+    }
     /*
     public void onClickEditPic(View v) {
         Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
@@ -156,6 +152,28 @@ public class MyProfile extends AppCompatActivity {
 
     }
     */
+    public void getUsername(){
+        String email = mUser.getEmail();
+        Query usernameQuery = mDatabase.child("users").orderByChild("email").equalTo(email);
+
+        usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    DataSnapshot userData = dataSnapshot.getChildren().iterator().next();
+                    userKey = userData.getKey();//used when changing username and email
+                    User user = userData.getValue(User.class);
+                    usernameText.setText(user.username);
+                }
+            }
+
+
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
 
 
     public void playSong(View view){
