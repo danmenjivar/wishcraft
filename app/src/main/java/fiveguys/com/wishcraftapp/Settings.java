@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.StringSignature;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +64,16 @@ public class Settings extends Activity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();///connect to fb database
         fetchUser(email);
+        String userID = mAuth.getUid();
+        StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
+
+        // Load profilePic from firebase on start of activity
+        ImageView iv = profilePicture;
+        Glide.with(this )
+                .using(new FirebaseImageLoader())
+                .load(storageReference)
+                .signature(new StringSignature(storageReference.getMetadata().toString()))
+                .into(iv);
     }
 
     //Fetches user data to display in settings
