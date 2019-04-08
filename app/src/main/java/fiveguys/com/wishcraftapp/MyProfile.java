@@ -11,6 +11,7 @@ import android.media.*;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,11 +20,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.data.DataFetcher;
+import com.bumptech.glide.load.model.stream.StreamModelLoader;
+import com.bumptech.glide.signature.StringSignature;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+//import com.bumptech.glide.annotation.GlideModule;
+//import com.bumptech.glide.module.AppGlideModule;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,43 +61,70 @@ public class MyProfile extends AppCompatActivity {
     private  MediaPlayer mp;
     public static final int GET_FROM_GALLERY =20;
     private ImageView profilePicture;
+    private DatabaseReference mDatabase;
+    private StorageReference mStorageRef;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private TextView usernameText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         profilePicture = (ImageView) findViewById(R.id.profilePic);
-
-        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
-
-        String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
-                "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
-
-        ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
+        usernameText = findViewById(R.id.profileName);
 
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
-            public View getView(int position, View convertView, ViewGroup parent) {
-                // Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
 
-                // Initialize a TextView for ListView each Item
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+            mStorageRef = FirebaseStorage.getInstance().getReference();
 
-                // Set the text color of TextView (ListView Item)
-                tv.setTextColor(Color.WHITE);
 
-                // Generate ListView Item using TextView
-                return view;
-            }
-        };
+            String userID = mAuth.getUid();
+            StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
+            // Load profilePic from firebase on start of activity
+            ImageView iv = profilePicture;
+            Glide.with(this)
+                    .using(new FirebaseImageLoader())
+                    .load(storageReference)
+                    .signature(new StringSignature(storageReference.getMetadata().toString()))
+                    .into(iv);
 
-        listView.setAdapter(arrayAdapter);
+            final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
 
-        this.mp = MediaPlayer.create(this, R.raw.rings);
+            String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
+                    "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
 
-    }
+            ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
 
+
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    // Get the Item from ListView
+                    View view = super.getView(position, convertView, parent);
+
+                    // Initialize a TextView for ListView each Item
+                    TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                    // Set the text color of TextView (ListView Item)
+                    tv.setTextColor(Color.WHITE);
+
+                    // Generate ListView Item using TextView
+                    return view;
+                }
+            };
+
+            listView.setAdapter(arrayAdapter);
+
+            this.mp = MediaPlayer.create(this, R.raw.rings);
+
+        }
+
+
+
+
+    /*
     public void onClickEditPic(View v) {
         Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
         File picDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -104,6 +155,8 @@ public class MyProfile extends AppCompatActivity {
         }
 
     }
+    */
+
 
     public void playSong(View view){
         if(!this.mp.isPlaying()){

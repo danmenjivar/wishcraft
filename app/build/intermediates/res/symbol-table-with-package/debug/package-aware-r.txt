@@ -1049,6 +1049,7 @@ drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable hang_in_there
+drawable hanginthere
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
@@ -1076,6 +1077,8 @@ drawable wc_logo
 drawable wc_logo_cropped
 id ALT
 id CTRL
+id ChangePassword
+id ChangeUsername
 id FUNCTION
 id LogOut
 id META
@@ -1084,6 +1087,10 @@ id PasswordEntryConfirm
 id ProfileNameBAr
 id SHIFT
 id SYM
+id SaveChanges
+id Settings
+id Title
+id UsernameEntry
 id _dynamic_myWishlist
 id _dynamicfeedlist
 id action0
@@ -1173,6 +1180,7 @@ id editText13
 id editText14
 id editText15
 id editText16
+id editText2
 id editText7
 id editText8
 id editText_email
@@ -1189,6 +1197,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
 id feed_logo
 id fill
 id fill_horizontal
@@ -1234,6 +1243,7 @@ id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
 id left
+id leftArrowButton
 id light
 id line1
 id line3
@@ -1280,6 +1290,7 @@ id profileNameBAr6
 id profilePic
 id progress_circular
 id progress_horizontal
+id questionmark
 id radio
 id right
 id right_icon
@@ -1352,6 +1363,7 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1423,11 +1435,14 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_create_profile
 layout activity_feed
+layout activity_log_in
 layout activity_login
 layout activity_my_profile
 layout activity_profile_search
 layout activity_settings
+layout activity_settingspage
 layout activity_view_friend_profile
+layout content_log_in
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
