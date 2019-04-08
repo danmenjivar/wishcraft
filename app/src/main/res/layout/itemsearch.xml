@@ -51,19 +51,20 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/searchItem"
-        app:srcCompat="@drawable/ariana" />
+        app:srcCompat="@drawable/chocolate" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="143dp"
         android:layout_height="87dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="price and name"
         android:text="Item: Chocolate\nPrice: $3.00"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.466"
@@ -97,7 +98,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/nick" />
+        app:srcCompat="@drawable/fitbitversa" />
 
     <TextView
         android:id="@+id/textView2"
@@ -106,10 +107,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="price and name"
-        android:text="Item: Chocolate\nPrice: $2.50"
+        android:text="Item: Fitbit Versa\nPrice: $280.00"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.473"
@@ -143,7 +145,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/hang_in_there" />
+        app:srcCompat="@drawable/pinkslippers" />
 
     <TextView
         android:id="@+id/textView_createProfile"
@@ -152,10 +154,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="price and name"
-        android:text="Item: Chocolate\nPrice: $2.00"
+        android:text="Item: Pink BUnny Slippers\nPrice: $10.20"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.473"
@@ -172,7 +175,7 @@
         android:contentDescription="item picture"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/wc_logo" />
+        app:srcCompat="@drawable/gopro" />
 
     <TextView
         android:id="@+id/textView4"
@@ -181,10 +184,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="price and name"
-        android:text="Item: Chocolate\nPrice: $3.50"
+        android:text="Item: GoPro HERO7 Black\nPrice: $349.99"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.473"

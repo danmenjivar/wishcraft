@@ -9,16 +9,17 @@
 
     <ImageView
         android:id="@+id/wc_logo"
-        android:layout_width="286dp"
-        android:layout_height="115dp"
+        android:layout_width="343dp"
+        android:layout_height="223dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wc_logo_cropped" />
+        app:srcCompat="@drawable/wishcraft_logo_1" />
 
     <TextView
         android:id="@+id/login_quote"
@@ -27,7 +28,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/getting_the_right_gift_is_like_reading_minds"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

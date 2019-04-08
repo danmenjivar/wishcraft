@@ -156,6 +156,10 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\6b57b044893793762226b32379504e6f\\res\\drawable\\notification_icon_background.xml"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_harambeglue.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\harambeglue.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6579ebb2942669b398c68b4964722692\\res\\layout\\design_navigation_menu.xml"
     },
@@ -452,6 +456,14 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_pinkslippers.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\pinkslippers.jpg"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_season3riverdale.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\season3riverdale.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_chip_text_color.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6579ebb2942669b398c68b4964722692\\res\\color\\mtrl_chip_text_color.xml"
     },
@@ -482,6 +494,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_chocolate.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\chocolate.jpg"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
@@ -748,6 +764,10 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\c87690505e91e7117cf6f6a61d4280a8\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_andrzejbieszczad.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\andrzejbieszczad.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
@@ -968,6 +988,10 @@
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_gopro.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\gopro.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\c87690505e91e7117cf6f6a61d4280a8\\res\\color\\common_google_signin_btn_text_light.xml"
     },
@@ -1180,6 +1204,10 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_brianthoms.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\brianthoms.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
@@ -1190,6 +1218,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_background_transition_holo_light.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bugsplat.png.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\bugsplat.png"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility.png.flat",
@@ -1508,6 +1540,10 @@
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_harambe.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\harambe.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_borderless_text_material.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
     },
@@ -1666,6 +1702,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_stackofpapers.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\stackofpapers.jpg"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
@@ -1940,6 +1980,10 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_beardwithoutface.png.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\beardwithoutface.png"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
@@ -1992,6 +2036,10 @@
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_fitbitversa.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\fitbitversa.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
@@ -2016,8 +2064,16 @@
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\layout\\itemsearch.xml"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_petersmith.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\petersmith.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_wishcraft_logo_1.png.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\wishcraft_logo_1.png"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21_mtrl_linear_out_slow_in.xml.flat",
@@ -2052,6 +2108,10 @@
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_michaelsoltys.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\michaelsoltys.jpg"
+    },
+    {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
@@ -2078,6 +2138,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_btn_colored_borderless_text_material.xml.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_annabieszczad.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\annabieszczad.jpg"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -2142,6 +2206,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_houmandallali.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\houmandallali.jpg"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_custom.xml.flat",
@@ -2230,6 +2298,10 @@
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_jasonisaacs.jpg.flat",
+        "source": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\src\\main\\res\\drawable-v24\\jasonisaacs.jpg"
     },
     {
         "merged": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",

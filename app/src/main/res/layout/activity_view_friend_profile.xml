@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/beardwithoutface"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/stackofpapers"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/season3riverdale"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/harambeglue"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/harambe"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,17 +173,15 @@
         android:id="@+id/textView_createProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="Nick Stern"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#DF4373"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011" />
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/friendlist"
@@ -202,7 +200,7 @@
         android:layout_width="212dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -211,7 +209,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_createProfile"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <ImageButton
@@ -237,7 +235,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/hang_in_there"
+        android:src="@drawable/bugsplat"
         app:layout_constraintEnd_toStartOf="@+id/friendlist"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
