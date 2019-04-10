@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Mon Apr 08 12:37:12 PDT 2019
+#Wed Apr 10 15:31:44 PDT 2019
 0.baseType=DIRECTORY
-0.base=C\:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraftSPRINT\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+0.base=/Users/daniel.quintanamenji/Documents/wishcraft/app/build/intermediates/dex/debug/mergeDexDebug/out
 0.path=classes.dex
 0.set=DEX
 count=1
