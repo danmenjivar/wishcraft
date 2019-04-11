@@ -599,6 +599,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color bottom_navigation_color
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -651,6 +652,7 @@ color foreground_material_light
 color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color lightBlack
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -689,6 +691,8 @@ color mtrl_textinput_default_box_stroke_color
 color mtrl_textinput_disabled_color
 color mtrl_textinput_filled_box_default_background_color
 color mtrl_textinput_hovered_box_stroke_color
+color newPrimaryPink
+color newSecondaryPink
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
@@ -926,6 +930,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen subtitle_corner_radius
+dimen subtitle_outline_width
+dimen subtitle_shadow_offset
+dimen subtitle_shadow_radius
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -1061,11 +1069,15 @@ drawable hanginthere
 drawable harambe
 drawable harambeglue
 drawable houmandallali
+drawable ic_home_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_notifications_black_24dp
+drawable ic_person_black_24dp
+drawable ic_search_black_24dp
 drawable jasonisaacs
 drawable michaelsoltys
 drawable mtrl_snackbar_background
@@ -1110,7 +1122,6 @@ id Settings
 id Title
 id UsernameEntry
 id _dynamic_myWishlist
-id _dynamicfeedlist
 id action0
 id action_bar
 id action_bar_activity_content
@@ -1144,6 +1155,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id bottomNavigationMenu
 id button
 id button10
 id button11
@@ -1217,13 +1229,13 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab
-id feed_logo
 id fill
 id fill_horizontal
 id fill_vertical
 id filled
 id fixed
 id forever
+id frame
 id friendlist
 id ghost_view
 id gone
@@ -1290,6 +1302,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notifications
 id outline
 id packed
 id parallax
@@ -1298,8 +1311,8 @@ id parentPanel
 id parent_matrix
 id password_length_msg
 id percent
-id personal_profile_button
 id pin
+id profile
 id profileName
 id profileNameBAr
 id profileNameBAr2
@@ -1325,6 +1338,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollable
+id search
 id searchItem
 id search_badge
 id search_bar
@@ -1338,7 +1352,6 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id selected
-id settings_button
 id shortcut
 id showCustom
 id showHome
@@ -1499,6 +1512,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu bottom_navigation_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 raw my_jam
@@ -1577,6 +1591,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string log_out
 string login

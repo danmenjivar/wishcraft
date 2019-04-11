@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/daniel.quintanamenji/Documents/wishcraft/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\redcu\\Desktop\\WISHCRAFT\\wishcraft410\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/daniel.quintanamenji/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/4c1fa25770e1aec438ef58040b25324e/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\44b0690d0139acd5f526ce2170b5728a\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/daniel.quintanamenji/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/8b2100af2a986f38da478d6bcdfb6e4b/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\redcu\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\6579ebb2942669b398c68b4964722692\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
