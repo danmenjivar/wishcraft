@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Wed Apr 10 15:40:50 PDT 2019
+#Thu Apr 11 09:24:50 PDT 2019
 0.baseType=DIRECTORY
-0.base=/Users/daniel.quintanamenji/Documents/wishcraft/app/build/intermediates/dex/debug/mergeDexDebug/out
+0.base=/Users/danielmenjivar/AndroidStudioProjects/wishcraft/app/build/intermediates/dex/debug/mergeDexDebug/out
 0.path=classes.dex
 0.set=DEX
 count=1

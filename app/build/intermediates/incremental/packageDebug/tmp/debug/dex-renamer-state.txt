@@ -1,4 +1,4 @@
-#Wed Apr 10 15:40:49 PDT 2019
-base.0=/Users/daniel.quintanamenji/Documents/wishcraft/app/build/intermediates/dex/debug/mergeDexDebug/out
+#Thu Apr 11 09:24:50 PDT 2019
+base.0=/Users/danielmenjivar/AndroidStudioProjects/wishcraft/app/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

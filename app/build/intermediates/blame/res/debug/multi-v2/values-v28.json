@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/daniel.quintanamenji/Documents/wishcraft/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
+            "outputFile": "/Users/danielmenjivar/AndroidStudioProjects/wishcraft/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/daniel.quintanamenji/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/4c1fa25770e1aec438ef58040b25324e/res/values-v28/values-v28.xml",
+                    "source": "/Users/danielmenjivar/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/24ab78093eca093f11392570b073a4a2/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

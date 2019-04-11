@@ -8,9 +8,12 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +39,7 @@ public class Login extends AppCompatActivity {
         this.mAuth = FirebaseAuth.getInstance(); //grab the shared auth instance
         this.loginEmailEditText = findViewById(R.id.login_email);
         this.passwordEditText = findViewById(R.id.login_password);
+        this.passwordEditText.setOnEditorActionListener(logUserInListener);
         this.loginButton = findViewById(R.id.login_button);
         this.loginEmailEditText.addTextChangedListener(loginTextWatcher);//to enable button
         this.passwordEditText.addTextChangedListener(loginTextWatcher);//to enable button
@@ -68,6 +72,20 @@ public class Login extends AppCompatActivity {
         }
     };
 
+    //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
+    private TextView.OnEditorActionListener logUserInListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+            if (actionId == EditorInfo.IME_ACTION_DONE){
+                loginButtonClick(findViewById(R.id.login_button));
+                return true;
+            }
+
+            return false;
+        }
+    };
+
     @Override
     public void onStart() {
         super.onStart();
@@ -92,9 +110,14 @@ public class Login extends AppCompatActivity {
 
     //Method used when user clicks "log me in" button
     public void loginButtonClick(View view) {
-        String email = loginEmailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        logUserIn(email, password); //use firebase to login user
+        final String email = loginEmailEditText.getText().toString();
+        final String password = passwordEditText.getText().toString();
+        Thread t = new Thread() {
+            public void run() {
+                logUserIn(email, password); //use firebase to login user
+            }
+        };
+        t.start();
     }
 
     //check if user entered a valid looking email address
