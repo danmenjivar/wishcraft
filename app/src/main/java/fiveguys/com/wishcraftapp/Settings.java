@@ -1,6 +1,7 @@
 package fiveguys.com.wishcraftapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,10 +11,14 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +54,7 @@ public class Settings extends Activity {
     private EditText emailText;
     private User loggedInUser;
     private String userKey;
+    private EditText confirmPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +66,17 @@ public class Settings extends Activity {
         emailText = findViewById(R.id.email_edit_Entry);
         usernameText = findViewById(R.id.username_change);
         loggedInUser = new User("", "");
-        String email = mUser.getEmail(); //grab email to locate in database
+        final String email = mUser.getEmail(); //grab email to locate in database
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();///connect to fb database
-        fetchUser(email);
+        Thread thread = new Thread() {//speed up the fetching
+            public void run() {
+                fetchUser(email);
+            }
+        };
+        thread.start();
+        confirmPassword = findViewById(R.id.PasswordEntryConfirm);
+        confirmPassword.setOnEditorActionListener(passwordKeyboardPress);
         String userID = mAuth.getUid();
         StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
 
@@ -100,7 +113,21 @@ public class Settings extends Activity {
         });
     }
 
-    //Method will straight up just delete that user from being authenticated
+    //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
+    private TextView.OnEditorActionListener passwordKeyboardPress = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+            if (actionId == EditorInfo.IME_ACTION_DONE){
+                changePasswordOnClick(findViewById(R.id.changePasswordButton));
+                return true;
+            }
+
+            return false;
+        }
+    };
+
+    //Method deletes that user from being authenticated
     public void onDeleteButtonClick(View view) {
         //Todo: add a dialogue box to confirm S2
 
@@ -119,6 +146,8 @@ public class Settings extends Activity {
 
     //Method executes when user types new Password
     public void changePasswordOnClick(View view) {
+
+        hideKeyboard();
 
         EditText newPassword = findViewById(R.id.PasswordEntry);
         EditText newPasswordConfirm = findViewById(R.id.PasswordEntryConfirm);
@@ -169,6 +198,8 @@ public class Settings extends Activity {
      * @param view
      */
     public void saveChangesButton(View view) {
+
+        hideKeyboard();
 
         String username = usernameText.getText().toString();
         String email = emailText.getText().toString();
@@ -310,6 +341,14 @@ public class Settings extends Activity {
         }
 
         return true;
+    }
+
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 
