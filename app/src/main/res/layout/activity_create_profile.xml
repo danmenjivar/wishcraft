@@ -80,6 +80,7 @@
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textColor="@color/white"
+            android:imeOptions="actionGo"
             android:textColorHint="@color/colorAccent" />
     </LinearLayout>
 
@@ -132,7 +133,7 @@
             android:layout_height="wrap_content"
             android:background="@color/disable_grey"
             android:enabled="false"
-            android:onClick="OnCreateAccountButtonClick"
+            android:onClick="onCreateAccountButtonClick"
             android:text="Create Account"
             android:textStyle="bold"
             android:textColor="@color/white"

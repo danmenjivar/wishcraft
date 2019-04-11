@@ -1217,7 +1217,6 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
 id feed_logo
 id fill
 id fill_horizontal
@@ -1384,7 +1383,6 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1456,7 +1454,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_create_profile
 layout activity_feed
-layout activity_log_in
 layout activity_login
 layout activity_my_profile
 layout activity_profile_search

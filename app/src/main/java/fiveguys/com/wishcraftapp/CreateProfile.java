@@ -1,5 +1,6 @@
 package fiveguys.com.wishcraftapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +9,13 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,6 +53,7 @@ public class CreateProfile extends AppCompatActivity {
         confirmPasswordEditText.addTextChangedListener(confirmButtonEnable);
         this.emailEditText = findViewById(R.id.editText_email);
         emailEditText.addTextChangedListener(confirmButtonEnable);
+        confirmPasswordEditText.setOnEditorActionListener(createAccountListener);
         confirmButton = findViewById(R.id.createAccount_button);
 
         FirebaseApp.initializeApp(this);
@@ -85,8 +91,23 @@ public class CreateProfile extends AppCompatActivity {
         }
     };
 
-    public void OnCreateAccountButtonClick(View view) {//when user clicks to create account
+    //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
+    private TextView.OnEditorActionListener createAccountListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
+            if (actionId == EditorInfo.IME_ACTION_GO){
+                onCreateAccountButtonClick(confirmButton);
+                return true;
+            }
+
+            return false;
+        }
+    };
+
+    public void onCreateAccountButtonClick(View view) {//when user clicks to create account
+
+        hideKeyboard();
         final String email = emailEditText.getText().toString();
         final String username = userNameEditText.getText().toString();
         //Log.d(DEBUG_TAG, "the username is " + username);
@@ -167,6 +188,14 @@ public class CreateProfile extends AppCompatActivity {
         loginIntent.putExtra("firebaseUser", user);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
+    }
+
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 }
