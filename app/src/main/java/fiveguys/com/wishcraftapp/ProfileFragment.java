@@ -13,18 +13,15 @@ import android.widget.TextView;
  */
 public class ProfileFragment extends Fragment {
 
-
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+        //TextView textView = new TextView(getActivity());
+        //textView.setText(R.string.hello_blank_fragment);
+        return inflater.inflate(R.layout.activity_my_profile, container, false);
     }
-
 }

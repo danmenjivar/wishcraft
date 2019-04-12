@@ -29,11 +29,11 @@ MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users
 MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\1176ffb7ec27fd20feb5245222142421\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\5b94feb2a0a4c602b023c74a9cb89a8d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:palette-v7:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-28.0.0.aar\069ba527c976812b20ae7af0b89ba7e9\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\2c82eed97df37ebef18d9fc08d96f338\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\5ee458283931783d4589bcd30f20c584\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\5e04af78382978bfa1d004fd1e1f3f75\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\46e4bd2802ba83720c709cf98b2c38db\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\8da17dfbaec0b8c29ac7235174fd58bb\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\ca617121b02c84a7d49144039df04f4b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:transition:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\b5e3e37f746fc6625d327bd159a304e5\AndroidManifest.xml:17:1-22:12
@@ -139,8 +139,6 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\User
 MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\1176ffb7ec27fd20feb5245222142421\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6b57b044893793762226b32379504e6f\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6b57b044893793762226b32379504e6f\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\8b641e9c888fc5a47071d473c91c7efd\AndroidManifest.xml:22:5-23:19
@@ -255,6 +253,8 @@ MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redc
 MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\5b94feb2a0a4c602b023c74a9cb89a8d\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\5b94feb2a0a4c602b023c74a9cb89a8d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:palette-v7:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-28.0.0.aar\069ba527c976812b20ae7af0b89ba7e9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:palette-v7:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-28.0.0.aar\069ba527c976812b20ae7af0b89ba7e9\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\2c82eed97df37ebef18d9fc08d96f338\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\2c82eed97df37ebef18d9fc08d96f338\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\5ee458283931783d4589bcd30f20c584\AndroidManifest.xml:20:5-44
@@ -263,8 +263,6 @@ MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\redcu\.gradle\
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\5e04af78382978bfa1d004fd1e1f3f75\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\46e4bd2802ba83720c709cf98b2c38db\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\46e4bd2802ba83720c709cf98b2c38db\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\8da17dfbaec0b8c29ac7235174fd58bb\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\8da17dfbaec0b8c29ac7235174fd58bb\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\ca617121b02c84a7d49144039df04f4b\AndroidManifest.xml:20:5-44
@@ -507,9 +505,3 @@ ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu
 		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9d1920ba077e5df4cd69a7c7cb98b0e9\AndroidManifest.xml:24:13-58
-meta-data#android.support.VERSION
-ADDED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:22:5-24:34
-	android:value
-		ADDED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:24:9-31
-	android:name
-		ADDED from [com.android.support:palette-v7:25.3.1] C:\Users\redcu\.gradle\caches\transforms-1\files-1.1\palette-v7-25.3.1.aar\c217029082bd73aae867314679b1776d\AndroidManifest.xml:23:9-47
