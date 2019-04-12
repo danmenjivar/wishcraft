@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -145,11 +147,22 @@ public class Login extends AppCompatActivity {
                             updateUI(user);// send the user to their feed
                         } else {
                             // If sign in fails, display a message to the user.
+                            failAnimation();
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void failAnimation(){
+        YoYo.with(Techniques.Shake)
+                .delay(250)
+                .duration(2000)
+                .playOn(loginEmailEditText);
+        YoYo.with(Techniques.Shake)
+                .delay(250)
+                .duration(2000)
+                .playOn(passwordEditText);
     }
 }
