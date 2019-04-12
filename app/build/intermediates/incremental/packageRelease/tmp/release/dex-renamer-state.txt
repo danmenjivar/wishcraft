@@ -1,4 +1,0 @@
-#Tue Mar 26 15:19:13 PDT 2019
-base.0=/Users/danielmenjivar/AndroidStudioProjects/WishCraftApp/app/build/intermediates/dex/release/mergeDexRelease/out
-path.0=classes.dex
-renamed.0=classes.dex
