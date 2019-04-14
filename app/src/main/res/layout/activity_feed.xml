@@ -19,7 +19,7 @@
         app:itemTextColor="@color/bottom_navigation_color"/>
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationMenu"
         android:id="@+id/frame"/>
