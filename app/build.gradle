@@ -42,4 +42,5 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
