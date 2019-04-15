@@ -6,8 +6,12 @@ import android.os.Bundle;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class AliTest extends AppCompatActivity {
@@ -24,7 +28,18 @@ public class AliTest extends AppCompatActivity {
             public void onResponse(String response) {
 
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            protected Map<String, String> getParams(){
+                Map <String, String> myData = new HashMap<>();
+                myData.put("Field", "Value");
+                return myData;
+            }
+        };
 
 //https://www.kompulsa.com/how-to-send-a-post-request-in-android/ tutorial
 
@@ -50,4 +65,8 @@ public class AliTest extends AppCompatActivity {
 //        }
 //
     }
+
+
+
+
 }
