@@ -20,8 +20,7 @@ android {
 }
 
 dependencies {
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0'
@@ -43,8 +42,4 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation 'com.mcxiaoke.volley:library:1.0.19'
-
 }
