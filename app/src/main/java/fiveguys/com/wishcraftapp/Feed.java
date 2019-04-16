@@ -10,6 +10,11 @@ import android.view.MenuItem;
 
 public class Feed extends FragmentActivity {
 
+    final HomeFragment homeFragment = new HomeFragment();
+    final ItemSearchFragment itemSearchFragment = new ItemSearchFragment();
+    final NotificationsFragment notificationsFragment = new NotificationsFragment();
+    final ProfileFragment profileFragment = new ProfileFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,33 +22,32 @@ public class Feed extends FragmentActivity {
 
         //initializes bottom navigation menu and its fragments/frames
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationMenu);
+        navigationView.setOnNavigationItemSelectedListener(navListener);
 
-        final HomeFragment homeFragment = new HomeFragment();
-        final ItemSearchFragment itemSearchFragment = new ItemSearchFragment();
-        final NotificationsFragment notificationsFragment = new NotificationsFragment();
-        final ProfileFragment profileFragment = new ProfileFragment();
+    }
 
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id == R.id.home) {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            switch(menuItem.getItemId()) {
+                case R.id.home:
                     setFragment(homeFragment);
                     return true;
-                } else if(id == R.id.search) {
+                case R.id.search:
                     setFragment(itemSearchFragment);
                     return true;
-                } else if(id == R.id.notifications) {
+                case R.id.notifications:
                     setFragment(notificationsFragment);
                     return true;
-                } else if(id == R.id.profile) {
+                case R.id.profile:
                     setFragment(profileFragment);
                     return true;
-                }
-                return false;
+                default:
+                    break;
             }
-        });
-    }
+            return false;
+        }
+    };
 
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
