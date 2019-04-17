@@ -63,7 +63,7 @@
             android:hint="@string/new_password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/lightBlack"
             android:textColorHint="@color/colorAccent" />
 
         <EditText
@@ -75,7 +75,7 @@
             android:hint="@string/confirm_new_password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/lightBlack"
             android:textColorHint="@color/colorAccent" />
     </LinearLayout>
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Username"
-                android:textColor="@color/wc_logo_blue"
+                android:textColor="@color/wc_logo_pink"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="285dp" />
 
@@ -166,7 +166,7 @@
                 android:ems="10"
                 android:hint="username"
                 android:inputType="textPersonName"
-                android:textColor="@color/white"
+                android:textColor="@color/lightBlack"
                 android:textColorHint="@color/wc_logo_pink" />
 
         </LinearLayout>
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:textColor="@color/wc_logo_blue"
+                android:textColor="@color/wc_logo_pink"
                 tools:layout_editor_absoluteX="106dp"
                 tools:layout_editor_absoluteY="338dp" />
 
@@ -194,7 +194,7 @@
                 android:ems="10"
                 android:hint="email@mail.com"
                 android:inputType="textPersonName"
-                android:textColor="@color/white"
+                android:textColor="@color/lightBlack"
                 android:textColorHint="@color/wc_logo_pink" />
 
         </LinearLayout>
