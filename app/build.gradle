@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.mcxiaoke.volley:library:1.0.19'
     implementation 'com.mcxiaoke.volley:library:1.0.19'
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.koushikdutta.ion:ion:2.2.1'
 }
