@@ -43,4 +43,5 @@ dependencies {
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     implementation 'com.mcxiaoke.volley:library:1.0.19'
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
