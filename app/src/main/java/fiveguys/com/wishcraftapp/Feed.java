@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 public class Feed extends FragmentActivity {
 
@@ -59,7 +57,6 @@ public class Feed extends FragmentActivity {
     }
 
     public void settingsButton(MenuItem item) {
-        Toast.makeText(this, "Link Me to Settings View", Toast.LENGTH_SHORT).show();
         Intent settingsIntent = new Intent(this, Settings.class);
         startActivity(settingsIntent);
     }
