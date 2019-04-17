@@ -114,6 +114,7 @@ public class CreateProfile extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();//create user in auth
                             addNewUserToFirebaseDatabase(username, email);
                             instantiateEmptyWishlist(email);
+                            instantiateFriendslist(email);
                             //TODO updateUI
                             updateUI(user);
 
@@ -134,6 +135,15 @@ public class CreateProfile extends AppCompatActivity {
         DatabaseReference newList = table.push();
         newList.child("email").setValue(email);
         newList.child("wishlist").setValue(email.hashCode());
+    }
+
+    //Makes a new entry in the friendslist table in the real time firebase database
+    private void instantiateFriendslist(String email) {
+        DatabaseReference fb = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference table = fb.child("userFriendslist");
+        DatabaseReference newList = table.push();
+        newList.child("email").setValue(email);
+        newList.child("friendslist").setValue(email.hashCode());
     }
 
     //Makes new entry in the users table in the real time firebase database
