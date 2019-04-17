@@ -1,5 +1,6 @@
 package fiveguys.com.wishcraftapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class Feed extends FragmentActivity {
 
@@ -53,5 +56,11 @@ public class Feed extends FragmentActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);
         fragmentTransaction.commit();
+    }
+
+    public void settingsButton(MenuItem item) {
+        Toast.makeText(this, "Link Me to Settings View", Toast.LENGTH_SHORT).show();
+        Intent settingsIntent = new Intent(this, Settings.class);
+        startActivity(settingsIntent);
     }
 }
