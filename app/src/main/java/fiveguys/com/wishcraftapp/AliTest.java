@@ -1,8 +1,11 @@
 package fiveguys.com.wishcraftapp;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,8 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,6 +58,10 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         searchButton = findViewById(R.id.search_button);
         searchQuery.addTextChangedListener(onSearchQueryEntered);
         searchResultList = findViewById(R.id.recyler_aliSearch_results);
+        searchResultList.setHasFixedSize(true);
+        searchResultList.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     private void searchAliExpress(String itemSearchQuery) {
@@ -124,6 +134,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         final ArrayList<?> jsonArray = new Gson().fromJson(itemsResults, ArrayList.class);
         Log.d(DEBUG_TAG, "Arraylist: " + jsonArray);
 
+
     }
 
     @Override
@@ -162,12 +173,27 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
 
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder{
+    public static class ItemViewHolder extends RecyclerView.ViewHolder{
 
         View listedItem;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+            listedItem = itemView;
+        }
+
+        public void setDetails(Context context, String itemName, double itemPrice, String itemImage){
+            ImageView item_image = listedItem.findViewById(R.id.list_itemPicture);
+            TextView item_name = listedItem.findViewById(R.id.item_title_list);
+            TextView item_price = listedItem.findViewById(R.id.item_price_list);
+            Button item_claim_button = listedItem.findViewById(R.id.item_add_button_list);
+
+            item_name.setText(itemName);
+            String prettyPrice = String.format("$%.2f", item_price);
+            item_price.setText(prettyPrice);
+            Glide.with(context).load(itemImage).into(item_image);
+
+
         }
     }
 
