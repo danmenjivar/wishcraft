@@ -5,13 +5,15 @@ public class AliItem {
     private String itemName;
     private double itemPrice;
     private String itemLink;
+    private String imageUrl;
 
-    public AliItem(String itemName, double itemPrice, String itemLink) throws Exception {
+    public AliItem(String itemName, double itemPrice, String itemLink, String imageUrl) throws Exception {
         if (itemName.isEmpty() || itemPrice <= 0.0)
             throw new Exception("Empty fields");
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemLink = itemLink;
+        this.imageUrl = imageUrl;
     }
 
     public String getItemName() {
@@ -20,6 +22,10 @@ public class AliItem {
 
     public double getItemPrice() {
         return itemPrice;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getItemLink() {
@@ -37,4 +43,9 @@ public class AliItem {
     public void setItemLink(String itemLink) {
         this.itemLink = itemLink;
     }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }
