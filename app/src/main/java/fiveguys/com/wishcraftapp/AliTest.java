@@ -44,6 +44,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     private final static String NAME = "item_name";
     private final static String PRICE = "item_price";
     private final static String LINK = "item_link";
+    private final static String IMAGE_URL = "item_image_url";
     private static final String DEBUG_TAG = "Ali";
     private final String apiAccessKey = "YNZBUIVFBSOPLNSO";
     private FirebaseAuth fbauth;
@@ -142,6 +143,19 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     private void displaySearchResults(ArrayList<AliItem> results){
         mProductAdapter = new ProductAdapter(AliTest.this, results);
         mRecyclerView.setAdapter(mProductAdapter);
+        aliAddItemHandler();
+    }
+
+    private void aliAddItemHandler(){
+        mProductAdapter.setOnAddListener(new ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                AliItem newitem = mProductAdapter.getIndexedItem(position);
+                addItemToDatabase(newitem);
+
+            }
+        });
+
     }
 
 
@@ -163,6 +177,11 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                     newItem.child(NAME).setValue(item.getItemName());
                     newItem.child(PRICE).setValue(item.getItemPrice());
                     newItem.child(LINK).setValue(item.getItemLink());
+                    String imageUrl = item.getImageUrl();
+                    if (imageUrl != null && !imageUrl.isEmpty()){
+                        newItem.child(IMAGE_URL).setValue(imageUrl);
+                    }
+
                     Toast.makeText(AliTest.this, item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }
             }
