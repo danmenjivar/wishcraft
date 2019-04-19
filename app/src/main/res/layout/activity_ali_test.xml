@@ -78,6 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="35sp"
-        app:srcCompat="@drawable/plus_icon" />
+        app:srcCompat="@drawable/ic_add" />
 
 </android.support.constraint.ConstraintLayout>
