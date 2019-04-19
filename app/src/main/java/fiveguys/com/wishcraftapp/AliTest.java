@@ -26,11 +26,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
 
 
 public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
@@ -45,7 +50,8 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     private String fbUserKey;
     private EditText searchQuery;
     private Button searchButton;
-    private RecyclerView searchResultList;
+    private RecyclerView mRecyclerView;
+    private ProductAdapter mProductAdapter;
 
     @Override
 
@@ -57,11 +63,31 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         searchQuery = findViewById(R.id.search_query_edittext);
         searchButton = findViewById(R.id.search_button);
         searchQuery.addTextChangedListener(onSearchQueryEntered);
-        searchResultList = findViewById(R.id.recyler_aliSearch_results);
-        searchResultList.setHasFixedSize(true);
-        searchResultList.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView = findViewById(R.id.recyler_aliSearch_results);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(new ProductAdapter(this, new ArrayList<AliItem>()));
+    }
 
+    public void onAddItemManuallyClick(View view) {
+        showAddItemDialog();
+    }
 
+    @Override
+    public void applyItemData(String itemName, Double itemPrice, String itemLink) {
+        AliItem itemToAdd = null;
+
+        try {
+            itemToAdd = new AliItem(itemName, itemPrice, itemLink, null);
+            addItemToDatabase(itemToAdd);
+        } catch (Exception e) {
+            Toast.makeText(this, "Can't add item with missing attributes!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onSearchButtonClick(View view) {
+        String userQuery = searchQuery.getText().toString();
+        searchAliExpress(userQuery);
     }
 
     private void searchAliExpress(String itemSearchQuery) {
@@ -71,7 +97,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         request.addProperty("text", itemSearchQuery);
         request.addProperty("sort", "BEST_MATCH");
         request.addProperty("currency", "USD");
-        request.addProperty("limit", 5);
+        //request.addProperty("limit", 5);
 
         Log.d(DEBUG_TAG, "The POST request is: " + request.toString());
 
@@ -83,27 +109,93 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
-                        Log.d(DEBUG_TAG, String.format(result.toString()));
+                        Log.d(DEBUG_TAG,"Result : " + result.toString());
                         processJsonResponse(result);
                     }
                 });
 
     }
 
-    public void onSearchButtonClick(View view) {
-        String userQuery = searchQuery.getText().toString();
-        searchAliExpress(userQuery);
+    private void processJsonResponse(JsonObject jsonObject) {
+        //TODO
+        JsonArray itemsResults = jsonObject.getAsJsonArray("items");
+        ArrayList<AliItem> productsList = new ArrayList<>();
+        for (int i = 0; i < itemsResults.size(); i++) {
+            JsonObject currentItem = itemsResults.get(i).getAsJsonObject();
+            String itemName = currentItem.get("title").toString().replace("\"", "");
+            String imageUrl = currentItem.get("imageUrl").toString().replace("\"","");
+            double itemPrice = currentItem.get("price").getAsJsonObject().get("value").getAsDouble();
+            String itemUrl = currentItem.get("detailUrl").getAsString();
+            try {
+                productsList.add(new AliItem(itemName, itemPrice, itemUrl, imageUrl));
+            } catch (Exception e) {
+                Log.d(DEBUG_TAG, "Couldn't add item to arraylist");
+            }
+        }
+        displaySearchResults(productsList);
+
+
     }
 
-    public void onAddItemManuallyClick(View view) {
-        showAddItemDialog();
+    private void displaySearchResults(ArrayList<AliItem> results){
+        mProductAdapter = new ProductAdapter(AliTest.this, results);
+        mRecyclerView.setAdapter(mProductAdapter);
     }
+
 
     private void showAddItemDialog() {
         AddItemDialog addItemDialog = new AddItemDialog();
         addItemDialog.show(getSupportFragmentManager(), "addItemDialog");
     }
 
+
+    private void addItemToDatabase(final AliItem item) {
+        final DatabaseReference database = FirebaseDatabase.getInstance().getReference("userWishlist");
+        database.orderByChild("email").equalTo(userEmail).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    fbUserKey = dataSnapshot.getChildren().iterator().next().getKey();
+                    Log.d(DEBUG_TAG + ": Firebase", "User key to write to fb is: " + fbUserKey);
+                    DatabaseReference newItem = database.child(fbUserKey + "/wishlist").push();
+                    newItem.child(NAME).setValue(item.getItemName());
+                    newItem.child(PRICE).setValue(item.getItemPrice());
+                    newItem.child(LINK).setValue(item.getItemLink());
+                    Toast.makeText(AliTest.this, item.getItemName() + "has been added to your list", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //needs to be empty to compile
+            }
+        });
+
+    }
+
+    private TextWatcher onSearchQueryEntered = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String userInput = searchQuery.getText().toString();
+            if (userInput.isEmpty() || userInput.trim().length() == 0) {//empty or whitespace
+                searchButton.setEnabled(false);
+                searchButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
+            } else {
+                searchButton.setEnabled(true);
+                searchButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            //empty but neccesary to compile
+        }
+    };
     private void searchAliBestSelling() {
 
         String url = "https://api.aliseeks.com/v1/search";
@@ -127,99 +219,6 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                     }
                 });
     }
-
-    private void processJsonResponse(JsonObject jsonObject) {
-        //TODO
-        JsonArray itemsResults = jsonObject.getAsJsonArray("items");
-        final ArrayList<?> jsonArray = new Gson().fromJson(itemsResults, ArrayList.class);
-        Log.d(DEBUG_TAG, "Arraylist: " + jsonArray);
-
-
-    }
-
-    @Override
-    public void applyItemData(String itemName, Double itemPrice, String itemLink) {
-        AliItem itemToAdd = null;
-
-        try {
-            itemToAdd = new AliItem(itemName, itemPrice, itemLink);
-            addItemToDatabase(itemToAdd);
-        } catch (Exception e) {
-            Toast.makeText(this, "Can't add item with missing attributes!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    private void addItemToDatabase(final AliItem item) {
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference("userWishlist");
-        database.orderByChild("email").equalTo(userEmail).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChildren()) {
-                    fbUserKey = dataSnapshot.getChildren().iterator().next().getKey();
-                    Log.d(DEBUG_TAG + ": Firebase", "User key to write to fb is: " + fbUserKey);
-                    DatabaseReference newItem = database.child(fbUserKey + "/wishlist").push();
-                    newItem.child(NAME).setValue(item.getItemName());
-                    newItem.child(PRICE).setValue(item.getItemPrice());
-                    newItem.child(LINK).setValue(item.getItemLink());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //needs to be empty to compile
-            }
-        });
-
-    }
-
-    public static class ItemViewHolder extends RecyclerView.ViewHolder{
-
-        View listedItem;
-
-        public ItemViewHolder(@NonNull View itemView) {
-            super(itemView);
-            listedItem = itemView;
-        }
-
-        public void setDetails(Context context, String itemName, double itemPrice, String itemImage){
-            ImageView item_image = listedItem.findViewById(R.id.list_itemPicture);
-            TextView item_name = listedItem.findViewById(R.id.item_title_list);
-            TextView item_price = listedItem.findViewById(R.id.item_price_list);
-            Button item_claim_button = listedItem.findViewById(R.id.item_add_button_list);
-
-            item_name.setText(itemName);
-            String prettyPrice = String.format("$%.2f", item_price);
-            item_price.setText(prettyPrice);
-            Glide.with(context).load(itemImage).into(item_image);
-
-
-        }
-    }
-
-    private TextWatcher onSearchQueryEntered = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String userInput = searchQuery.getText().toString();
-            if (userInput.isEmpty() || userInput.trim().length() == 0){//empty or whitespace
-                searchButton.setEnabled(false);
-                searchButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
-            } else {
-                searchButton.setEnabled(true);
-                searchButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            //empty but neccesary to compile
-        }
-    };
 }
 
 
