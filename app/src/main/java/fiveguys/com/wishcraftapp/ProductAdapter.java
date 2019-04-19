@@ -18,11 +18,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private Context mContext;
     private ArrayList<AliItem> mExampleList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnAddListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public ProductAdapter(Context context, ArrayList<AliItem> list) {
         mContext = context;
         mExampleList = list;
     }
+
+    public AliItem getIndexedItem(int index){
+        return mExampleList.get(index);
+    }
+
 
     @NonNull
     @Override
@@ -62,6 +76,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             this.itemName = itemView.findViewById(R.id.item_title_list);
             this.itemPrice = itemView.findViewById(R.id.item_price_list);
             this.claimButton = itemView.findViewById(R.id.item_add_button_list);
+           this.claimButton.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   if (mListener != null){
+                       int position = getAdapterPosition();
+                       if (position != RecyclerView.NO_POSITION){
+                           mListener.onItemClick(position);
+                       }
+                   }
+               }
+           });
         }
     }
 }
