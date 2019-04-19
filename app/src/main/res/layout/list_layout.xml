@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/list_itemPicture"
+        android:layout_width="129dp"
+        android:layout_height="135dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pinkslippers"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <TextView
+        android:id="@+id/item_title_list"
+        android:layout_width="192dp"
+        android:layout_height="78dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="34dp"
+        android:layout_toEndOf="@+id/list_itemPicture"
+        android:text="Item Name"
+        android:inputType="textLongMessage"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <TextView
+        android:id="@+id/item_price_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_title_list"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/list_itemPicture"
+        android:text="$5.00"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="98dp" />
+
+    <Button
+        android:id="@+id/item_add_button_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_title_list"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/list_itemPicture"
+        android:text="Add"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="86dp" />
+</RelativeLayout>
