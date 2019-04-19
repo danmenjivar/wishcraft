@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -88,6 +89,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     public void onSearchButtonClick(View view) {
         String userQuery = searchQuery.getText().toString();
         searchAliExpress(userQuery);
+        hideKeyboard();
     }
 
     private void searchAliExpress(String itemSearchQuery) {
@@ -161,7 +163,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                     newItem.child(NAME).setValue(item.getItemName());
                     newItem.child(PRICE).setValue(item.getItemPrice());
                     newItem.child(LINK).setValue(item.getItemLink());
-                    Toast.makeText(AliTest.this, item.getItemName() + "has been added to your list", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AliTest.this, item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -218,6 +220,13 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                         Log.d(DEBUG_TAG, "The JSON result is " + result.toString());
                     }
                 });
+    }
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }
 
