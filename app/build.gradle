@@ -43,4 +43,5 @@ dependencies {
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     implementation 'com.koushikdutta.ion:ion:2.2.1'
     implementation 'com.github.faranjit:currency-edittext:1.0.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

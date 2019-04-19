@@ -3,6 +3,7 @@ package fiveguys.com.wishcraftapp;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,9 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+
+import java.util.ArrayList;
 
 
 public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
@@ -34,6 +39,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     private String fbUserKey;
     private EditText searchQuery;
     private Button searchButton;
+    private RecyclerView searchResultList;
 
     @Override
 
@@ -45,6 +51,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         searchQuery = findViewById(R.id.search_query_edittext);
         searchButton = findViewById(R.id.search_button);
         searchQuery.addTextChangedListener(onSearchQueryEntered);
+        searchResultList = findViewById(R.id.recyler_aliSearch_results);
     }
 
     private void searchAliExpress(String itemSearchQuery) {
@@ -54,6 +61,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         request.addProperty("text", itemSearchQuery);
         request.addProperty("sort", "BEST_MATCH");
         request.addProperty("currency", "USD");
+        request.addProperty("limit", 5);
 
         Log.d(DEBUG_TAG, "The POST request is: " + request.toString());
 
@@ -65,7 +73,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
-                        Log.d(DEBUG_TAG, "The JSON result is " + result.toString());
+                        Log.d(DEBUG_TAG, String.format(result.toString()));
                         processJsonResponse(result);
                     }
                 });
@@ -112,15 +120,18 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
 
     private void processJsonResponse(JsonObject jsonObject) {
         //TODO
+        JsonArray itemsResults = jsonObject.getAsJsonArray("items");
+        final ArrayList<?> jsonArray = new Gson().fromJson(itemsResults, ArrayList.class);
+        Log.d(DEBUG_TAG, "Arraylist: " + jsonArray);
 
     }
 
     @Override
     public void applyItemData(String itemName, Double itemPrice, String itemLink) {
-        Item itemToAdd = null;
+        AliItem itemToAdd = null;
 
         try {
-            itemToAdd = new Item(itemName, itemPrice, itemLink);
+            itemToAdd = new AliItem(itemName, itemPrice, itemLink);
             addItemToDatabase(itemToAdd);
         } catch (Exception e) {
             Toast.makeText(this, "Can't add item with missing attributes!", Toast.LENGTH_SHORT).show();
@@ -128,7 +139,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     }
 
 
-    private void addItemToDatabase(final Item item) {
+    private void addItemToDatabase(final AliItem item) {
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference("userWishlist");
         database.orderByChild("email").equalTo(userEmail).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -149,6 +160,15 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
             }
         });
 
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
+
+        View listedItem;
+
+        public ItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
     }
 
     private TextWatcher onSearchQueryEntered = new TextWatcher() {
