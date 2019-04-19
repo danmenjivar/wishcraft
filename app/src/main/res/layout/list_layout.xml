@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/list_itemPicture"
@@ -27,8 +26,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="34dp"
         android:layout_toEndOf="@+id/list_itemPicture"
-        android:text="Item Name"
         android:inputType="textLongMessage"
+        android:text="Item Name"
         android:textSize="14sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="161dp"
@@ -54,11 +53,11 @@
         android:layout_below="@+id/item_title_list"
         android:layout_marginStart="124dp"
         android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/list_itemPicture"
         android:background="@color/colorPrimaryDark"
+        android:text="Add"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_toEndOf="@+id/list_itemPicture"
-        android:text="Add"
         tools:layout_editor_absoluteX="235dp"
         tools:layout_editor_absoluteY="86dp" />
 </RelativeLayout>
