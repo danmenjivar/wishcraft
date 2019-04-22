@@ -198,11 +198,14 @@ public class Settings extends Activity {
                     mDatabase.child("userWishlist").child(key).child("email").setValue(newEmail);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //exists for compilation, does nothing
             }
         });
+
+        updateEmailDatabaseFriend(newEmail);
 
         //then update, the users table
         loggedInUser.setEmail(newEmail);
@@ -219,8 +222,31 @@ public class Settings extends Activity {
 
             }
         });
+
+
+
         Toast.makeText(this, String.format("%s saved as email", newEmail)
                 , Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateEmailDatabaseFriend(final String email){
+        //First update the wishlist table
+        mDatabase.child("userFriendslist").orderByChild("email").equalTo(loggedInUser.email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    DataSnapshot ds = dataSnapshot.getChildren().iterator().next();
+                    String key = ds.getKey();
+                    Log.d("jason", "the key is : " + key);
+                    mDatabase.child("userFriendslist").child(key).child("email").setValue(email);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //exists for compilation, does nothing
+            }
+        });
+
     }
 
     //Updates email in the user login authentication and then updates in the r.t.d.b.
