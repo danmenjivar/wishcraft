@@ -4,6 +4,7 @@ package fiveguys.com.wishcraftapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,11 +28,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 
 
-public class ItemSearchFragment extends Fragment {
+public class ItemSearchFragment extends Fragment implements View.OnClickListener {
     private final static String NAME = "item_name";
     private final static String PRICE = "item_price";
     private final static String LINK = "item_link";
@@ -61,14 +66,16 @@ public class ItemSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searchQuery = getView().findViewById(R.id.search_query_edittext);
-        searchButton = getView().findViewById(R.id.search_button);
+        View RootView = inflater.inflate(R.layout.activity_ali_test, container, false);
+        searchQuery = RootView.findViewById(R.id.search_query_edittext);
+        searchButton = (Button) RootView.findViewById(R.id.search_button);
+        searchButton.setOnClickListener(this);
         searchQuery.addTextChangedListener(onSearchQueryEntered);
-        mRecyclerView = getView().findViewById(R.id.recyler_aliSearch_results);
+        mRecyclerView = RootView.findViewById(R.id.recyler_aliSearch_results);
         mRecyclerView.setHasFixedSize(true);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_search, container, false);
+        return RootView;
     }
 
     @Override
@@ -76,6 +83,17 @@ public class ItemSearchFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         mRecyclerView.setAdapter(new ProductAdapter(this.getActivity(), new ArrayList<AliItem>()));
+    }
+
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.search_button:
+                onSearchButtonClick(view);
+                break;
+            case R.id.add_item_manually_button:
+                onAddItemManuallyClick(view);
+                break;
+        }
     }
 
     public void onAddItemManuallyClick(View view) {
@@ -102,7 +120,6 @@ public class ItemSearchFragment extends Fragment {
 
     private void searchAliExpress(String itemSearchQuery) {
         String url = "https://api.aliseeks.com/v1/search";
-
 
         JsonObject request = new JsonObject();
         request.addProperty("text", itemSearchQuery);
@@ -144,8 +161,6 @@ public class ItemSearchFragment extends Fragment {
             }
         }
         displaySearchResults(productsList);
-
-
     }
 
     private void displaySearchResults(ArrayList<AliItem> results){
@@ -160,16 +175,14 @@ public class ItemSearchFragment extends Fragment {
             public void onItemClick(int position) {
                 AliItem newitem = mProductAdapter.getIndexedItem(position);
                 addItemToDatabase(newitem);
-
             }
         });
-
     }
 
 
     private void showAddItemDialog() {
         AddItemDialog addItemDialog = new AddItemDialog();
-        addItemDialog.show(getSupportFragmentManager(), "addItemDialog");
+        addItemDialog.show(getActivity().getSupportFragmentManager(), "addItemDialog");
     }
 
 
@@ -250,9 +263,9 @@ public class ItemSearchFragment extends Fragment {
     }
     private void hideKeyboard(){
         InputMethodManager inputManager = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
+                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

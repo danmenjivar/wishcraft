@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16sp">
+
+    <EditText
+        android:id="@+id/item_name_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Name*" />
+
+
+    <faranjit.currency.edittext.CurrencyEditText
+        android:id="@+id/new_item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_name_editText"
+        android:hint="Price*"
+        android:inputType="numberDecimal"
+        app:locale="en_US"
+        app:showSymbol="true"
+        />
+
+    <EditText
+        android:id="@+id/item_weblink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_item_price"
+        android:layout_alignParentStart="true"
+        android:hint="Paste a Link"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_weblink"
+        android:text="*Requied Fields"
+        android:textAlignment="center"/>
+
+
+
+</RelativeLayout>
