@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedButtons">
+
+    <ImageView
+        android:id="@+id/feed_logo"
+        android:layout_width="125dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/wishcraft_logo"
+        android:src="@drawable/wishcraft_logo_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/_dynamicfeedlist"
+        android:layout_width="392dp"
+        android:layout_height="446dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_logo" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="374dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/_dynamicfeedlist">
+
+        <Button
+            android:id="@+id/settings_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:onClick="settingButton"
+            android:text="@string/settings"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="610dp" />
+
+        <Button
+            android:id="@+id/search_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:onClick="searchButton"
+            android:text="Profile Search"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="609dp" />
+
+        <Button
+            android:id="@+id/personal_profile_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:onClick="myProfileButton"
+            android:text="@string/my_list"
+            tools:layout_editor_absoluteX="278dp"
+            tools:layout_editor_absoluteY="609dp" />
+
+        <Button
+            android:id="@+id/item_search_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="itemSearchButton"
+            android:text="Item Search"
+            tools:layout_editor_absoluteX="278dp"
+            tools:layout_editor_absoluteY="609dp" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
