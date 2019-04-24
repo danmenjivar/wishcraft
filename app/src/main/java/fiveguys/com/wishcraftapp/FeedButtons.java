@@ -74,7 +74,7 @@ public class FeedButtons extends Activity {
     public void itemSearchButton(View view) {
 
         //Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        Intent feedIntent = new Intent(this, ItemSearch.class);
+        Intent feedIntent = new Intent(this, AliTest.class);
         startActivity(feedIntent);
     }
 }

@@ -108,7 +108,7 @@ public class MyProfile extends AppCompatActivity {
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
 
                 // Set the text color of TextView (ListView Item)
-                tv.setTextColor(Color.WHITE);
+                tv.setTextColor(Color.rgb(200,20,100));
 
                 // Generate ListView Item using TextView
                 return view;
