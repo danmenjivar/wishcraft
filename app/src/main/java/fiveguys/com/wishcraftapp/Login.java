@@ -100,7 +100,7 @@ public class Login extends AppCompatActivity {
 
     //Method to move user to appropriate spot in app
     public void updateUI(FirebaseUser user) {
-        Intent loginIntent = new Intent(this, AliTest.class);
+        Intent loginIntent = new Intent(this, FeedButtons.class);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
     }
