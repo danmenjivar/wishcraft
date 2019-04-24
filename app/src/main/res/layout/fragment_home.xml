@@ -10,6 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Hi!"
-        android:textSize="50sp"/>
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="272dp"
+        android:layout_height="179dp"
+        android:text="Go to prof search xml"
+        android:onClick="gotoProfileSearch"/>
 
 </FrameLayout>
