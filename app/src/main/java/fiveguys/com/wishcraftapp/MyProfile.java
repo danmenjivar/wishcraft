@@ -1,6 +1,7 @@
 package fiveguys.com.wishcraftapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,8 +17,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,8 +38,10 @@ import com.bumptech.glide.load.data.DataFetcher;
 import com.bumptech.glide.load.model.stream.StreamModelLoader;
 import com.bumptech.glide.signature.StringSignature;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,10 +64,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 public class MyProfile extends AppCompatActivity {
 
-    private  MediaPlayer mp;
+    private static final String TAG = "MyProfile";
     public static final int GET_FROM_GALLERY =20;
     private ImageView profilePicture;
     private DatabaseReference mDatabase;
@@ -69,6 +77,9 @@ public class MyProfile extends AppCompatActivity {
     private FirebaseUser mUser;
     private String userKey;
     private TextView usernameText;
+    private EditText bioEditText;
+    private User loggedInUser;
+    private Button changeBioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,46 +91,110 @@ public class MyProfile extends AppCompatActivity {
         usernameText = findViewById(R.id.profileName);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        String userID = mAuth.getUid();
         getUsername();
-        StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
         // Load profilePic from firebase on start of activity
-        ImageView iv = profilePicture;
+        setUserProfilePic();
+        bioEditText = findViewById(R.id.bio_editText);
+        bioEditText.addTextChangedListener(isBioChanged);
+        changeBioButton = findViewById(R.id.change_bio_button);
+        setUserBio();
+
+    }
+
+    private void setUserProfilePic(){
+        String userID = mAuth.getUid();
+        StorageReference storageReference = mStorageRef.child("images/ProfilePics/" + userID + ".jpg");
         Glide.with(this )
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
                 .signature(new StringSignature(storageReference.getMetadata().toString()))
-                .into(iv);
+                .into(profilePicture);
+    }
 
-        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
-
-        String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
-                "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
-
-        ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
-            public View getView(int position, View convertView, ViewGroup parent) {
-                // Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
-
-                // Initialize a TextView for ListView each Item
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                // Set the text color of TextView (ListView Item)
-                tv.setTextColor(Color.rgb(200,20,100));
-
-                // Generate ListView Item using TextView
-                return view;
+    private void setUserBio(){
+        mDatabase.child("users").orderByChild("email").equalTo(mUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    DataSnapshot userData = dataSnapshot.getChildren().iterator().next();
+                    userKey = userData.getKey();
+                    User user = userData.getValue(User.class);
+                    loggedInUser = user;
+                    bioEditText.setText(user.bio);
+                }
             }
-        };
 
-        listView.setAdapter(arrayAdapter);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Must be left empty to compile
+            }
+        });
+    }
 
-        this.mp = MediaPlayer.create(this, R.raw.rings);
+    public void onChangeBioButtonClick(View view){
+        hideKeyboard();
+        String newBio = bioEditText.getText().toString();
+        updateBioInDatabase(newBio);
 
     }
+
+    private TextWatcher isBioChanged = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            String bioInput = bioEditText.getText().toString();
+
+            if (!bioInput.isEmpty() && !bioInput.equals(loggedInUser.bio)){
+                changeBioButton.setEnabled(true);
+                changeBioButton.setBackgroundColor(getResources().getColor(R.color.wc_logo_pink));
+            } else {
+                changeBioButton.setEnabled(false);
+                changeBioButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
+            }
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    private void updateBioInDatabase(final String newBio){
+        loggedInUser.setBio(newBio);
+        Map<String, Object> userValues = loggedInUser.toMap();
+        Log.d(TAG, String.format("User key entered was %s", userKey));
+        mDatabase.child("users/" + userKey).updateChildren(userValues).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "username change was successful");
+                    Toast.makeText(MyProfile.this, String.format("Bio updated"), Toast.LENGTH_SHORT).show();
+                    changeBioButton.setEnabled(false);
+                    changeBioButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
+                } else {
+                    Log.d(TAG, "username change failed", task.getException());
+                }
+
+            }
+        });
+    }
+
+
+
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
+
     /*
     public void onClickEditPic(View v) {
         Intent galleryImageGrab = new Intent(Intent.ACTION_PICK);
@@ -152,6 +227,9 @@ public class MyProfile extends AppCompatActivity {
 
     }
     */
+
+
+
     public void getUsername(){
         String email = mUser.getEmail();
         Query usernameQuery = mDatabase.child("users").orderByChild("email").equalTo(email);
@@ -167,46 +245,10 @@ public class MyProfile extends AppCompatActivity {
                 }
             }
 
-
             public void onCancelled(DatabaseError firebaseError) {
 
             }
         });
     }
-
-
-
-    public void playSong(View view){
-        if(!this.mp.isPlaying()){
-            this.mp.start();
-        } else {
-            this.mp.pause();
-        }
-
-    }
-
-
-    public void addItemDialogue(View view) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Add Item");
-//        builder.setMessage("Item to add: ");
-//        builder.setPositiveButton("OK",
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        //code to run when ok is pressed
-//                    }
-//                });
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-
-        Intent itemSearchIntent = new Intent(this, ItemSearch.class);
-        startActivity(itemSearchIntent);
-
-    }
-
-
-
-
 
 }

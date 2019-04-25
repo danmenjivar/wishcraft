@@ -23,36 +23,36 @@ public class FeedButtons extends Activity {
 
         final ListView listView = (ListView) findViewById(R.id._dynamicfeedlist);
 
-        String demo[] = {"Riad has added \"Super Smash Bros. Ultimate\"",
-                "Cody has claimed \"Spider-Man: Into the Spider-Verse DVD\"",
-                "Connor has added \"King of The Hill DVD\"",
-                "Daniel has claimed surfboard",
-                "Jason has claimed \"Airdrop\" by Friendos"
+//        String demo[] = {"Riad has added \"Super Smash Bros. Ultimate\"",
+//                "Cody has claimed \"Spider-Man: Into the Spider-Verse DVD\"",
+//                "Connor has added \"King of The Hill DVD\"",
+//                "Daniel has claimed surfboard",
+//                "Jason has claimed \"Airdrop\" by Friendos"
         };
 
-        ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
+        //ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
 
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
-            public View getView(int position, View convertView, ViewGroup parent) {
-                // Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
+//        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
+//            public View getView(int position, View convertView, ViewGroup parent) {
+//                // Get the Item from ListView
+//                View view = super.getView(position, convertView, parent);
+//
+//                // Initialize a TextView for ListView each Item
+//                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+//
+//                // Set the text color of TextView (ListView Item)
+//
+//                tv.setTextColor(Color.rgb(200,20,100));
+//                // Generate ListView Item using TextView
+//                return view;
+//            }
+//        };
+//
+//        listView.setAdapter(arrayAdapter);
 
-                // Initialize a TextView for ListView each Item
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
 
-                // Set the text color of TextView (ListView Item)
-
-                tv.setTextColor(Color.rgb(200,20,100));
-                // Generate ListView Item using TextView
-                return view;
-            }
-        };
-
-        listView.setAdapter(arrayAdapter);
-
-
-    }
+   // }
 
     public void settingButton(View view) {
         Intent settingsIntent = new Intent(this, Settings.class);
