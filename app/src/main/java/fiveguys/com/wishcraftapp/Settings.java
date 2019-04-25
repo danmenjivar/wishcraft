@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -112,6 +114,25 @@ public class Settings extends Activity {
             }
         });
     }
+
+    //private TextWatcher enab
+
+    private TextWatcher enablePasswordChange = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
     private TextView.OnEditorActionListener passwordKeyboardPress = new TextView.OnEditorActionListener() {
