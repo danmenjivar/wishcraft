@@ -13,7 +13,8 @@
         <activity android:name=".MyProfile"></activity>
 
         <activity android:name=".ViewFriendProfile" />
-        <activity android:name=".Feed" />
+        <activity android:name=".Feed"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".CreateProfile" />
         <activity android:name=".ProfileSearch" />
         <activity android:name=".Settings" />
