@@ -14,10 +14,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class DisplayProductAdapter extends RecyclerView.Adapter<DisplayProductAdapter.ProductViewHolder> {
 
     private Context mContext;
-    private ArrayList<AliItem> mExampleList;
+    private ArrayList<DisplayItem> mExampleList;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -28,12 +28,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         mListener = listener;
     }
 
-    public ProductAdapter(Context context, ArrayList<AliItem> list) {
+    public DisplayProductAdapter(Context context, ArrayList<DisplayItem> list) {
         mContext = context;
         mExampleList = list;
     }
 
-    public AliItem getIndexedItem(int index){
+    public DisplayItem getIndexedItem(int index){
         return mExampleList.get(index);
     }
 
@@ -41,13 +41,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.list_layout, viewGroup, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.display_list_layout, viewGroup, false);
         return new ProductViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i) {
-        AliItem item = mExampleList.get(i);
+        DisplayItem item = mExampleList.get(i);
 
         String productName = item.getItemName();
         double productPrice = item.getItemPrice();
@@ -77,16 +77,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             this.itemPrice = itemView.findViewById(R.id.item_price_list);
             this.claimButton = itemView.findViewById(R.id.item_add_button_list);
             this.claimButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   if (mListener != null){
-                       int position = getAdapterPosition();
-                       if (position != RecyclerView.NO_POSITION){
-                           mListener.onItemClick(position);
-                       }
-                   }
-               }
-           });
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

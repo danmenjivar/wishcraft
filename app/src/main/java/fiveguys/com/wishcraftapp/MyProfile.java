@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -37,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MyProfile extends AppCompatActivity {
+public class MyProfile extends AppCompatActivity  {
 
     private static final String TAG = "MyProfile";
     public static final int GET_FROM_GALLERY = 20;
@@ -52,6 +54,7 @@ public class MyProfile extends AppCompatActivity {
     private User loggedInUser;
     private Button changeBioButton;
     private ArrayList<DisplayItem> wishListArrayList;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,10 @@ public class MyProfile extends AppCompatActivity {
         setUserBio();
         findUserWishlist();
         wishListArrayList = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.user_profile_recycler);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(new DisplayProductAdapter(this, wishListArrayList));
 
     }
 
@@ -201,7 +208,7 @@ public class MyProfile extends AppCompatActivity {
                         wishListArrayList.add(itemToDisplay);
                     }
 
-
+                    displayItems();
                     for (DisplayItem item1 : wishListArrayList){
                         Log.d(TAG, item1.toString());
                     }
@@ -215,6 +222,9 @@ public class MyProfile extends AppCompatActivity {
         });
     }
 
+    private void displayItems(){
+        mRecyclerView.setAdapter(new DisplayProductAdapter(this, wishListArrayList));
+    }
 
 
     private void hideKeyboard(){
