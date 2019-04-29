@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -50,6 +51,7 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
     private Button searchButton;
     private RecyclerView mRecyclerView;
     private ProductAdapter mProductAdapter;
+    private FloatingActionButton myFAB;
 
     public ItemSearchFragment() {
         // Required empty public constructor
@@ -73,6 +75,9 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
         searchQuery.addTextChangedListener(onSearchQueryEntered);
         mRecyclerView = RootView.findViewById(R.id.recyler_aliSearch_results);
         mRecyclerView.setHasFixedSize(true);
+
+        myFAB = (FloatingActionButton) RootView.findViewById(R.id.add_item_manually_button);
+        myFAB.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return RootView;
@@ -238,6 +243,7 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
             //empty but neccesary to compile
         }
     };
+
     private void searchAliBestSelling() {
 
         String url = "https://api.aliseeks.com/v1/search";

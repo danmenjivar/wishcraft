@@ -79,5 +79,4 @@ public class AddItemDialog extends AppCompatDialogFragment {
     public interface AddItemDialogListener {
         void applyItemData(String itemName, Double itemPrice, String itemLink);
     }
-
 }

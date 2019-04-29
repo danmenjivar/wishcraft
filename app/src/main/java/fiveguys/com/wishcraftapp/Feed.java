@@ -13,8 +13,8 @@ public class Feed extends FragmentActivity {
 
     final HomeFragment homeFragment = new HomeFragment();
     final ItemSearchFragment itemSearchFragment = new ItemSearchFragment();
-    final NotificationsFragment notificationsFragment = new NotificationsFragment();
     final ProfileFragment profileFragment = new ProfileFragment();
+    final FriendsFragment friendsFragment = new FriendsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,11 @@ public class Feed extends FragmentActivity {
                 case R.id.search:
                     setFragment(itemSearchFragment);
                     return true;
-                case R.id.notifications:
-                    setFragment(notificationsFragment);
-                    return true;
                 case R.id.profile:
                     setFragment(profileFragment);
+                    return true;
+                case R.id.friends:
+                    setFragment(friendsFragment);
                     return true;
                 default:
                     break;
