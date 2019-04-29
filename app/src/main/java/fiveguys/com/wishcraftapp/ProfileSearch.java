@@ -2,7 +2,9 @@ package fiveguys.com.wishcraftapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,21 +56,64 @@ public class ProfileSearch extends AppCompatActivity {
 
     //TODO private void and hardcode a new friend
 
-    public void addFriendToFriendListButton(View view){
-        friendsListdb.orderByChild("email").equalTo(currentUserEmail);
-//        friendsListdb.child("friendslist").setValue("Tom from Myspace");
-//        friendsListdb.push();
 
-        DatabaseReference table = friendsListdb.child("friendlist");
-        DatabaseReference newFriend = table.push();
-        newFriend.child("friends").setValue("Tom from Myspace");
+    //Click function
+    public void onAddFriendButtonClick(View view){
 
-        Toast.makeText(this, "Added Friend to list", Toast.LENGTH_SHORT).show();
+            fetchUserFriendList();
+
+//        String userKey = friendsListdb.orderByChild("email").equalTo(currentUserEmail)
+//        DatabaseReference table = friendsListdb.child(userKey).child("friendslist");
+//        DatabaseReference newFriend = table.push();
+//        newFriend.child("friend").setValue("Tom from Myspace");
+//
+//        Toast.makeText(this, "Added Friend to list", Toast.LENGTH_SHORT).show();
 
 
     }
 
+    private void fetchUserFriendList(){
+        friendsListdb.orderByChild("email").equalTo(currentUserEmail).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
+                    Log.d("Jason", currentUser.getKey());
+                    addFriendInDatabase(currentUser.getKey());
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //stays empty
+            }
+        });
+    }
+/*
+
+p v viewFirndlist(DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();)
+{
+
+}
+
+
+
+ */
+
+    private void addFriendInDatabase(String key){
+        DatabaseReference placeToPush = friendsListdb.child(key + "/friendslist");
+        DatabaseReference newFriend = placeToPush.push();
+        newFriend.child("name").setValue("Jason");
+    }
+
+    //code friend search first
+    //picture, name, button(add friend)
+        //check if already freind
+
+        //create base freind object
+        //name, picture, wishlist, email, etc
+        //edit this base object
+    //Figure out most efficient way to view friend list
 
 
 }
