@@ -80,7 +80,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
         AliItem itemToAdd = null;
 
         try {
-            itemToAdd = new AliItem(itemName, itemPrice, itemLink, null);
+            itemToAdd = new AliItem(itemName, itemPrice, itemLink, "");
             addItemToDatabase(itemToAdd);
         } catch (Exception e) {
             Toast.makeText(this, "Can't add item with missing attributes!", Toast.LENGTH_SHORT).show();
@@ -178,9 +178,8 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                     newItem.child(PRICE).setValue(item.getItemPrice());
                     newItem.child(LINK).setValue(item.getItemLink());
                     String imageUrl = item.getImageUrl();
-                    if (imageUrl != null && !imageUrl.isEmpty()){
-                        newItem.child(IMAGE_URL).setValue(imageUrl);
-                    }
+                    newItem.child(IMAGE_URL).setValue(imageUrl);
+
 
                     Toast.makeText(AliTest.this, item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }
