@@ -20,6 +20,7 @@
         <activity android:name=".ProfileSearch" />
         <activity android:name=".FeedButtons" />
         <activity android:name=".Settings" />
+        <activity android:name=".ActivityFeedTest" />
         <activity android:name=".ItemSearch" />
         <activity
             android:name=".Login"
