@@ -78,9 +78,12 @@ public class ActivityFeedTest extends Activity  {
     }
 
     public void getWishlist(String userKey){
-        Query emailQuery = mDatabase.child("userWishlist/" + userKey + "/wishlist");
 
-        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        Query fListQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(userEmail);
+        Query listQuery = mDatabase.child("userFriendslist/" + userKey + "/wishlist");
+
+        listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()) {
@@ -93,7 +96,6 @@ public class ActivityFeedTest extends Activity  {
                         String itemImageUrl = currentItem.child("item_image_url").getValue().toString();
                         ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl);
                         wishListArray.add(itemToDisplay);
-
                     }
                     displayActivityFeed();
                 }
