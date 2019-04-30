@@ -1,6 +1,5 @@
 package fiveguys.com.wishcraftapp;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -36,8 +36,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 
-
-public class ItemSearchFragment extends Fragment implements View.OnClickListener {
+public class ItemSearchFragment extends Fragment implements View.OnClickListener, AddItemDialog.AddItemDialogListener {
     private final static String NAME = "item_name";
     private final static String PRICE = "item_price";
     private final static String LINK = "item_link";
@@ -110,7 +109,7 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
         AliItem itemToAdd = null;
 
         try {
-            itemToAdd = new AliItem(itemName, itemPrice, itemLink, null);
+            itemToAdd = new AliItem(itemName, itemPrice, itemLink, "");
             addItemToDatabase(itemToAdd);
         } catch (Exception e) {
             Toast.makeText(this.getActivity(), "Can't add item with missing attributes!", Toast.LENGTH_SHORT).show();
@@ -204,9 +203,7 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
                     newItem.child(PRICE).setValue(item.getItemPrice());
                     newItem.child(LINK).setValue(item.getItemLink());
                     String imageUrl = item.getImageUrl();
-                    if (imageUrl != null && !imageUrl.isEmpty()){
-                        newItem.child(IMAGE_URL).setValue(imageUrl);
-                    }
+                    newItem.child(IMAGE_URL).setValue(imageUrl);
 
                     Toast.makeText(ItemSearchFragment.this.getActivity(), item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }

@@ -15,7 +15,7 @@ import java.text.ParseException;
 
 import faranjit.currency.edittext.CurrencyEditText;
 
-public class AddItemDialog extends AppCompatDialogFragment {
+public class AddItemDialog extends DialogFragment {
 
     private EditText editTextTitle;
     private EditText editTextLink;

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
+import android.view.Window;
 
 public class Feed extends FragmentActivity {
 
@@ -24,7 +25,6 @@ public class Feed extends FragmentActivity {
         //initializes bottom navigation menu and its fragments/frames
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationMenu);
         navigationView.setOnNavigationItemSelectedListener(navListener);
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,6 +36,7 @@ public class Feed extends FragmentActivity {
                     return true;
                 case R.id.search:
                     setFragment(itemSearchFragment);
+                    //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.top_header);
                     return true;
                 case R.id.profile:
                     setFragment(profileFragment);
