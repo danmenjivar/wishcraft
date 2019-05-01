@@ -2,6 +2,7 @@ package fiveguys.com.wishcraftapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.media.*;
@@ -42,6 +44,7 @@ public class ProfileSearch extends AppCompatActivity {
     private DatabaseReference friendsListdb;
     private DatabaseReference usersdb;
     private String currentUserEmail;
+    private String friendKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +100,74 @@ public class ProfileSearch extends AppCompatActivity {
     private void addFriendInDatabase(String key){
         DatabaseReference placeToPush = friendsListdb.child(key + "/friendslist");
         DatabaseReference newFriend = placeToPush.push();
-        newFriend.child("name").setValue("Jason");
+        newFriend.child("name").setValue("ironman");
+    }
+
+    public void onViewFriendButtonClick(View view){
+        displayFriendList();
+    }
+    private void displayFriendList(){
+        friendsListdb.orderByChild("email").equalTo(currentUserEmail).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
+                    Log.d("CODY", currentUser.getKey());
+                    findFriendsInDatabase(currentUser.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //stays empty
+            }
+        });
+    }
+
+    private void findFriendsInDatabase(String key){
+        final DatabaseReference placeToGrabFriends = friendsListdb.child(key + "/friendslist");
+        placeToGrabFriends.orderByChild(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot friendData : dataSnapshot.getChildren()) {
+                    if (friendData.hasChildren()) {
+                        Log.d("CODY: ", friendData.getKey());
+                       // friendData = friendData.getChildren().iterator().next();
+                        Friend friend = friendData.getValue(Friend.class);
+                        Log.d("CODY: ", friend.getName());
+                        setFriendData(friend.getName());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setFriendData(final String username){
+        DatabaseReference userlistdb = FirebaseDatabase.getInstance().getReference("users");
+        userlistdb.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                if(datasnapshot.hasChildren()) {
+                    Log.d("CODY: ", datasnapshot.getKey());
+                    DataSnapshot friendData = datasnapshot.getChildren().iterator().next();
+                    friendKey = friendData.getKey();
+                    Log.d("CODY: ", friendKey);
+                    Friend friend = friendData.getValue(Friend.class);
+                    friend.setName(username);
+                    Log.d("CODY: ", friend.getName() + " and " + friend.getEmail());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     //code friend search first
