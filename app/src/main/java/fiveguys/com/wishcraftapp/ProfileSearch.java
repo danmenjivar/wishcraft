@@ -178,47 +178,4 @@ public class ProfileSearch extends AppCompatActivity {
         //name, picture, wishlist, email, etc
         //edit this base object
     //Figure out most efficient way to view friend list
-
-    //Search click function
-    public void onSearchFriendButtonClick(View view){
-        EditText searchName = findViewById(R.id.searchFriendName);
-
-        lookupFriendsListdb(searchName.getText().toString());
-        //return username
-        //return email
-        //return
-    }
-
-    //Pulls names similar to search
-    private void lookupFriendsListdb(String name){
-
-        usersdb.orderByChild("username").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if(dataSnapshot.exists())
-                {
-                //https://www.youtube.com/watch?v=-fUXqc-h94o
-                }
-                else
-                {
-                    Toast.makeText(this, "Could not find friend :(", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-                //Daniel-san says this stays empty
-
-            }
-        });
-    }
-
-/*
-p v viewFirndlist(DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();)
-{
-}
- */
-
 }
