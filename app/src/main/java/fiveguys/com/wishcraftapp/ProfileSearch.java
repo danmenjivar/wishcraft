@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +40,7 @@ import com.google.firebase.storage.StorageReference;
 public class ProfileSearch extends AppCompatActivity {
 
     private DatabaseReference friendsListdb;
+    private DatabaseReference usersdb;
     private String currentUserEmail;
 
     @Override
@@ -45,6 +48,7 @@ public class ProfileSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_search);
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
+        usersdb = FirebaseDatabase.getInstance().getReference("users");
         currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     }
 
@@ -89,16 +93,6 @@ public class ProfileSearch extends AppCompatActivity {
             }
         });
     }
-/*
-
-p v viewFirndlist(DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();)
-{
-
-}
-
-
-
- */
 
     private void addFriendInDatabase(String key){
         DatabaseReference placeToPush = friendsListdb.child(key + "/friendslist");
@@ -115,5 +109,46 @@ p v viewFirndlist(DataSnapshot currentUser = dataSnapshot.getChildren().iterator
         //edit this base object
     //Figure out most efficient way to view friend list
 
+    //Search click function
+    public void onSearchFriendButtonClick(View view){
+        EditText searchName = findViewById(R.id.searchFriendName);
+
+        lookupFriendsListdb(searchName.getText().toString());
+        //return username
+        //return email
+        //return
+    }
+
+    //Pulls names similar to search
+    private void lookupFriendsListdb(String name){
+
+        usersdb.orderByChild("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if(dataSnapshot.exists())
+                {
+                //https://www.youtube.com/watch?v=-fUXqc-h94o
+                }
+                else
+                {
+                    Toast.makeText(this, "Could not find friend :(", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+                //Daniel-san says this stays empty
+
+            }
+        });
+    }
+
+/*
+p v viewFirndlist(DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();)
+{
+}
+ */
 
 }
