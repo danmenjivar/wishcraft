@@ -36,7 +36,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 
-public class ItemSearchFragment extends Fragment implements View.OnClickListener, AddItemDialog.AddItemDialogListener {
+public class ItemSearchFragment extends Fragment implements View.OnClickListener, AddItemDialog.AddItemDialogListener{
     private final static String NAME = "item_name";
     private final static String PRICE = "item_price";
     private final static String LINK = "item_link";
@@ -106,7 +106,7 @@ public class ItemSearchFragment extends Fragment implements View.OnClickListener
 
     //@Override
     public void applyItemData(String itemName, Double itemPrice, String itemLink) {
-        AliItem itemToAdd = null;
+        AliItem itemToAdd;
 
         try {
             itemToAdd = new AliItem(itemName, itemPrice, itemLink, "");
