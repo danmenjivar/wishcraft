@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.ParseException;
 
@@ -52,7 +53,7 @@ public class AddItemDialog extends DialogFragment {
                             if (!editTextPrice.getCurrencyText().isEmpty()) {
                                 itemPrice = editTextPrice.getCurrencyDouble();
                             }
-                            listener.applyItemData(itemName, itemPrice, itemLink);
+                            listener.applyItemData(itemName, itemPrice, itemLink);  //LISTENER NEEDS TO NOT BE NULL
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
