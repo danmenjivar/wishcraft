@@ -48,7 +48,7 @@
 
     <Button
         android:id="@+id/item_remove_button_list"
-        android:layout_width="64dp"
+        android:layout_width="67sp"
         android:layout_height="32dp"
         android:layout_below="@+id/item_title_list"
         android:layout_marginStart="144dp"

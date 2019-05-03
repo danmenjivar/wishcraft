@@ -1,7 +1,9 @@
 package fiveguys.com.wishcraftapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,6 +59,7 @@ public class MyProfile extends AppCompatActivity  {
     private RecyclerView mRecyclerView;
     private DataSnapshot userWishlist;
     private DisplayProductAdapter mProductAdapter;
+    private String mUserWishListKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,7 +175,7 @@ public class MyProfile extends AppCompatActivity  {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
                     DataSnapshot user = dataSnapshot.getChildren().iterator().next();
-                    Log.d(TAG, "key: " + user.getKey());
+                    mUserWishListKey = user.getKey();
                     getUserWishlist(user.getKey());
 
                 }
@@ -190,12 +193,21 @@ public class MyProfile extends AppCompatActivity  {
     private void removeItemHandler(){
         mProductAdapter.setOnRemoveListener(new DisplayProductAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
-                DisplayItem itemToRemove = mProductAdapter.getIndexedItem(position);
-                Toast.makeText(MyProfile.this, "Trying to remove " + itemToRemove.getItemName()
-                        , Toast.LENGTH_SHORT).show();
-                findItem(itemToRemove);
-                removeItemFromRecycler(position);
+            public void onItemClick(final int position) {
+                final DisplayItem itemToRemove = mProductAdapter.getIndexedItem(position);
+                new AlertDialog.Builder(MyProfile.this)
+                        .setTitle("Remove item")
+                        .setMessage("Are you sure?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                findItem(itemToRemove);
+                                removeItemFromRecycler(position);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null).show();
+
             }
         });
 
@@ -260,16 +272,22 @@ public class MyProfile extends AppCompatActivity  {
     }
 
     private void findItem(final DisplayItem itemToSearch){
-        mDatabase.child("userWishlist/" + userKey + "/wishlist").orderByChild(DisplayItem.name).equalTo(itemToSearch.getItemName()).addListenerForSingleValueEvent(
+        mDatabase.child("userWishlist/" + mUserWishListKey + "/wishlist")
+                .orderByChild(DisplayItem.name_tag).equalTo(itemToSearch.getItemName()).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChildren()){
-                            DisplayItem itemFound = dataSnapshot.getChildren().iterator().next().getValue(DisplayItem.class);
-                            if (itemFound.equals(itemToSearch)){
-                                Log.d(TAG, "Item to remove: " + itemFound.toString());
+                            DataSnapshot itemFound = dataSnapshot.getChildren().iterator().next();
+                            String itemName = itemFound.child(DisplayItem.name_tag).getValue().toString();
+                            String itemUrl = itemFound.child(DisplayItem.url_tag).getValue().toString();
+                            String image = itemFound.child(DisplayItem.image_tag).getValue().toString();
+                            double price = Double.valueOf(itemFound.child(DisplayItem.price_tag).getValue().toString());
+                            DisplayItem itemToRemove = new DisplayItem(itemName, price, itemUrl, image);
+                            if (itemToSearch.equals(itemToRemove)){
+                                removeItem(itemFound.getKey());
+//                                Log.d(TAG, "Item to remove: " + itemName + " with key: " + itemFound.getKey());
                             }
-
                         }
                     }
 
@@ -282,6 +300,10 @@ public class MyProfile extends AppCompatActivity  {
     }
 
 
+    private void removeItem(String itemKey){
+        mDatabase.child("userWishlist/" + mUserWishListKey + "/wishlist/" + itemKey).removeValue();
+        Toast.makeText(this, "Removed item succesfully!", Toast.LENGTH_SHORT).show();
+    }
 
     /*
     public void onClickEditPic(View v) {

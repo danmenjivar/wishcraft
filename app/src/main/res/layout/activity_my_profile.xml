@@ -47,7 +47,6 @@
         android:layout_width="186dp"
         android:layout_height="103dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Bio"
         android:inputType="textMultiLine"
@@ -59,16 +58,17 @@
         android:id="@+id/change_bio_button"
         android:layout_width="117sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="90sp"
         android:layout_marginRight="10sp"
         android:background="@color/disable_grey"
         android:onClick="onChangeBioButtonClick"
         android:text="Update My Bio"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@id/profilePic"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bio_editText" />
+        app:layout_constraintTop_toBottomOf="@id/bio_editText" />
 
     \
 </android.support.constraint.ConstraintLayout>

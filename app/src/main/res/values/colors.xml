@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/wc_logo_pink</color>
     <color name="colorPrimaryDark">@color/wc_logo_pink</color>
-    <!--<color name="colorAccent">#FF458D</color>-->
+    <!--<color name_tag="colorAccent">#FF458D</color>-->
     <color name="colorAccent">#df4777</color>
     <color name="darkBackground">#BF313131</color>
     <color name="white">#FFFFFF</color>

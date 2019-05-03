@@ -8,7 +8,10 @@ import java.util.Objects;
 
 public class DisplayItem {
 
-    public static String name = "item_name";
+    public static String name_tag = "item_name";
+    public static String url_tag = "item_link";
+    public static String price_tag = "item_price";
+    public static String image_tag = "item_image_url";
 
     private String item_name;
     private double item_price;
