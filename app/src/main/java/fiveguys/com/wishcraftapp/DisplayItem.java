@@ -4,8 +4,11 @@ import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class DisplayItem {
+
+    public static String name = "item_name";
 
     private String item_name;
     private double item_price;
@@ -74,5 +77,21 @@ public class DisplayItem {
                 ", itemLink='" + item_link + '\'' +
                 ", imageUrl='" + item_image_url + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DisplayItem that = (DisplayItem) o;
+        return Double.compare(that.item_price, item_price) == 0 &&
+                Objects.equals(item_name, that.item_name) &&
+                Objects.equals(item_link, that.item_link) &&
+                Objects.equals(item_image_url, that.item_image_url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(item_name, item_price, item_link, item_image_url);
     }
 }

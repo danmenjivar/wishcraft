@@ -24,7 +24,7 @@ public class DisplayProductAdapter extends RecyclerView.Adapter<DisplayProductAd
         void onItemClick(int position);
     }
 
-    public void setOnAddListener(OnItemClickListener listener){
+    public void setOnRemoveListener(OnItemClickListener listener){
         mListener = listener;
     }
 
@@ -68,15 +68,15 @@ public class DisplayProductAdapter extends RecyclerView.Adapter<DisplayProductAd
         public ImageView itemImage;
         public TextView itemName;
         public TextView itemPrice;
-        public Button claimButton;
+        public Button removeButton;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             this.itemImage = itemView.findViewById(R.id.list_itemPicture);
             this.itemName = itemView.findViewById(R.id.item_title_list);
             this.itemPrice = itemView.findViewById(R.id.item_price_list);
-            this.claimButton = itemView.findViewById(R.id.item_add_button_list);
-            this.claimButton.setOnClickListener(new View.OnClickListener() {
+            this.removeButton = itemView.findViewById(R.id.item_remove_button_list);
+            this.removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null){

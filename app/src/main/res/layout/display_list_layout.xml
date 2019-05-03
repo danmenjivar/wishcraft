@@ -47,7 +47,7 @@
         tools:layout_editor_absoluteY="98dp" />
 
     <Button
-        android:id="@+id/item_add_button_list"
+        android:id="@+id/item_remove_button_list"
         android:layout_width="64dp"
         android:layout_height="32dp"
         android:layout_below="@+id/item_title_list"
@@ -55,7 +55,7 @@
         android:layout_marginTop="6dp"
         android:layout_toEndOf="@+id/list_itemPicture"
         android:background="@color/colorPrimaryDark"
-        android:text="Claim"
+        android:text="Remove"
         android:textColor="@color/white"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="235dp"

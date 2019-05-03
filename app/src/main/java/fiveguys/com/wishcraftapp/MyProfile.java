@@ -55,6 +55,8 @@ public class MyProfile extends AppCompatActivity  {
     private Button changeBioButton;
     private ArrayList<DisplayItem> wishListArrayList;
     private RecyclerView mRecyclerView;
+    private DataSnapshot userWishlist;
+    private DisplayProductAdapter mProductAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +80,7 @@ public class MyProfile extends AppCompatActivity  {
         mRecyclerView = findViewById(R.id.user_profile_recycler);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(new DisplayProductAdapter(this, wishListArrayList));
-
+        //mRecyclerView.setAdapter(new DisplayProductAdapter(this, wishListArrayList));
     }
 
     private void setUserProfilePic(){
@@ -186,6 +187,25 @@ public class MyProfile extends AppCompatActivity  {
 
     }
 
+    private void removeItemHandler(){
+        mProductAdapter.setOnRemoveListener(new DisplayProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                DisplayItem itemToRemove = mProductAdapter.getIndexedItem(position);
+                Toast.makeText(MyProfile.this, "Trying to remove " + itemToRemove.getItemName()
+                        , Toast.LENGTH_SHORT).show();
+                findItem(itemToRemove);
+                removeItemFromRecycler(position);
+            }
+        });
+
+    }
+
+    private void removeItemFromRecycler(int position){
+        wishListArrayList.remove(position);
+        mProductAdapter.notifyItemRemoved(position);
+    }
+
     private void getUserWishlist(String userKey){
 
         mDatabase.child("userWishlist/" + userKey + "/wishlist").addListenerForSingleValueEvent(
@@ -193,6 +213,7 @@ public class MyProfile extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
+                    userWishlist = dataSnapshot;
                     Iterator<DataSnapshot> wishListIterator = dataSnapshot.getChildren().iterator();
 //                    Log.d(TAG, wishListIterator.next().getKey());
 
@@ -209,9 +230,10 @@ public class MyProfile extends AppCompatActivity  {
                     }
 
                     displayItems();
-                    for (DisplayItem item1 : wishListArrayList){
-                        Log.d(TAG, item1.toString());
-                    }
+//                    for (DisplayItem item1 : wishListArrayList){
+//                        Log.d(TAG, item1.toString());
+//                    }
+
                 }
             }
 
@@ -223,7 +245,9 @@ public class MyProfile extends AppCompatActivity  {
     }
 
     private void displayItems(){
-        mRecyclerView.setAdapter(new DisplayProductAdapter(this, wishListArrayList));
+        mProductAdapter = new DisplayProductAdapter(MyProfile.this, wishListArrayList);
+        mRecyclerView.setAdapter(mProductAdapter);
+        removeItemHandler();
     }
 
 
@@ -233,6 +257,28 @@ public class MyProfile extends AppCompatActivity  {
 
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    private void findItem(final DisplayItem itemToSearch){
+        mDatabase.child("userWishlist/" + userKey + "/wishlist").orderByChild(DisplayItem.name).equalTo(itemToSearch.getItemName()).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChildren()){
+                            DisplayItem itemFound = dataSnapshot.getChildren().iterator().next().getValue(DisplayItem.class);
+                            if (itemFound.equals(itemToSearch)){
+                                Log.d(TAG, "Item to remove: " + itemFound.toString());
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        //empty on purpose
+                    }
+                }
+        );
     }
 
 

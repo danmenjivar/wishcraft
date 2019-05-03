@@ -15,7 +15,6 @@
         android:layout_marginTop="39dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pinkslippers"
         tools:layout_editor_absoluteY="38dp" />
 
     <TextView
