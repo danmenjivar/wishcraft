@@ -91,6 +91,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         bioEditText = RootView.findViewById(R.id.bio_editText);
         bioEditText.addTextChangedListener(isBioChanged);
         changeBioButton = RootView.findViewById(R.id.change_bio_button);
+        changeBioButton.setOnClickListener(this);
         setUserBio();
         findUserWishlist();
         wishListArrayList = new ArrayList<>();
@@ -107,8 +108,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-        if(view.getId() == R.id.change_bio_button) {
-            onChangeBioButtonClick(view);
+        switch(view.getId()) {
+            case R.id.change_bio_button:
+                onChangeBioButtonClick(view);
+                break;
+            default:
+                break;
         }
     }
 
