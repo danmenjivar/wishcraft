@@ -93,7 +93,7 @@ public class ActivityFeedTest extends Activity  {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //stays empty
+
             }
         });
     }
