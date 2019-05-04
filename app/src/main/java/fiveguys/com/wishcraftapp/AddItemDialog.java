@@ -106,6 +106,7 @@ public class AddItemDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        //context = this.getContext();
 
         try {
             listener = (AddItemDialogListener) getTargetFragment();
@@ -134,7 +135,7 @@ public class AddItemDialog extends DialogFragment {
                     String imageUrl = item.getImageUrl();
                     newItem.child(IMAGE_URL).setValue(imageUrl);
 
-                    Toast.makeText(AddItemDialog.this.getActivity(), item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AddItemDialog.this.getContext(), item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }
             }
 

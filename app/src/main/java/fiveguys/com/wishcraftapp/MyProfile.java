@@ -91,7 +91,7 @@ public class MyProfile extends AppCompatActivity {
                 .signature(new StringSignature(storageReference.getMetadata().toString()))
                 .into(iv);
 
-        final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
+        //final ListView listView = (ListView) findViewById(R.id._dynamic_myWishlist);
 
         String demo[] = {"Champagne Bottles Qt: 7", "Diamonds Qt: 7", "ATM machine Qt: 1",
                 "Gold watch Qt: 1", "Gold chain Qt: 1", "Rings Qt: 7"};
@@ -115,7 +115,7 @@ public class MyProfile extends AppCompatActivity {
             }
         };
 
-        listView.setAdapter(arrayAdapter);
+        //listView.setAdapter(arrayAdapter);
 
         this.mp = MediaPlayer.create(this, R.raw.rings);
 

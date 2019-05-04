@@ -14,6 +14,7 @@ public class User {
 
     public String username;
     public String email;
+    public String bio;
 
     public User(){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -32,14 +33,22 @@ public class User {
         this.email = email;
     }
 
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("username", username);
         result.put("email", email);
+        result.put("bio", bio);
 
         return result;
     }
 
 }
-

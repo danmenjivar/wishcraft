@@ -5,19 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyProfile">
+    tools:context=".ProfileFragment">
 
     <TextView
         android:id="@+id/profileName"
         android:layout_width="176dp"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:textColor="@color/bottom_navigation_color"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toEndOf="@+id/profilePic"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,58 +28,45 @@
         android:layout_height="141dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="24dp"
         android:orientation="vertical"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic_myWishlist"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="171dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:text="Bio"
-        android:textColor="@color/bottom_navigation_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/user_profile_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_bio_button" />
+
+    <EditText
+        android:id="@+id/bio_editText"
+        android:layout_width="186dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Bio"
+        android:inputType="textMultiLine"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profilePic"
         app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/change_bio_button"
+        android:layout_width="117sp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="92dp"
-        android:background="@color/newPrimaryPink"
-        android:onClick="addItemDialogue"
-        android:text="Add Item"
-        android:textColor="@color/bottom_navigation_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginLeft="90sp"
+        android:layout_marginRight="10sp"
+        android:background="@color/disable_grey"
+        android:onClick="onChangeBioButtonClick"
+        android:text="Update My Bio"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ListView
-        android:id="@+id/_dynamic_myWishlist"
-        android:layout_width="379dp"
-        android:layout_height="367dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
-
-\
+        app:layout_constraintTop_toBottomOf="@id/bio_editText" />
 </android.support.constraint.ConstraintLayout>
