@@ -351,7 +351,7 @@ public class MyProfile extends AppCompatActivity  {
                     DataSnapshot userData = dataSnapshot.getChildren().iterator().next();
                     userKey = userData.getKey();//used when changing username and email
                     User user = userData.getValue(User.class);
-                    usernameText.setText(user.username + "\'s wishlist");
+                    usernameText.setText(user.username);
                 }
             }
 

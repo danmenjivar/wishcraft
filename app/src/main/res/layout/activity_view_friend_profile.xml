@@ -4,8 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#313131"
     tools:context=".ViewFriendProfile">
 
+    <TextView
+        android:id="@+id/friend_profileName"
+        android:layout_width="176dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text='"sample text"'
+        android:textColor="@color/wc_logo_pink"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toEndOf="@+id/friend_profilePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/friend_profilePic"
+        android:layout_width="165dp"
+        android:layout_height="141dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/friend_bio"
+        android:layout_width="186dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/friend_profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/friend_profileName" />
+
+    <Button
+        android:id="@+id/change_friend_status_button"
+        android:layout_width="117sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90sp"
+        android:layout_marginRight="10sp"
+        android:background="@color/wc_logo_pink"
+        android:onClick="onChangeFriendStatusButtonClick"
+        android:text="Friend/Unfriend"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friend_bio" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friend_profile_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_friend_status_button" />
 
 </android.support.constraint.ConstraintLayout>
