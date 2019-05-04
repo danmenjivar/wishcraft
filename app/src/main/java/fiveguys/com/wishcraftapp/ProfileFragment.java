@@ -45,9 +45,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "ProfileFragment";
@@ -337,7 +334,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     DataSnapshot userData = dataSnapshot.getChildren().iterator().next();
                     userKey = userData.getKey();
                     User user = userData.getValue(User.class);
-                    usernameText.setText(user.username);
+                    usernameText.setText(user.username + "\'s wishlist");
                 }
             }
 

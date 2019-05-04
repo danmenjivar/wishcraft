@@ -34,7 +34,7 @@ public class ItemSearch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.itemsearch);
+        //setContentView(R.layout.itemsearch);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance(); //grab authentication
         mUser = mAuth.getCurrentUser(); //grab current logged in userN
@@ -42,7 +42,7 @@ public class ItemSearch extends AppCompatActivity {
         searchText.addTextChangedListener(addItemEnable);
         loggedInUser = new User("", "");
         String email = mUser.getEmail();    //check later for NULLPOINTEREXCEPTIO
-        addItemButton = findViewById(R.id.addItem1);
+       // addItemButton = findViewById(R.id.addItem1);
         fetchUser(email);
     }
 
