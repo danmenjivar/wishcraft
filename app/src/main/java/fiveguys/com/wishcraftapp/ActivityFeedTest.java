@@ -67,6 +67,7 @@ public class ActivityFeedTest extends Activity  {
         getUserInfo();
 
     }
+    //change to getEmailFromUid
     private void getEmailFromUsername(String name){
 
         globalFriendName[gfnCount]=name;
@@ -136,6 +137,7 @@ public class ActivityFeedTest extends Activity  {
                         numOfFriends =snapshot.getChildrenCount();
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             Friend friend = postSnapshot.getValue(Friend.class);
+                            //change this to getUid and adjust friend.class accordingly
                             getEmailFromUsername((friend.getName()));
                         }
                     }
