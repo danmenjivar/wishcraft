@@ -1,6 +1,5 @@
 package fiveguys.com.wishcraftapp;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,32 +13,23 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
 
 
-public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
+public class AliSearch extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
 
     private final static String NAME = "item_name";
     private final static String PRICE = "item_price";
@@ -141,7 +131,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
     }
 
     private void displaySearchResults(ArrayList<AliItem> results){
-        mProductAdapter = new ProductAdapter(AliTest.this, results);
+        mProductAdapter = new ProductAdapter(AliSearch.this, results);
         mRecyclerView.setAdapter(mProductAdapter);
         aliAddItemHandler();
     }
@@ -181,7 +171,7 @@ public class AliTest extends AppCompatActivity implements AddItemDialog.AddItemD
                     newItem.child(IMAGE_URL).setValue(imageUrl);
 
 
-                    Toast.makeText(AliTest.this, item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AliSearch.this, item.getItemName() + " has been added to your list", Toast.LENGTH_SHORT).show();
                 }
             }
 

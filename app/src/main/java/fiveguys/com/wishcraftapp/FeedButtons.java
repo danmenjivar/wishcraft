@@ -2,16 +2,9 @@ package fiveguys.com.wishcraftapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FeedButtons extends Activity {
 
@@ -73,7 +66,7 @@ public class FeedButtons extends Activity {
     }
     public void itemSearchButton(View view) {
         //Toast.makeText(this, "Link me to myProfile View", Toast.LENGTH_SHORT).show();
-        Intent feedIntent = new Intent(this, AliTest.class);
+        Intent feedIntent = new Intent(this, AliSearch.class);
         startActivity(feedIntent);
     }
 }

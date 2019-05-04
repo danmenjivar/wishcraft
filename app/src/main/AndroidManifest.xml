@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AliTest"></activity>
+        <activity android:name=".AliSearch"></activity>
         <activity android:name=".MyProfile" />
         <activity android:name=".ViewFriendProfile" />
         <activity android:name=".Feed" />
@@ -20,7 +20,6 @@
         <activity android:name=".ProfileSearch" />
         <activity android:name=".FeedButtons" />
         <activity android:name=".Settings" />
-        <activity android:name=".ItemSearch" />
         <activity
             android:name=".Login"
             android:screenOrientation="portrait">
