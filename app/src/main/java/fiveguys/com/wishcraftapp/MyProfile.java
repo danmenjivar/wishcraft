@@ -338,8 +338,6 @@ public class MyProfile extends AppCompatActivity  {
     }
     */
 
-
-
     public void getUsername(){
         String email = mUser.getEmail();
         Query usernameQuery = mDatabase.child("users").orderByChild("email").equalTo(email);

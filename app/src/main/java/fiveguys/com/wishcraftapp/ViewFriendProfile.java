@@ -33,8 +33,10 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 
 public class ViewFriendProfile extends Activity {
@@ -49,6 +51,7 @@ public class ViewFriendProfile extends Activity {
     private ArrayList<DisplayItem> mWishlist;
     private ClaimProductAdapter mProductAdapter;
     private String mWishlistKey;
+    private String mUserID;
 
 
     @Override
@@ -57,6 +60,7 @@ public class ViewFriendProfile extends Activity {
         setContentView(R.layout.activity_view_friend_profile);
         Intent intent = getIntent();
         String userId = intent.getStringExtra("userID");
+        mUserID = userId;
         Log.d(DEBUG_TAG, "userID = " + userId);
         friendButton = findViewById(R.id.change_friend_status_button);
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -220,6 +224,7 @@ public class ViewFriendProfile extends Activity {
                             public void onClick(DialogInterface dialog, int which) {
                                 findItemAndRemove(itemToRemove);
                                 removeItemFromRecycler(position);
+                                claimMessage(itemToRemove);
                             }
                         })
                         .setNegativeButton(android.R.string.no, null).show();
@@ -264,6 +269,16 @@ public class ViewFriendProfile extends Activity {
         Toast.makeText(this, "Item claimed succesfully!", Toast.LENGTH_SHORT).show();
     }
 
+    private void claimMessage(DisplayItem itemClaimed){
+        DatabaseReference pushMessage = mDatabase.child("/claimMessages/" + mUserID);
+        pushMessage.child("item_name").setValue(itemClaimed.getItemName());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        pushMessage.child("time_claimed").setValue(timestamp);
+    }
 
+    private boolean isFriendsWithUser(String friendID){
+        
+        return false;
+    }
 
 }
