@@ -11,16 +11,18 @@ public class ActivityFeedDisplay{
     private double item_price;
     private String item_link;
     private String item_image_url;
+    private String entryKey;
 
     public ActivityFeedDisplay() {
         //empty on purpose
     }
 
-    public ActivityFeedDisplay(String itemName, double itemPrice, String itemLink, String imageUrl) {
+    public ActivityFeedDisplay(String itemName, double itemPrice, String itemLink, String imageUrl,String entryKey) {
         this.item_name = itemName;
         this.item_price = itemPrice;
         this.item_link = itemLink;
         this.item_image_url = imageUrl;
+        this.entryKey = entryKey;
     }
 
     public String getItemName() {
@@ -38,6 +40,8 @@ public class ActivityFeedDisplay{
     public String getItemLink() {
         return item_link;
     }
+
+    public String getEntryKey(){return entryKey;}
 
     public void setItemName(String itemName) {
         this.item_name = itemName;
@@ -62,6 +66,7 @@ public class ActivityFeedDisplay{
         result.put("item_name", this.item_name);
         result.put("item_price", this.item_price);
         result.put("item_image_url", this.item_image_url);
+        result.put("entryKey",this.entryKey);
 
         return result;
     }
@@ -73,6 +78,7 @@ public class ActivityFeedDisplay{
                 ", itemPrice=" + item_price +
                 ", itemLink='" + item_link + '\'' +
                 ", imageUrl='" + item_image_url + '\'' +
+                ", entryKey='" + entryKey + '\''+
                 '}';
     }
 }

@@ -27,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 
@@ -36,10 +38,13 @@ public class ActivityFeedTest extends Activity  {
 
     private DatabaseReference friendsListdb;
     private FirebaseAuth fbauth;
+    private long numOfFriends;
+    private String globalFriendName[];
     private String userEmail;
     private RecyclerView mRecyclerView;
     private FirebaseUser mUser;
     private DatabaseReference mDatabase;
+    private int gfnCount = 0;
     //private
     private ArrayList<ActivityFeedDisplay> wishListArray;
 
@@ -47,6 +52,7 @@ public class ActivityFeedTest extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_buttons);
+        globalFriendName = new String[50];
         fbauth = FirebaseAuth.getInstance();
         userEmail = fbauth.getCurrentUser().getEmail();
         mUser = fbauth.getCurrentUser();
@@ -63,6 +69,8 @@ public class ActivityFeedTest extends Activity  {
     }
     private void getEmailFromUsername(String name){
 
+        globalFriendName[gfnCount]=name;
+        gfnCount++;
         mDatabase.child("users").orderByChild("username").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,7 +94,6 @@ public class ActivityFeedTest extends Activity  {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
                     DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
-                    Log.d("CODY", currentUser.getKey());
                     findUserWishlist(currentUser.getKey());
                 }
             }
@@ -97,9 +104,8 @@ public class ActivityFeedTest extends Activity  {
             }
         });
     }
-    private void findNameInWishlists(String name){
-
-        mDatabase.child("userWishlist").orderByChild("email").equalTo(name)
+    private void findNameInWishlists(String email){
+        mDatabase.child("userWishlist").orderByChild("email").equalTo(email)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -127,11 +133,10 @@ public class ActivityFeedTest extends Activity  {
         placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
+                        numOfFriends =snapshot.getChildrenCount();
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-
                             Friend friend = postSnapshot.getValue(Friend.class);
                             getEmailFromUsername((friend.getName()));
-
                         }
                     }
 
@@ -146,7 +151,7 @@ public class ActivityFeedTest extends Activity  {
 
         //Query fListQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(userEmail);
         Query listQuery = mDatabase.child("userWishlist/" + friend + "/wishlist");
-
+        gfnCount = 0;
             listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -155,13 +160,19 @@ public class ActivityFeedTest extends Activity  {
                         while (wishListIter.hasNext()) {
                             DataSnapshot currentItem = wishListIter.next();
                             double itemPrice = Double.valueOf(currentItem.child("item_price").getValue().toString());
-                            String itemName = currentItem.child("item_name").getValue().toString();
+                            String itemName = globalFriendName[gfnCount] + " added: " + currentItem.child("item_name").getValue().toString();
                             String itemLink = currentItem.child("item_link").getValue().toString();
                             String itemImageUrl = currentItem.child("item_image_url").getValue().toString();
-                            ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl);
+                            //to sort by time
+                            String entryKey = currentItem.getKey();
+                            ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl,entryKey);
                             wishListArray.add(itemToDisplay);
+
                         }
-                        displayActivityFeed();
+                        if(gfnCount == numOfFriends-1){
+                            displayActivityFeed();
+                        }
+                        gfnCount++;
                     }
                 }
 
@@ -172,6 +183,12 @@ public class ActivityFeedTest extends Activity  {
 
 
     public void displayActivityFeed(){
+        Collections.sort(wishListArray, new Comparator<ActivityFeedDisplay>() {
+            public int compare(ActivityFeedDisplay v1, ActivityFeedDisplay v2) {
+                return v1.getEntryKey().compareTo(v2.getEntryKey());
+            }
+        });
+        Collections.reverse(wishListArray);
         mRecyclerView.setAdapter(new ActivityFeedAdapter(this, wishListArray));
     }
     public void settingButton(View view) {
