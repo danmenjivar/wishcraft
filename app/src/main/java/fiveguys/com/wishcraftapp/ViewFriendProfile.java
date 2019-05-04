@@ -22,10 +22,4 @@ public class ViewFriendProfile extends Activity {
         setContentView(R.layout.activity_view_friend_profile);
     }
 
-    public void user1click(View view) {
-        // Intent intent = new Intent(this, ItemSearch.class);
-        Toast.makeText(this, "Item has been claimed :D", Toast.LENGTH_SHORT).show();
-        // startActivity(intent);
-    }
-
 }
