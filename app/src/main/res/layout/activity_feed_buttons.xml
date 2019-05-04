@@ -16,16 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/_dynamicfeedlist"
-        android:layout_width="392dp"
-        android:layout_height="446dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feed_logo" />
-
     <LinearLayout
+        android:id="@+id/linearLayout2"
         style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,8 +25,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/_dynamicfeedlist">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/settings_button"
@@ -76,6 +67,19 @@
             tools:layout_editor_absoluteX="278dp"
             tools:layout_editor_absoluteY="609dp" />
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_feed"
+        android:layout_width="395dp"
+        android:layout_height="530dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/feed_logo" />
 
 
 </android.support.constraint.ConstraintLayout>

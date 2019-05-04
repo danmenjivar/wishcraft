@@ -21,7 +21,7 @@ public class FeedButtons extends Activity {
         setContentView(R.layout.activity_feed_buttons);
 
 
-        final ListView listView = (ListView) findViewById(R.id._dynamicfeedlist);
+
 
 //        String demo[] = {"Riad has added \"Super Smash Bros. Ultimate\"",
 //                "Cody has claimed \"Spider-Man: Into the Spider-Verse DVD\"",
