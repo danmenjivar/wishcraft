@@ -270,7 +270,7 @@ public class ViewFriendProfile extends Activity {
     }
 
     private void claimMessage(DisplayItem itemClaimed){
-        DatabaseReference pushMessage = mDatabase.child("/claimMessages/" + mUserID);
+        DatabaseReference pushMessage = mDatabase.child("/claimMessages/" + mUserID).push();
         pushMessage.child("item_name").setValue(itemClaimed.getItemName());
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         pushMessage.child("time_claimed").setValue(timestamp);
