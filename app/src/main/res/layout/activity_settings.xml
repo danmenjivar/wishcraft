@@ -75,6 +75,7 @@
             android:hint="@string/confirm_new_password"
             android:inputType="textPassword"
             android:textAlignment="center"
+            android:imeOptions="actionDone"
             android:textColor="@color/lightBlack"
             android:textColorHint="@color/colorAccent" />
     </LinearLayout>
@@ -194,6 +195,7 @@
                 android:ems="10"
                 android:hint="email@mail.com"
                 android:inputType="textPersonName"
+                android:imeOptions="actionDone"
                 android:textColor="@color/lightBlack"
                 android:textColorHint="@color/wc_logo_pink" />
 

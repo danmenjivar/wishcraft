@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fiveguys.com.wishcraftapp">
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,14 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile_search_auxiliary"></activity>
-        <activity android:name=".MyProfile" />
+        <activity android:name=".MyProfile"></activity>
+
         <activity android:name=".ViewFriendProfile" />
         <activity android:name=".Feed" />
         <activity android:name=".CreateProfile" />
         <activity android:name=".ProfileSearch" />
         <activity android:name=".Settings" />
-        <activity android:name=".ItemSearch" />
+        <activity android:name=".ItemSearch"></activity>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

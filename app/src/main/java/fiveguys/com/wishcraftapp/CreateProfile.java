@@ -1,5 +1,6 @@
 package fiveguys.com.wishcraftapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +9,13 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +38,7 @@ public class CreateProfile extends AppCompatActivity {
     private EditText confirmPasswordEditText;
     private EditText emailEditText;
     private Button confirmButton;
+    private Boolean hasClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,9 @@ public class CreateProfile extends AppCompatActivity {
         confirmPasswordEditText.addTextChangedListener(confirmButtonEnable);
         this.emailEditText = findViewById(R.id.editText_email);
         emailEditText.addTextChangedListener(confirmButtonEnable);
+        confirmPasswordEditText.setOnEditorActionListener(createAccountListener);
         confirmButton = findViewById(R.id.createAccount_button);
+        hasClicked = false;
 
         FirebaseApp.initializeApp(this);
         this.mAuth = FirebaseAuth.getInstance();//on create method, connect to Firebase
@@ -70,7 +78,8 @@ public class CreateProfile extends AppCompatActivity {
             String passwordConfirmInput = confirmPasswordEditText.getText().toString();
 
             if (isValidEmail(emailInput) && isValidPassword(passwordInput) &&
-                    isValidPassword(passwordConfirmInput) && !usernameInput.isEmpty()){
+                    isValidPassword(passwordConfirmInput) && !usernameInput.isEmpty()
+            && !hasClicked){
                 confirmButton.setEnabled(true);
                 confirmButton.setBackgroundColor(getResources().getColor(R.color.wc_logo_pink));
             } else {
@@ -85,8 +94,24 @@ public class CreateProfile extends AppCompatActivity {
         }
     };
 
-    public void OnCreateAccountButtonClick(View view) {//when user clicks to create account
+    //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
+    private TextView.OnEditorActionListener createAccountListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
+            if (actionId == EditorInfo.IME_ACTION_GO){
+                onCreateAccountButtonClick(confirmButton);
+                return true;
+            }
+
+            return false;
+        }
+    };
+
+    public void onCreateAccountButtonClick(View view) {//when user clicks to create account
+        hasClicked = true;
+        confirmButton.setEnabled(false);
+        hideKeyboard();
         final String email = emailEditText.getText().toString();
         final String username = userNameEditText.getText().toString();
         //Log.d(DEBUG_TAG, "the username is " + username);
@@ -99,6 +124,8 @@ public class CreateProfile extends AppCompatActivity {
         } else {
             createUserInFirebase(email, password, username);
         }
+        hasClicked = false;
+        confirmButton.setEnabled(true);
     }
 
     //Method makes new firebase auth instance
@@ -107,7 +134,6 @@ public class CreateProfile extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(DEBUG_TAG, "createUserWithEmail:success");
@@ -154,6 +180,7 @@ public class CreateProfile extends AppCompatActivity {
         newUser.child("username").setValue(username);
         newUser.child("email").setValue(email);
         newUser.child("bio").setValue("bio");
+        newUser.child("userId").setValue(mAuth.getCurrentUser().getUid());
     }
 
     //Takes the user back to the login screen
@@ -173,10 +200,17 @@ public class CreateProfile extends AppCompatActivity {
 
     //Method used to move user to next screen after successful profile creation
     public void updateUI(FirebaseUser user) {
-        Intent loginIntent = new Intent(this, Settings.class);
-        loginIntent.putExtra("firebaseUser", user);
+        Intent loginIntent = new Intent(this, FeedButtons.class);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
+    }
+
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 }
