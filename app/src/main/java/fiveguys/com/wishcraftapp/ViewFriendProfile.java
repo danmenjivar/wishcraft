@@ -23,7 +23,7 @@ public class ViewFriendProfile extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_friend_profile);
 
-        final ListView listView = (ListView) findViewById(R.id.friendlist);
+        //final ListView listView = (ListView) findViewById(R.id.friendlist);
 
         String demo[] = {"Bug-a-Splat",
                 "Midterms graded",
@@ -52,9 +52,9 @@ public class ViewFriendProfile extends Activity {
             }
         };
 
-        listView.setAdapter(arrayAdapter);
+        //listView.setAdapter(arrayAdapter);
 
-        this.mp = MediaPlayer.create(this, R.raw.my_jam);
+        //this.mp = MediaPlayer.create(this, R.raw.my_jam);
     }
 
     public void user1click(View view) {

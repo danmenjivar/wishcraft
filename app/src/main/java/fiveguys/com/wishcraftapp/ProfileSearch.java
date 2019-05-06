@@ -59,15 +59,15 @@ public class ProfileSearch extends AppCompatActivity {
 
 
     private void getFriends(){
-        friendsListdb.child("/" + userUniqueId).addListenerForSingleValueEvent(new ValueEventListener() {
+        friendsListdb.orderByChild("useruid").equalTo(userUniqueId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child()){
-
+                if (dataSnapshot.hasChildren()){
+                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
 
                 } else {
                     //User has no friends
-                    Toast.makeText(this, "User has no friends :(", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "User has no friends :(", Toast.LENGTH_SHORT).show();
 
                 }
             }
