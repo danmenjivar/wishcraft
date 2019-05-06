@@ -3,6 +3,7 @@ package fiveguys.com.wishcraftapp;
 public class Friend {
     private String name;
     private String email;
+    private String uid;
 
     public Friend() {
     }
@@ -14,6 +15,20 @@ public class Friend {
     public Friend(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public Friend(String name, String email, String uid) {
+        this.name = name;
+        this.email = email;
+        this.uid = uid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
