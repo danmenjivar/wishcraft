@@ -10,8 +10,8 @@
         android:id="@+id/feed_logo"
         android:layout_width="125dp"
         android:layout_height="117dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="4dp"
         android:src="@drawable/new_logo_cropped"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +20,7 @@
         android:id="@+id/linearLayout2"
         style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,15 +71,15 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_feed"
         android:layout_width="395dp"
-        android:layout_height="530dp"
+        android:layout_height="524dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/feed_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/feed_logo" />
 
 
 </android.support.constraint.ConstraintLayout>

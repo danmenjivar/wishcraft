@@ -62,9 +62,9 @@ public class ActivityFeedAdapter extends RecyclerView.Adapter<ActivityFeedAdapte
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-            this.itemImage = itemView.findViewById(R.id.list_itemPicture);
-            this.itemName = itemView.findViewById(R.id.item_title_list);
-            this.itemPrice = itemView.findViewById(R.id.item_price_list);
+            this.itemImage = itemView.findViewById(R.id.listItemPicture);
+            this.itemName = itemView.findViewById(R.id.itemTitleList);
+            this.itemPrice = itemView.findViewById(R.id.itemPriceList);
         }
     }
 }

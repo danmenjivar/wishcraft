@@ -105,6 +105,7 @@ public class ActivityFeedTest extends Activity  {
             }
         });
     }
+
     private void findNameInWishlists(String email){
         mDatabase.child("userWishlist").orderByChild("email").equalTo(email)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,12 +124,9 @@ public class ActivityFeedTest extends Activity  {
 
                     }
                 });
-
-
     }
+
     private void findUserWishlist(String key){
-        //Query emailQuery = mDatabase.child("userWishlist").orderByChild("email").equalTo(mUser.getEmail());
-        //Query emailQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(mUser.getEmail());
 
         final DatabaseReference placeToGrabFriends = friendsListdb.child(key + "/friendslist");
         placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -148,10 +146,37 @@ public class ActivityFeedTest extends Activity  {
         });
     }
 
+    private void getClaimMessages(){
+        final DatabaseReference claimMsgReference = FirebaseDatabase.getInstance().getReference("claimMessages");
+        DatabaseReference claimMsg = claimMsgReference.child(mUser.getUid());
+        claimMsg.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    Iterator<DataSnapshot> wishListIter = dataSnapshot.getChildren().iterator();
+                    while (wishListIter.hasNext()) {
+                        DataSnapshot currentItem = wishListIter.next();
+                        double itemPrice = Double.valueOf(currentItem.child("item_price").getValue().toString());
+                        String itemName = "Your \"" + currentItem.child("item_name").getValue().toString() +"\" has been claimed";
+                        String itemLink = currentItem.child("item_link").getValue().toString();
+                        String itemImageUrl = currentItem.child("item_image_url").getValue().toString();
+
+                        String entryKey = currentItem.getKey();
+                        ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl, entryKey);
+                        wishListArray.add(itemToDisplay);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled (@NonNull DatabaseError databaseError){
+            }
+        });
+    }
+
     public void getUserWishlist( String friend ) {
 
-
-        //Query fListQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(userEmail);
         Query listQuery = mDatabase.child("userWishlist/" + friend + "/wishlist");
         gfnCount = 0;
             listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -171,9 +196,11 @@ public class ActivityFeedTest extends Activity  {
                             wishListArray.add(itemToDisplay);
 
                         }
+
                         if(gfnCount == numOfFriends-1){
                             displayActivityFeed();
                         }
+                        getClaimMessages();
                         gfnCount++;
                     }
                 }
