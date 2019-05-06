@@ -338,8 +338,6 @@ public class MyProfile extends AppCompatActivity  {
     }
     */
 
-
-
     public void getUsername(){
         String email = mUser.getEmail();
         Query usernameQuery = mDatabase.child("users").orderByChild("email").equalTo(email);
@@ -351,7 +349,7 @@ public class MyProfile extends AppCompatActivity  {
                     DataSnapshot userData = dataSnapshot.getChildren().iterator().next();
                     userKey = userData.getKey();//used when changing username and email
                     User user = userData.getValue(User.class);
-                    usernameText.setText(user.username + "\'s wishlist");
+                    usernameText.setText(user.username);
                 }
             }
 

@@ -38,6 +38,7 @@ public class CreateProfile extends AppCompatActivity {
     private EditText confirmPasswordEditText;
     private EditText emailEditText;
     private Button confirmButton;
+    private Boolean hasClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class CreateProfile extends AppCompatActivity {
         emailEditText.addTextChangedListener(confirmButtonEnable);
         confirmPasswordEditText.setOnEditorActionListener(createAccountListener);
         confirmButton = findViewById(R.id.createAccount_button);
+        hasClicked = false;
 
         FirebaseApp.initializeApp(this);
         this.mAuth = FirebaseAuth.getInstance();//on create method, connect to Firebase
@@ -76,7 +78,8 @@ public class CreateProfile extends AppCompatActivity {
             String passwordConfirmInput = confirmPasswordEditText.getText().toString();
 
             if (isValidEmail(emailInput) && isValidPassword(passwordInput) &&
-                    isValidPassword(passwordConfirmInput) && !usernameInput.isEmpty()){
+                    isValidPassword(passwordConfirmInput) && !usernameInput.isEmpty()
+            && !hasClicked){
                 confirmButton.setEnabled(true);
                 confirmButton.setBackgroundColor(getResources().getColor(R.color.wc_logo_pink));
             } else {
@@ -106,7 +109,8 @@ public class CreateProfile extends AppCompatActivity {
     };
 
     public void onCreateAccountButtonClick(View view) {//when user clicks to create account
-
+        hasClicked = true;
+        confirmButton.setEnabled(false);
         hideKeyboard();
         final String email = emailEditText.getText().toString();
         final String username = userNameEditText.getText().toString();
@@ -120,6 +124,8 @@ public class CreateProfile extends AppCompatActivity {
         } else {
             createUserInFirebase(email, password, username);
         }
+        hasClicked = false;
+        confirmButton.setEnabled(true);
     }
 
     //Method makes new firebase auth instance
@@ -128,7 +134,6 @@ public class CreateProfile extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(DEBUG_TAG, "createUserWithEmail:success");
@@ -175,6 +180,7 @@ public class CreateProfile extends AppCompatActivity {
         newUser.child("username").setValue(username);
         newUser.child("email").setValue(email);
         newUser.child("bio").setValue("bio");
+        newUser.child("userId").setValue(mAuth.getCurrentUser().getUid());
     }
 
     //Takes the user back to the login screen
@@ -194,8 +200,7 @@ public class CreateProfile extends AppCompatActivity {
 
     //Method used to move user to next screen after successful profile creation
     public void updateUI(FirebaseUser user) {
-        Intent loginIntent = new Intent(this, Settings.class);
-        loginIntent.putExtra("firebaseUser", user);
+        Intent loginIntent = new Intent(this, FeedButtons.class);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
     }

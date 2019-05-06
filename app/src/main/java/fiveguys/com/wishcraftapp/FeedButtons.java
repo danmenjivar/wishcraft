@@ -54,8 +54,9 @@ public class FeedButtons extends Activity {
 
     public void searchButton(View view) {
 //        Toast.makeText(this, "Link me to Search View", Toast.LENGTH_SHORT).show();
-        Intent searchIntent = new Intent(this, ProfileSearch.class);
-        startActivity(searchIntent);
+        Intent friendIntent = new Intent(this, ViewFriendProfile.class);
+        friendIntent.putExtra("userID", "dDyYzZBz9uOP8vFHvq0H4kzHQaH3"); //replace for actual call to friends
+        startActivity(friendIntent);
     }
 
     public void myProfileButton(View view) {
