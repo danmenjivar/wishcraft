@@ -45,14 +45,39 @@ public class ProfileSearch extends AppCompatActivity {
     private DatabaseReference usersdb;
     private String currentUserEmail;
     private String friendKey;
+    private String userUniqueId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_search);
+        userUniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
-        currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        //currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    }
+
+
+    private void getFriends(){
+        friendsListdb.child("/" + userUniqueId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child()){
+
+
+                } else {
+                    //User has no friends
+                    Toast.makeText(this, "User has no friends :(", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
