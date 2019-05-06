@@ -16,43 +16,10 @@ import java.util.Arrays;
 
 public class ViewFriendProfile extends Activity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_friend_profile);
-
-        final ListView listView = (ListView) findViewById(R.id.friendlist);
-
-        String demo[] = {"Bug-a-Splat",
-                "Midterms graded",
-                "Gurilla",
-                "Gurilla glue",
-                "S3 Riverdale",
-                ":)"
-        };
-
-        ArrayList<String> demoList = new ArrayList<>(Arrays.asList(demo));
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, demoList) {
-            public View getView(int position, View convertView, ViewGroup parent) {
-                // Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
-
-                // Initialize a TextView for ListView each Item
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                // Set the text color of TextView (ListView Item)
-                tv.setTextColor(Color.WHITE);
-
-                // Generate ListView Item using TextView
-                return view;
-            }
-        };
-
-        listView.setAdapter(arrayAdapter);
-
     }
 
     public void user1click(View view) {

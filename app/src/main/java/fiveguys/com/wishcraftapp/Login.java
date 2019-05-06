@@ -8,11 +8,15 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -36,6 +40,7 @@ public class Login extends AppCompatActivity {
         this.mAuth = FirebaseAuth.getInstance(); //grab the shared auth instance
         this.loginEmailEditText = findViewById(R.id.login_email);
         this.passwordEditText = findViewById(R.id.login_password);
+        this.passwordEditText.setOnEditorActionListener(logUserInListener);
         this.loginButton = findViewById(R.id.login_button);
         this.loginEmailEditText.addTextChangedListener(loginTextWatcher);//to enable button
         this.passwordEditText.addTextChangedListener(loginTextWatcher);//to enable button
@@ -56,15 +61,31 @@ public class Login extends AppCompatActivity {
             if (isValidEmail(emailInput) && isValidPassword(passwordInput)) {
                 loginButton.setEnabled(true);
                 loginButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+//                loginButton.setTextColor(getResources().getColor(R.color.white));
             } else {
                 loginButton.setEnabled(false);
                 loginButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));
+//                loginButton.setTextColor(getResources().getColor(R.color.black));
             }
         }
 
         @Override
         public void afterTextChanged(Editable s) {
             //this must be here to compile
+        }
+    };
+
+    //Listener logs the user in when they hit the "ACTION DONE" key on the virtual keyboard
+    private TextView.OnEditorActionListener logUserInListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+            if (actionId == EditorInfo.IME_ACTION_DONE){
+                loginButtonClick(findViewById(R.id.login_button));
+                return true;
+            }
+
+            return false;
         }
     };
 
@@ -79,7 +100,7 @@ public class Login extends AppCompatActivity {
 
     //Method to move user to appropriate spot in app
     public void updateUI(FirebaseUser user) {
-        Intent loginIntent = new Intent(this, ProfileSearch.class);
+        Intent loginIntent = new Intent(this, FeedButtons.class);
         startActivity(loginIntent);
         finish(); //prevents user from hitting back and logging out
     }
@@ -92,9 +113,14 @@ public class Login extends AppCompatActivity {
 
     //Method used when user clicks "log me in" button
     public void loginButtonClick(View view) {
-        String email = loginEmailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        logUserIn(email, password); //use firebase to login user
+        final String email = loginEmailEditText.getText().toString();
+        final String password = passwordEditText.getText().toString();
+        Thread t = new Thread() {
+            public void run() {
+                logUserIn(email, password); //use firebase to login user
+            }
+        };
+        t.start();
     }
 
     //check if user entered a valid looking email address
@@ -120,11 +146,22 @@ public class Login extends AppCompatActivity {
                             updateUI(user);// send the user to their feed
                         } else {
                             // If sign in fails, display a message to the user.
+                            failAnimation();
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void failAnimation(){
+        YoYo.with(Techniques.Shake)
+                .delay(250)
+                .duration(2000)
+                .playOn(loginEmailEditText);
+        YoYo.with(Techniques.Shake)
+                .delay(250)
+                .duration(2000)
+                .playOn(passwordEditText);
     }
 }
