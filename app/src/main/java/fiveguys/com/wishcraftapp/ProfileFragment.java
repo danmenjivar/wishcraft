@@ -86,6 +86,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         getUsername();
+
         // Load profilePic from firebase on start of activity
         setUserProfilePic();
         bioEditText = RootView.findViewById(R.id.bio_editText);
@@ -340,6 +341,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     userKey = userData.getKey();
                     User user = userData.getValue(User.class);
                     usernameText.setText(user.username + "\'s wishlist");
+                    getActivity().setTitle(user.username);
                 }
             }
 

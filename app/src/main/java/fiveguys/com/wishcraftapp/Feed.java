@@ -28,6 +28,7 @@ public class Feed extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("WishCraft");
 
         //initializes bottom navigation menu and its fragments/frames
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationMenu);
@@ -50,13 +51,15 @@ public class Feed extends AppCompatActivity {
                     return true;
                 case R.id.search:
                     setFragment(itemSearchFragment);
-                    //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.top_header);
+                    setTitle("Item Search");
                     return true;
                 case R.id.profile:
                     setFragment(profileFragment);
+                    //setTitle("Your Profile");
                     return true;
                 case R.id.friends:
                     setFragment(friendsFragment);
+                    setTitle("Friends");
                     return true;
                 default:
                     break;
