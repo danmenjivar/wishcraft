@@ -160,7 +160,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
             if(!bioInput.isEmpty() && !bioInput.equals(loggedInUser.bio)) {
                 changeBioButton.setEnabled(true);
-                changeBioButton.setBackgroundColor(getResources().getColor(R.color.wc_logo_pink));
+                changeBioButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             } else {
                 changeBioButton.setEnabled(false);
                 changeBioButton.setBackgroundColor(getResources().getColor(R.color.disable_grey));

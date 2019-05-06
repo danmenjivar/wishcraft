@@ -7,10 +7,14 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
+import android.support.v7.widget.Toolbar;
 
-public class Feed extends FragmentActivity {
+public class Feed extends AppCompatActivity {
 
     final HomeFragment homeFragment = new HomeFragment();
     final ItemSearchFragment itemSearchFragment = new ItemSearchFragment();
@@ -22,9 +26,19 @@ public class Feed extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         //initializes bottom navigation menu and its fragments/frames
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationMenu);
         navigationView.setOnNavigationItemSelectedListener(navListener);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_toolbar_menu, menu);
+        return true;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
