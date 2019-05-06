@@ -68,12 +68,10 @@ public class ActivityFeedTest extends Activity  {
 
     }
     //change to getEmailFromUid
-    private void getEmailFromUsername(String name){
+    private void getEmailFromUid(String uid){
 
-        globalFriendName[gfnCount]=name;
-        gfnCount++;
-        mDatabase.child("users").orderByChild("username").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+        mDatabase.child("users").orderByChild("userId").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
                     DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
@@ -135,8 +133,11 @@ public class ActivityFeedTest extends Activity  {
                         numOfFriends =snapshot.getChildrenCount();
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             Friend friend = postSnapshot.getValue(Friend.class);
+                            globalFriendName[gfnCount]=friend.getName();
+                            gfnCount++;
                             //change this to getUid and adjust friend.class accordingly
-                            getEmailFromUsername((friend.getName()));
+                            getEmailFromUid((friend.getUid()));
+
                         }
                     }
 
