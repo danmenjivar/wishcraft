@@ -68,7 +68,7 @@ public class ProfileSearch extends AppCompatActivity {
 
     //Click function
     public void onAddFriendButtonClick(View view){
-        fetchUserFriendList();
+        addFriendInDatabase("dDyYzZBz9uOP8vFHvq0H4kzHQaH3");
     }
 
     private void fetchUserFriendList(){
@@ -89,10 +89,23 @@ public class ProfileSearch extends AppCompatActivity {
         });
     }
 
-    private void addFriendInDatabase(String key){
-        DatabaseReference placeToPush = friendsListdb.child(key + "/friendslist");
-        DatabaseReference newFriend = placeToPush.push();
-        newFriend.child("frienduid").setValue("dDyYzZBz9uOP8vFHvq0H4kzHQaH3");
+    private void addFriendInDatabase(final String key){
+        friendsListdb.orderByChild("useruid").equalTo(currentUser).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren()) {
+                    dataSnapshot.getChildren().iterator().next();
+                    Log.d("CODY: ", dataSnapshot.getKey().toString());
+                    DatabaseReference newFriend = friendsListdb.child(dataSnapshot.getKey() + "/friendslist").push();
+                    newFriend.child("frienduid").setValue(key);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void onViewFriendButtonClick(View view){
