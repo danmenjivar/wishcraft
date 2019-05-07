@@ -48,6 +48,7 @@ public class Feed extends AppCompatActivity {
             switch(menuItem.getItemId()) {
                 case R.id.home:
                     setFragment(homeFragment);
+                    setTitle("WishCraft");
                     return true;
                 case R.id.search:
                     setFragment(itemSearchFragment);

@@ -41,6 +41,10 @@ public class User {
         return bio;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -50,5 +54,4 @@ public class User {
 
         return result;
     }
-
 }
