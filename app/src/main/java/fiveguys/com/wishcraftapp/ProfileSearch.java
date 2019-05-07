@@ -44,13 +44,12 @@ public class ProfileSearch extends AppCompatActivity {
     private DatabaseReference friendsListdb;
     private DatabaseReference usersdb;
     private String currentUser;
-    private String friendKey;
     private EditText search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        search = findViewById(R.id.editText8);
+        search = findViewById(R.id.ilovetosearch);
         setContentView(R.layout.activity_profile_search);
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
@@ -68,7 +67,7 @@ public class ProfileSearch extends AppCompatActivity {
 
     //Click function
     public void onAddFriendButtonClick(View view){
-        addFriendInDatabase("dDyYzZBz9uOP8vFHvq0H4kzHQaH3");
+        friendExists("ironman");
     }
 
     private void fetchUserFriendList(){
@@ -89,15 +88,23 @@ public class ProfileSearch extends AppCompatActivity {
         });
     }
 
-    private void addFriendInDatabase(final String key){
-        friendsListdb.orderByChild("useruid").equalTo(currentUser).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void addFriendInDatabase(String key){
+        DatabaseReference newFriend = friendsListdb.child("/"+currentUser+"/").push();
+        newFriend.child("frienduid").setValue(key);
+    }
+
+    public void onRemoveFriendButtonClick(View view){
+        removeFriend("Q4493iMsoRUt2lVaFZCAdHxW5Os2");
+    }
+
+    private void removeFriend(String key){
+        friendsListdb.child("/"+currentUser+"/").orderByChild("frienduid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChildren()) {
-                    dataSnapshot.getChildren().iterator().next();
-                    Log.d("CODY: ", dataSnapshot.getKey().toString());
-                    DatabaseReference newFriend = friendsListdb.child(dataSnapshot.getKey() + "/friendslist").push();
-                    newFriend.child("frienduid").setValue(key);
+                if(dataSnapshot.hasChildren()){
+                    dataSnapshot = dataSnapshot.getChildren().iterator().next();
+                    Log.d("CODY: ", dataSnapshot.getKey());
+                    friendsListdb.child("/"+currentUser+"/"+dataSnapshot.getKey()).removeValue();
                 }
             }
 
@@ -112,7 +119,7 @@ public class ProfileSearch extends AppCompatActivity {
         displayFriendList();
     }
     private void displayFriendList(){
-        friendsListdb.orderByChild("useruid").equalTo(currentUser).addListenerForSingleValueEvent(new ValueEventListener() {
+        friendsListdb.child(currentUser).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
@@ -160,8 +167,6 @@ public class ProfileSearch extends AppCompatActivity {
                 if(datasnapshot.hasChildren()) {
                     Log.d("CODY: ", datasnapshot.getKey());
                     DataSnapshot friendData = datasnapshot.getChildren().iterator().next();
-                    friendKey = friendData.getKey();
-                    Log.d("CODY: ", friendKey);
                     Friend friend = friendData.getValue(Friend.class);
                     friend.setName(username);
                     Log.d("CODY: ", friend.getName() + " and " + friend.getEmail() + " and " + friend.getUid());
@@ -175,16 +180,25 @@ public class ProfileSearch extends AppCompatActivity {
         });
     }
 
-    private void friendExists(String search){
+    private void friendExists(String name){
         //todo: finish finding the friend if exists from search bar
-        DatabaseReference userlistdb = FirebaseDatabase.getInstance().getReference("users");
-        userlistdb.orderByChild("username").equalTo(search).addListenerForSingleValueEvent(new ValueEventListener() {
+        usersdb.orderByChild("username").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChildren()){
-                    DataSnapshot friendData = dataSnapshot.getChildren().iterator().next();
-                    friendKey = friendData.getKey();
-                    addFriendInDatabase(friendKey);
+                    dataSnapshot = dataSnapshot.getChildren().iterator().next();
+                    String friendKey = dataSnapshot.getKey();
+                    usersdb.child(friendKey).child("userId").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            addFriendInDatabase(dataSnapshot.getValue().toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
 

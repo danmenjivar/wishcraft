@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
         android:onClick="onAddFriendButtonClick"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/ilovetosearch" />
 
     <Button
         android:id="@+id/button5"
@@ -37,8 +37,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
 
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="onRemoveFriendButtonClick"
+        android:text="ViewFriends"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/ilovetosearch"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
@@ -47,7 +62,7 @@
         android:ems="10"
         android:hint="Search"
         android:inputType="textPersonName"
-        android:textColor="@color/white"
+        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"
