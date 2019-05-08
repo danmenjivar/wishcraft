@@ -28,7 +28,8 @@ public class DisplayProfileSearchAdapter extends RecyclerView.Adapter<DisplayPro
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private StorageReference mStorageRef;
-
+    //Keep Debugging
+    //https://www.youtube.com/watch?v=vpObpZ5MYSE&t=717s
 
     protected void onCreate(Bundle saveInstanceState)
     {
@@ -53,8 +54,7 @@ public class DisplayProfileSearchAdapter extends RecyclerView.Adapter<DisplayPro
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.activity_profile_search_auxiliary, viewGroup, false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.activity_profile_search_auxiliary,viewGroup,false));
     }
 
     @Override

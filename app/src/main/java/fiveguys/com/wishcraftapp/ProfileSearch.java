@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,6 +41,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ProfileSearch extends AppCompatActivity {
@@ -49,6 +52,10 @@ public class ProfileSearch extends AppCompatActivity {
     private String friendKey;
     private EditText search;
 
+    RecyclerView recyclerView;
+    ArrayList<Friend> list;
+    DisplayProfileSearchAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -58,6 +65,27 @@ public class ProfileSearch extends AppCompatActivity {
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        recyclerView = this.<RecyclerView> findViewById(R.id.myRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<Friend>();
+        friendsListdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    Friend p = dataSnapshot1.getValue(Friend.class);
+                    list.add(p);
+                }
+                adapter = new DisplayProfileSearchAdapter(ProfileSearch.this, list);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Toast.makeText(ProfileSearch.this, "Whoops!...", Toast.LENGTH_SHORT.show());
+            }
+        });
     }
 
     public void gotoFriendProfile(View view)
