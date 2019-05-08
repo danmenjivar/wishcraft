@@ -340,11 +340,11 @@ public class Settings extends Activity {
     }
 
     //Signs out user when they click the log out button system wide
-    private void backToLogin(View view) {
-        FirebaseAuth.getInstance().signOut(); //sign out user system-wide
-        Intent createAccountIntent = new Intent(this, Login.class);
-        startActivity(createAccountIntent); //return user to login screen
-        finish();
+    public void backToLogin(View view) {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
     }
 
 

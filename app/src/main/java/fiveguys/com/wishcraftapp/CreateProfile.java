@@ -159,6 +159,7 @@ public class CreateProfile extends AppCompatActivity {
         DatabaseReference table = fb.child("userWishlist");
         DatabaseReference newList = table.push();
         newList.child("email").setValue(email);
+        newList.child("uniqueId").setValue(mAuth.getCurrentUser().getUid());
         newList.child("wishlist").setValue(email.hashCode());
     }
 
