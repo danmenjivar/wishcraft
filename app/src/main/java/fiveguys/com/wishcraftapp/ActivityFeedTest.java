@@ -64,7 +64,7 @@ public class ActivityFeedTest extends Activity  {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         wishListArray = new ArrayList<>();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
-        getUserInfo();
+        findUserWishlist();
 
     }
     //change to getEmailFromUid
@@ -87,7 +87,7 @@ public class ActivityFeedTest extends Activity  {
             }
         });
     }
-    private void getUserInfo(){
+   /* private void getUserInfo(){
         friendsListdb.orderByChild("email").equalTo(mUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -102,16 +102,17 @@ public class ActivityFeedTest extends Activity  {
 
             }
         });
-    }
+    }*/
 
-    private void findNameInWishlists(String email){
-        mDatabase.child("userWishlist").orderByChild("email").equalTo(email)
+    private void findNameInWishlists(final String uid){
+        mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChildren()){
                             DataSnapshot user = dataSnapshot.getChildren().iterator().next();
                             Log.d(TAG, "key: " + user.getKey());
+                            findName(uid);
                             getUserWishlist(user.getKey());
 
                         }
@@ -124,19 +125,21 @@ public class ActivityFeedTest extends Activity  {
                 });
     }
 
-    private void findUserWishlist(String key){
+    private void findUserWishlist(){
 
-        final DatabaseReference placeToGrabFriends = friendsListdb.child(key + "/friendslist");
+        Query placeToGrabFriends = mDatabase.child("/userFriendslist/" + mUser.getUid()).orderByChild("userid");
         placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         numOfFriends =snapshot.getChildrenCount();
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                            Friend friend = postSnapshot.getValue(Friend.class);
-                            globalFriendName[gfnCount]=friend.getName();
-                            gfnCount++;
+                            DataSnapshot friendUid = postSnapshot.child("frienduid");
+
+                            String uid = friendUid.toString();
                             //change this to getUid and adjust friend.class accordingly
-                            getEmailFromUid((friend.getUid()));
+                            findName(uid);
+                            getUserWishlist(user.getKey());
+
 
                         }
                     }
@@ -144,6 +147,26 @@ public class ActivityFeedTest extends Activity  {
                         @Override
                         public void onCancelled (@NonNull DatabaseError databaseError){
                     }
+        });
+    }
+
+    private void findName(String uniqueId){
+        mDatabase.child("users").orderByChild("userId").equalTo(uniqueId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
+                    String username = currentUser.child("username").getValue().toString();
+                    globalFriendName[gfnCount]=username;
+                    gfnCount++;
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
         });
     }
 
