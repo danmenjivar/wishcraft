@@ -168,7 +168,7 @@ public class CreateProfile extends AppCompatActivity {
         DatabaseReference fb = FirebaseDatabase.getInstance().getReference();
         DatabaseReference table = fb.child("userFriendslist");
         DatabaseReference newList = table.push();
-        newList.child("email").setValue(email);
+        newList.child("useruid").setValue(mAuth.getCurrentUser().getUid());
         newList.child("friendslist").setValue(email.hashCode());
     }
 

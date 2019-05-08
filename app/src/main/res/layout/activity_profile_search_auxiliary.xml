@@ -1,63 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Profile_search_auxiliary">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="154dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/searchedName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="33dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@id/profilePicture"
+        android:fontFamily="monospace"
+        android:text="@string/username"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="52dp" />
 
-        <ImageView
-            android:id="@+id/profilePicture"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="154dp"
-            tools:src="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/searchedBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="65dp"
+        android:layout_toRightOf="@id/profilePicture"
+        android:text="@string/bio"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/searchedName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="35dp"
-            android:layout_toRightOf="@id/profilePicture"
-            android:fontFamily="monospace"
-            android:text="Jason Diep"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="166dp"
-            tools:layout_editor_absoluteY="52dp" />
-
-        <TextView
-            android:id="@+id/searchedEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/profilePicture"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="65dp"
-            android:text="bulge@pouch.com"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/lookAddButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_toRightOf="@id/searchedName"
-            android:background="@color/newPrimaryPink"
-            android:gravity="center"
-            android:text="Button"
-            android:textColor="@color/black"
-            tools:layout_editor_absoluteX="278dp"
-            tools:layout_editor_absoluteY="98dp" />
-    </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/lookAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/searchedName"
+        android:background="@color/newPrimaryPink"
+        android:gravity="center"
+        android:text="Button"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="98dp" />
+</RelativeLayout>
