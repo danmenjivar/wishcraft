@@ -68,7 +68,7 @@ public class ActivityFeedTest extends Activity  {
 
     }
     //change to getEmailFromUid
-    private void getEmailFromUid(String uid){
+   /* private void getEmailFromUid(String uid){
 
         mDatabase.child("users").orderByChild("userId").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
@@ -86,23 +86,29 @@ public class ActivityFeedTest extends Activity  {
                 //stays empty
             }
         });
-    }
-   /* private void getUserInfo(){
-        friendsListdb.orderByChild("email").equalTo(mUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChildren()){
-                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
-                    findUserWishlist(currentUser.getKey());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }*/
+
+    private void findWishlistKey(String uid) {
+
+
+        mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChildren()) {
+                        DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
+                        getUserWishlist(currentUser.getKey());
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
 
     private void findNameInWishlists(final String uid){
         mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid)
@@ -138,9 +144,7 @@ public class ActivityFeedTest extends Activity  {
                             String uid = friendUid.toString();
                             //change this to getUid and adjust friend.class accordingly
                             findName(uid);
-                            getUserWishlist(user.getKey());
-
-
+                            findWishlistKey(uid);
                         }
                     }
 
