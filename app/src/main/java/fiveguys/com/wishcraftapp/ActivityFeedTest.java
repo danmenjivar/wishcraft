@@ -110,7 +110,7 @@ public class ActivityFeedTest extends Activity  {
         }
 
 
-    private void findNameInWishlists(final String uid){
+   /* private void findNameInWishlists(final String uid){
         mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -129,7 +129,7 @@ public class ActivityFeedTest extends Activity  {
 
                     }
                 });
-    }
+    }*/
 
     private void findUserWishlist(){
 
@@ -141,7 +141,7 @@ public class ActivityFeedTest extends Activity  {
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             DataSnapshot friendUid = postSnapshot.child("frienduid");
 
-                            String uid = friendUid.toString();
+                            String uid = friendUid.getValue().toString();
                             //change this to getUid and adjust friend.class accordingly
                             findName(uid);
                             findWishlistKey(uid);
