@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -44,30 +48,39 @@ public class ProfileSearch extends AppCompatActivity {
     private DatabaseReference friendsListdb;
     private DatabaseReference usersdb;
     private String currentUser;
-    private EditText search;
+    private TextInputLayout friendsearchlayout;
+    private EditText friendname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        search = findViewById(R.id.ilovetosearch);
         setContentView(R.layout.activity_profile_search);
+        Log.d("CODY: ", "WHAT?");
+        friendsearchlayout = (TextInputLayout) findViewById(R.id.textInputLayout);
+        friendname = friendsearchlayout.getEditText();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
-
-    public void gotoFriendProfile(View view){
-        String search = this.search.getText().toString();
-        Intent intent = new Intent(getApplicationContext(), ViewFriendProfile.class);
+    //passes name from search bar to a usersearch to add their uid
+    public void onAddFriendButtonClick(View view){
+        if(friendname != null) {
+            Log.d("CODY: ", friendsearchlayout.getEditText().getText().toString());
+            friendExists(friendname.getText().toString(),1);
+        }
+        else
+            Toast.makeText(ProfileSearch.this, "Stop Passing Null You Git.", Toast.LENGTH_SHORT).show();
     }
 
-    //TODO private void and hardcode a new friend
+    public void onClickGoToFriendProfile(View view){
+        friendExists(friendname.getText().toString(),2);
+    }
 
-
-    //Click function
-    public void onAddFriendButtonClick(View view){
-        friendExists("ironman");
+    public void goToFriendProfile(String userid) {
+        Intent friendprofile = new Intent(getApplicationContext(), ViewFriendProfile.class);
+        friendprofile.putExtra("userID", userid);
+        startActivity(friendprofile);
     }
 
     private void fetchUserFriendList(){
@@ -87,16 +100,16 @@ public class ProfileSearch extends AppCompatActivity {
             }
         });
     }
-
+    //stores frienduid into friendlist
     private void addFriendInDatabase(String key){
         DatabaseReference newFriend = friendsListdb.child("/"+currentUser+"/").push();
         newFriend.child("frienduid").setValue(key);
     }
-
+    //passes uid of friend to remove to friend search
     public void onRemoveFriendButtonClick(View view){
-        removeFriend("Q4493iMsoRUt2lVaFZCAdHxW5Os2");
+        friendExists(friendname.getText().toString(), 3);
     }
-
+    //searches database to remove specific friend
     private void removeFriend(String key){
         friendsListdb.child("/"+currentUser+"/").orderByChild("frienduid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -180,8 +193,8 @@ public class ProfileSearch extends AppCompatActivity {
         });
     }
 
-    private void friendExists(String name){
-        //todo: finish finding the friend if exists from search bar
+    //throws the result of name search to the actual add function
+    private void friendExists(String name, final int num){
         usersdb.orderByChild("username").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -191,7 +204,15 @@ public class ProfileSearch extends AppCompatActivity {
                     usersdb.child(friendKey).child("userId").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            addFriendInDatabase(dataSnapshot.getValue().toString());
+                            if(num == 1)
+                                addFriendInDatabase(dataSnapshot.getValue().toString());
+                            else if(num == 2){
+                                Log.d("CODY: gotoid: ",dataSnapshot.getValue().toString());
+                                goToFriendProfile(dataSnapshot.getValue().toString());
+                            }
+                            else if(num == 3){
+                                removeFriend(dataSnapshot.getValue().toString());
+                            }
                         }
 
                         @Override
@@ -208,6 +229,8 @@ public class ProfileSearch extends AppCompatActivity {
             }
         });
     }
+
+
 
     //code friend search first
     //picture, name, button(add friend)
