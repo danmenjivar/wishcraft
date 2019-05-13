@@ -3,25 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    >
 
     <ImageView
-        android:id="@+id/profilePicture"
+        android:id="@+id/auxProfilePicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="154dp"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/searchedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
-        android:layout_toRightOf="@id/profilePicture"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/auxProfilePicture"
         android:fontFamily="monospace"
         android:text="@string/username"
         android:textSize="24sp"
@@ -35,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="65dp"
-        android:layout_toRightOf="@id/profilePicture"
+        android:layout_toRightOf="@id/auxProfilePicture"
         android:text="@string/bio"
         android:textSize="18sp" />
 
@@ -43,8 +41,8 @@
         android:id="@+id/lookAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/searchedName"
         android:background="@color/newPrimaryPink"
         android:gravity="center"

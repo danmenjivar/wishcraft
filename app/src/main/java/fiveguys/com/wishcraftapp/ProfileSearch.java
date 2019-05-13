@@ -46,6 +46,11 @@ import java.util.Iterator;
 
 public class ProfileSearch extends AppCompatActivity {
 
+    //#2
+    private  ArrayList<String> mNames = new ArrayList<>();
+    private  ArrayList<String> mImages = new ArrayList<>();
+
+
     private DatabaseReference friendsListdb;
     private DatabaseReference usersdb;
     private String currentUser;
@@ -54,7 +59,7 @@ public class ProfileSearch extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Friend> list;
-    DisplayProfileSearchAdapter adapter;
+    ProfileSearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,26 +71,6 @@ public class ProfileSearch extends AppCompatActivity {
         usersdb = FirebaseDatabase.getInstance().getReference("users");
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        recyclerView = this.<RecyclerView> findViewById(R.id.myRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<Friend>();
-        friendsListdb.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-                {
-                    Friend p = dataSnapshot1.getValue(Friend.class);
-                    list.add(p);
-                }
-                adapter = new DisplayProfileSearchAdapter(ProfileSearch.this, list);
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(ProfileSearch.this, "Whoops!...", Toast.LENGTH_SHORT.show());
-            }
-        });
     }
 
     public void gotoFriendProfile(View view)
