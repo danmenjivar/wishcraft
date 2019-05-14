@@ -64,10 +64,10 @@ public class ActivityFeedTest extends Activity  {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         wishListArray = new ArrayList<>();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
-        getClaimMessages();
+       // getClaimMessages();
         findUserWishlist();
         //to display feed claim messages in case all user
-        displayActivityFeed();
+        //displayActivityFeed();
 
     }
     //change to getEmailFromUid
