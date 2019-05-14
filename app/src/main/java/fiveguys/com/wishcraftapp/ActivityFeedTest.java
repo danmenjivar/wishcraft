@@ -64,7 +64,10 @@ public class ActivityFeedTest extends Activity  {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         wishListArray = new ArrayList<>();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
+        getClaimMessages();
         findUserWishlist();
+        //to display feed claim messages in case all user
+        displayActivityFeed();
 
     }
     //change to getEmailFromUid
@@ -128,7 +131,7 @@ public class ActivityFeedTest extends Activity  {
 
     private void findUserWishlist(){
 
-        Query placeToGrabFriends = mDatabase.child("/userFriendslist/" + mUser.getUid()).orderByChild("userid");
+        Query placeToGrabFriends = mDatabase.child("userFriendslist/" + mUser.getUid()).orderByChild("userid");
         placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -137,7 +140,6 @@ public class ActivityFeedTest extends Activity  {
                     DataSnapshot friendUid = postSnapshot.child("frienduid");
 
                     String uid = friendUid.getValue().toString();
-                    //change this to getUid and adjust friend.class accordingly
                     findName(uid);
                     findWishlistKey(uid);
                 }
@@ -179,10 +181,11 @@ public class ActivityFeedTest extends Activity  {
                     Iterator<DataSnapshot> wishListIter = dataSnapshot.getChildren().iterator();
                     while (wishListIter.hasNext()) {
                         DataSnapshot currentItem = wishListIter.next();
-                        double itemPrice = Double.valueOf(currentItem.child("item_price").getValue().toString());
+                        double itemPrice ='\0';
+                        String itemLink = "";
+                        String itemImageUrl = "";
                         String itemName = "Your \"" + currentItem.child("item_name").getValue().toString() +"\" has been claimed";
-                        String itemLink = currentItem.child("item_link").getValue().toString();
-                        String itemImageUrl = currentItem.child("item_image_url").getValue().toString();
+
 
                         String entryKey = currentItem.getKey();
                         ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl, entryKey);
@@ -222,7 +225,7 @@ public class ActivityFeedTest extends Activity  {
                     if(gfnIndex == numOfFriends-1){
                         displayActivityFeed();
                     }
-                    //getClaimMessages();
+
                     gfnIndex++;
                 }
             }
