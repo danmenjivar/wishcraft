@@ -222,7 +222,7 @@ public class ActivityFeedTest extends Activity  {
                     if(gfnIndex == numOfFriends-1){
                         displayActivityFeed();
                     }
-                    getClaimMessages();
+                    //getClaimMessages();
                     gfnIndex++;
                 }
             }
