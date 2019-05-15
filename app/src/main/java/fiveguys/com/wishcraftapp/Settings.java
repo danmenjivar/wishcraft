@@ -1,6 +1,8 @@
 package fiveguys.com.wishcraftapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -100,23 +102,6 @@ public class Settings extends Activity {
         });
     }
 
-    //Method will straight up just delete that user from being authenticated
-    public void onDeleteButtonClick(View view) {
-        //Todo: add a dialogue box to confirm S2
-
-        mUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "delete successful");
-                } else {
-                    Log.d(TAG, "user could not be deleted");
-                }
-            }
-        });
-
-    }
-
     //Method executes when user types new Password
     public void changePasswordOnClick(View view) {
 
@@ -143,6 +128,65 @@ public class Settings extends Activity {
         });
     }
 
+    public void onDeleteButtonClick(View view) {
+        new AlertDialog.Builder(Settings.this)
+                .setTitle("Delete Account")
+                .setMessage("Are you sure?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteFirebaseAuth();
+                        returnToLoginScreen();
+                    }
+                }).setNegativeButton("Cancel", null).show();
+    }
+
+    private void deleteFirebaseAuth(){
+        deleteUserFromFirebase();
+        mUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "delete successful");
+                } else {
+                    Log.d(TAG, "user could not be deleted");
+                }
+            }
+        });
+    }
+
+    private void deleteUserFromFirebase(){
+        mDatabase.child("/users/" + userKey).removeValue();
+        findWishlistAndDelete();
+    }
+
+    private void findWishlistAndDelete(){
+        mDatabase.child("userWishlist").orderByChild("email").equalTo(loggedInUser.email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    DataSnapshot wishlist = dataSnapshot.getChildren().iterator().next();
+                    deleteWishlist(wishlist.getKey());
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //exists for compilation, does nothing
+            }
+        });
+    }
+
+    private void deleteWishlist(String userWishListKey){
+        mDatabase.child("/userWishlist/" + userWishListKey).removeValue();
+    }
+
+    private void returnToLoginScreen(){
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
+    }
 
     //Method updates username in firebase realtime database
     private void updateDatabaseUsername(final String newUsername) {

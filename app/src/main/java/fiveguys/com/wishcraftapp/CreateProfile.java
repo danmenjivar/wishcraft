@@ -135,6 +135,7 @@ public class CreateProfile extends AppCompatActivity {
         DatabaseReference newList = table.push();
         newList.child("email").setValue(email);
         newList.child("wishlist").setValue(email.hashCode());
+        newList.child("uniqueId").setValue(mAuth.getUid());
     }
 
     //Makes a new entry in the friendslist table in the real time firebase database
@@ -154,6 +155,7 @@ public class CreateProfile extends AppCompatActivity {
         newUser.child("username").setValue(username);
         newUser.child("email").setValue(email);
         newUser.child("bio").setValue("bio");
+        newUser.child("userId").setValue(mAuth.getUid());
     }
 
     //Takes the user back to the login screen
