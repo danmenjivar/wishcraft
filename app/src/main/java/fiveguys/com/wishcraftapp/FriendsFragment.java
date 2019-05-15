@@ -17,6 +17,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.bumptech.glide.util.LogTime;
@@ -58,6 +59,9 @@ public class FriendsFragment extends Fragment implements View.OnClickListener{
     private String currentUser;
     private TextInputLayout friendsearchlayout;
     private EditText friendname;
+    private Button addFriendButton;
+    private Button removeFriendButton;
+    private Button viewFriendProfileButton;
 
     //Phresh new code
     private ArrayList<String> listOfFriendStrings;
@@ -89,6 +93,9 @@ public class FriendsFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         View RootView = inflater.inflate(R.layout.activity_profile_search, container, false);
         friendsearchlayout = (TextInputLayout) RootView.findViewById(R.id.textInputLayout);
+        addFriendButton = RootView.findViewById(R.id.stop_with_bad_names);
+        removeFriendButton = RootView.findViewById(R.id.button7);
+        viewFriendProfileButton = RootView.findViewById(R.id.go_to_profile);
         friendname = friendsearchlayout.getEditText();
 
         recyclerView = RootView.findViewById(R.id.friendlist_recycler_view);

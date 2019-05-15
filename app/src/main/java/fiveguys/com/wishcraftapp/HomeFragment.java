@@ -1,8 +1,10 @@
 package fiveguys.com.wishcraftapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -42,7 +49,7 @@ public class HomeFragment extends Fragment {
     private FirebaseUser mUser;
     private DatabaseReference mDatabase;
     private int gfnCount = 0;
-    //private
+    private int gfnIndex = 0;
     private ArrayList<ActivityFeedDisplay> wishListArray;
 
     public HomeFragment() {
@@ -62,13 +69,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View RootView = inflater.inflate(R.layout.activity_home_fragment, container, false);
-        mRecyclerView = RootView.findViewById(R.id.recycler_activity_feed);
-
         globalFriendName = new String[50];
+        mRecyclerView = RootView.findViewById(R.id.activity_feed);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         wishListArray = new ArrayList<>();
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
-        getUserInfo();
 
         return RootView;
     }
@@ -79,15 +84,14 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mRecyclerView.setAdapter(new ActivityFeedAdapter(this.getContext(),new ArrayList<ActivityFeedDisplay>()));
+
+        findUserWishlist();
     }
 
     //change to getEmailFromUid
-    private void getEmailFromUsername(String name){
-
-        globalFriendName[gfnCount]=name;
-        gfnCount++;
-        mDatabase.child("users").orderByChild("username").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+   /* private void getEmailFromUid(String uid){
+        mDatabase.child("users").orderByChild("userId").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
                     DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
@@ -96,21 +100,82 @@ public class HomeFragment extends Fragment {
                     findNameInWishlists(email);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //stays empty
             }
         });
+    }*/
+
+    private void findWishlistKey(String uid) {
+        mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
+                    getUserWishlist(currentUser.getKey());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
-    private void getUserInfo(){
-        friendsListdb.orderByChild("email").equalTo(mUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+   /* private void findNameInWishlists(final String uid){
+        mDatabase.child("userWishlist").orderByChild("uniqueId").equalTo(uid)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChildren()){
+                            DataSnapshot user = dataSnapshot.getChildren().iterator().next();
+                            Log.d(TAG, "key: " + user.getKey());
+                            findName(uid);
+                            getUserWishlist(user.getKey());
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+    }*/
+
+    private void findUserWishlist(){
+
+        Query placeToGrabFriends = mDatabase.child("userFriendslist/" + mUser.getUid()).orderByChild("userid");
+        placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                numOfFriends =snapshot.getChildrenCount();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    DataSnapshot friendUid = postSnapshot.child("frienduid");
+
+                    String uid = friendUid.getValue().toString();
+                    findName(uid);
+                    findWishlistKey(uid);
+                }
+            }
+
+            @Override
+            public void onCancelled (@NonNull DatabaseError databaseError){
+            }
+        });
+    }
+
+    private void findName(String uniqueId){
+        mDatabase.child("users").orderByChild("userId").equalTo(uniqueId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
                     DataSnapshot currentUser = dataSnapshot.getChildren().iterator().next();
-                    findUserWishlist(currentUser.getKey());
+                    String username = currentUser.child("username").getValue().toString();
+                    globalFriendName[gfnCount]=username;
+                    gfnCount++;
+
                 }
             }
 
@@ -121,39 +186,25 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void findNameInWishlists(String email){
-        mDatabase.child("userWishlist").orderByChild("email").equalTo(email)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()){
-                            DataSnapshot user = dataSnapshot.getChildren().iterator().next();
-                            Log.d(TAG, "key: " + user.getKey());
-                            getUserWishlist(user.getKey());
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-    }
-
-    private void findUserWishlist(String key){
-        //Query emailQuery = mDatabase.child("userWishlist").orderByChild("email").equalTo(mUser.getEmail());
-        //Query emailQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(mUser.getEmail());
-
-        final DatabaseReference placeToGrabFriends = friendsListdb.child(key + "/friendslist");
-        placeToGrabFriends.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getClaimMessages(){
+        final DatabaseReference claimMsgReference = FirebaseDatabase.getInstance().getReference("claimMessages");
+        DatabaseReference claimMsg = claimMsgReference.child(mUser.getUid());
+        claimMsg.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                numOfFriends =snapshot.getChildrenCount();
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Friend friend = postSnapshot.getValue(Friend.class);
-                    //change this to getUid and adjust friend.class accordingly
-                    getEmailFromUsername((friend.getName()));
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    Iterator<DataSnapshot> wishListIter = dataSnapshot.getChildren().iterator();
+                    while (wishListIter.hasNext()) {
+                        DataSnapshot currentItem = wishListIter.next();
+                        double itemPrice ='\0';
+                        String itemLink = "";
+                        String itemImageUrl = "";
+                        String itemName = "Your \"" + currentItem.child("item_name").getValue().toString() +"\" has been claimed";
+
+                        String entryKey = currentItem.getKey();
+                        ActivityFeedDisplay itemToDisplay = new ActivityFeedDisplay(itemName, itemPrice, itemLink, itemImageUrl, entryKey);
+                        wishListArray.add(itemToDisplay);
+                    }
                 }
             }
 
@@ -164,9 +215,8 @@ public class HomeFragment extends Fragment {
     }
 
     public void getUserWishlist( String friend ) {
-        //Query fListQuery = mDatabase.child("userFriendslist").orderByChild("email").equalTo(userEmail);
+
         Query listQuery = mDatabase.child("userWishlist/" + friend + "/wishlist");
-        gfnCount = 0;
         listQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -175,7 +225,7 @@ public class HomeFragment extends Fragment {
                     while (wishListIter.hasNext()) {
                         DataSnapshot currentItem = wishListIter.next();
                         double itemPrice = Double.valueOf(currentItem.child("item_price").getValue().toString());
-                        String itemName = globalFriendName[gfnCount] + " added: " + currentItem.child("item_name").getValue().toString();
+                        String itemName = globalFriendName[gfnIndex] + " added: " + currentItem.child("item_name").getValue().toString();
                         String itemLink = currentItem.child("item_link").getValue().toString();
                         String itemImageUrl = currentItem.child("item_image_url").getValue().toString();
                         //to sort by time
@@ -184,10 +234,12 @@ public class HomeFragment extends Fragment {
                         wishListArray.add(itemToDisplay);
 
                     }
-                    if(gfnCount == numOfFriends-1){
+
+                    if(gfnIndex == numOfFriends-1){
                         displayActivityFeed();
                     }
-                    gfnCount++;
+
+                    gfnIndex++;
                 }
             }
 

@@ -7,16 +7,16 @@
     tools:context=".HomeFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_activity_feed"
+        android:id="@+id/activity_feed"
         android:layout_width="395dp"
-        android:layout_height="530dp"
+        android:layout_height="524dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-    </android.support.v7.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
