@@ -29,6 +29,7 @@ public class Feed extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("WishCraft");
+        setFragment(homeFragment);
 
         //initializes bottom navigation menu and its fragments/frames
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationMenu);

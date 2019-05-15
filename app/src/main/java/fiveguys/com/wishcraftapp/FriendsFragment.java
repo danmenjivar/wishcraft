@@ -62,6 +62,8 @@ public class FriendsFragment extends Fragment implements View.OnClickListener{
     private Button addFriendButton;
     private Button removeFriendButton;
     private Button viewFriendProfileButton;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
 
     //Phresh new code
     private ArrayList<String> listOfFriendStrings;
@@ -76,6 +78,9 @@ public class FriendsFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+
         Log.d("CODY: ", "WHAT?");
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
@@ -94,8 +99,11 @@ public class FriendsFragment extends Fragment implements View.OnClickListener{
         View RootView = inflater.inflate(R.layout.activity_profile_search, container, false);
         friendsearchlayout = (TextInputLayout) RootView.findViewById(R.id.textInputLayout);
         addFriendButton = RootView.findViewById(R.id.stop_with_bad_names);
+        addFriendButton.setOnClickListener(this);
         removeFriendButton = RootView.findViewById(R.id.button7);
+        removeFriendButton.setOnClickListener(this);
         viewFriendProfileButton = RootView.findViewById(R.id.go_to_profile);
+        viewFriendProfileButton.setOnClickListener(this);
         friendname = friendsearchlayout.getEditText();
 
         recyclerView = RootView.findViewById(R.id.friendlist_recycler_view);
