@@ -1,12 +1,15 @@
 package fiveguys.com.wishcraftapp;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -54,7 +57,11 @@ public class ProfileSearch extends AppCompatActivity {
     private String currentUser;
     private TextInputLayout friendsearchlayout;
     private EditText friendname;
+
+    //Phresh new code
     private ArrayList<String> listOfFriendStrings;
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +73,11 @@ public class ProfileSearch extends AppCompatActivity {
         friendsListdb = FirebaseDatabase.getInstance().getReference("userFriendslist");
         usersdb = FirebaseDatabase.getInstance().getReference("users");
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
+        //Phresh new code
         listOfFriendStrings = new ArrayList<>(10);
+
 
 
         searchFriendFromDatabase();
@@ -117,9 +128,15 @@ public class ProfileSearch extends AppCompatActivity {
                         String friendName = currentFriend.child("frienduid").getValue().toString(); //should be esbKC4lYsfPeOcWHPruLirQyrWs2
                         Log.d("Friend UID is: ", friendName);
 
+
                         //Good here so far. call new function to go to users and pull the username from there
                         comparingUIDtoUsername(friendName);
                     }
+                    Log.d("onDataChange: ", "Do I get here?????");
+
+                    System.out.println("size is :" +listOfFriendStrings.size());
+
+                    //LAST STEP
                 }
             }
             @Override
@@ -143,9 +160,16 @@ public class ProfileSearch extends AppCompatActivity {
                     dataSnapshot = dataSnapshot.getChildren().iterator().next();
                     Log.d("onDataChange: Some key", dataSnapshot.getValue().toString());
                     String stringysName = dataSnapshot.child("username").getValue().toString();
-                    listOfFriendStrings.add(new String(stringysName));
-                    Log.d("Should be username: ", stringysName);
+
+
+                    listOfFriendStrings.add(String.valueOf(stringysName));
+                    System.out.println("size is asd:" +listOfFriendStrings.size());
+
                 }
+                System.out.println("FINAL SIZE IS:" +listOfFriendStrings.size());
+                initRecylerView();
+                System.out.println("FINAL SIZE IS:" +listOfFriendStrings.size());
+
             }
 
             @Override
@@ -153,9 +177,30 @@ public class ProfileSearch extends AppCompatActivity {
 
             }
         });
+//        displayFriendsList();
     }
 
 
+    private void initRecylerView()
+    {
+        Log.d("Initrecycler", "reached it" );
+
+        RecyclerView recyclerView = findViewById(R.id.friendlist_recycler_view);
+        ProfileSearchAdapter adapter = new ProfileSearchAdapter(ProfileSearch.this, listOfFriendStrings);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+    }
+
+//    public void displayFriendsList()
+//    {
+//        Log.d("displayFriendsList:","por que");
+//        for (int i = 0; i<listOfFriendStrings.size(); i++)
+//        {
+//            Log.d("Ugly ho #" + i + ": ", listOfFriendStrings.get(i));
+//            System.out.println("Ugly ho #" + i + ": " + listOfFriendStrings.get(i));
+//        }
+//    }
 
 
 
