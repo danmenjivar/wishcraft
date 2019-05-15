@@ -84,8 +84,12 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mRecyclerView.setAdapter(new ActivityFeedAdapter(this.getContext(),new ArrayList<ActivityFeedDisplay>()));
-
-        findUserWishlist();
+        Thread haha = new Thread(){
+            public void run(){
+                findUserWishlist();
+            }
+        };
+        haha.start();
     }
 
     //change to getEmailFromUid
